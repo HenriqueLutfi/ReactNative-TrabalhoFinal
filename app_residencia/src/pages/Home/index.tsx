@@ -1,0 +1,267 @@
+import React, {useEffect, useState, useContext} from 'react';
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  ActivityIndicator,
+  ImageBackground,
+  TouchableHighlight,
+} from 'react-native';
+import {Rating, AirbnbRating} from 'react-native-ratings';
+import {Text, Card} from 'react-native-elements';
+import AxiosInstance from '../../api/AxiosInstance';
+import {AutenticacaoContext} from '../../context/AutenticacaoContext';
+import ProdutosCard from '../../components/ProdutoCards/ProdutosCards';
+import CategoriasCard from '../../components/CategoriaCards/categoriaCard';
+
+type CategoriaType = {
+  idCategoria: number;
+  nomeCategoria: String;
+  nomeImagem: String;
+};
+
+type ProdutoType = {
+  idProduto: number;
+  sku: string;
+  nomeProduto: string;
+  imagemProduto: any;
+};
+
+const Home = ({route, navigation}) => {
+  // const {token} = route.params; // sem o context
+  // console.log('param: ' + JSON.stringify(route));
+  // console.log('Token:' + token);
+
+  const {usuario} = useContext(AutenticacaoContext);
+
+  console.log('Usuario : ' + JSON.stringify(usuario));
+
+  const [categoria, setCategoria] = useState<CategoriaType[]>([]);
+  const [produto, setProduto] = useState<ProdutoType[]>([]);
+
+  useEffect(() => {
+    getDadosCategoria();
+    getProdutos();
+  }, []);
+
+  const getDadosCategoria = async () => {
+    AxiosInstance.get(`/categoria`, {
+      headers: {Authorization: `Bearer ${usuario.token}`},
+    })
+      .then(result => {
+        console.log('dados das categorias: ' + JSON.stringify(result.data));
+        setCategoria(result.data);
+      })
+      .catch(error => {
+        console.log(
+          'erro ao carregar a lista de categorias - ' + JSON.stringify(error),
+        );
+      });
+  };
+
+  const getProdutos = async () => {
+    AxiosInstance.get(`/produto`, {
+      headers: {Authorization: `Bearer ${usuario.token}`},
+    })
+      .then(result => {
+        console.log('Dados dos produtos' + JSON.stringify(result.data));
+        setProduto(result.data);
+      })
+      .catch(error => {
+        console.log(
+          'Erro ao carregar a lista de produtos' + JSON.stringify(error),
+        );
+      });
+  };
+
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={{
+          uri: 'https://i.pinimg.com/originals/d7/a6/11/d7a61190a836bdcfc62bf97af4f4c74b.png',
+        }}
+        resizeMode="cover"
+        style={styles.imageBack}>
+        <ScrollView style={styles.containerItems}>
+          <Text style={{color: '#fff700'}}>{'Categorias'}</Text>
+          <ScrollView style={styles.scrollCategoria} horizontal={true}>
+            {categoria.map((k, i) => (
+              <TouchableHighlight
+                key={i}
+                underlayColor="#fff700"
+                activeOpacity={100}
+                onPress={() =>
+                  console.log(
+                    `Categoria 1 Clicada ${k.nomeCategoria} foi clicada`,
+                  )
+                }
+                style={styles.botao_categoria}>
+                <CategoriasCard categoria={k} />
+              </TouchableHighlight>
+            ))}
+            {/* <TouchableOpacity
+          onPress={() => console.log('Categoria 1 Clicada')}
+          style={styles.botao_categoria}>
+          <View style={styles.view}>
+            <Text style={styles.text_categoria}>{'Categoria 1'}</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => console.log('Categoria 2 Clicada')}
+          style={styles.botao_categoria}>
+          <View style={styles.view}>
+            <Text style={styles.text_categoria}>{'Categoria 2'}</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => console.log('Categoria 3 Clicada')}
+          style={styles.botao_categoria}>
+          <View style={styles.view}>
+            <Text style={styles.text_categoria}>{'Categoria 3'}</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => console.log('Categoria 4 Clicada')}
+          style={styles.botao_categoria}>
+          <View style={styles.view}>
+            <Text style={styles.text_categoria}>{'Categoria 4'}</Text>
+          </View>
+        </TouchableOpacity> */}
+          </ScrollView>
+          <Text style={{color: '#fff700'}}>{'Recentes'}</Text>
+          <ScrollView horizontal={true}>
+            {produto.map((k, i) => (
+              <TouchableOpacity
+                key={i}
+                onPress={() => console.log(`Produto ${k.nomeProduto} Clicado`)}>
+                <ProdutosCard produto={k} />
+              </TouchableOpacity>
+            ))}
+
+            {/* <TouchableOpacity>
+          <Card containerStyle={styles.cardStyle}>
+            <Card.Image
+              style={styles.cardStyleImage}
+              source={{
+                uri: 'https://media.contentapi.ea.com/content/dam/star-wars-battlefront-2/images/2019/08/swbf2-refresh-hero-large-about-page-06-16x9-xl.jpg.adapt.crop1x1.320w.jpg',
+              }}
+            />
+            <Card.Divider />
+            <Card.Title>Titulo</Card.Title>
+            <Text> {'Descrição'}</Text>
+          </Card>
+        </TouchableOpacity> */}
+            {/* <TouchableOpacity>
+          <Card containerStyle={styles.cardStyle}>
+            <Card.Image source={require('../../assets/a.jpg')} />
+            <Card.Divider />
+            <Card.Title>Titulo</Card.Title>
+            <Text> {'Descrição'}</Text>
+          </Card>
+        </TouchableOpacity> */}
+          </ScrollView>
+          <Text style={{color: '#fff700'}}> {'Destaque'}</Text>
+          <ScrollView style={styles.bottomCardScrollView}>
+            <TouchableOpacity>
+              <Card containerStyle={styles.BottomCardStyle}>
+                <Card.Image
+                  source={{
+                    uri: 'https://cinesiageek.com.br/wp-content/uploads/2019/10/star_wars__a_ascensao_skywalker.jpg',
+                  }}
+                />
+                <Card.Divider />
+                <View style={styles.bottomCard}>
+                  <View style={styles.bottomCardText}>
+                    <Text style={styles.colorText}>teste</Text>
+                  </View>
+                  <View>
+                    <AirbnbRating showRating={false} size={10} />
+                  </View>
+                </View>
+              </Card>
+            </TouchableOpacity>
+          </ScrollView>
+        </ScrollView>
+      </ImageBackground>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
+  containerItems: {
+    // flex: 1,
+    // backgroundColor: '#1f1e25',
+    // borderWidth: 4,
+    // borderColor: '#fff700',
+    // borderRadius: 15,
+    padding: 16,
+    // alignItems: 'stretch',
+    // justifyContent: 'center',
+    // opacity: 0.5,
+  },
+  scrollCategoria: {
+    flexGrow: 0,
+  },
+  view: {
+    with: 120,
+    height: 120,
+    backgroundColor: '#000000',
+    borderColor: '#fff700',
+    justifyContent: 'center',
+  },
+  botao_categoria: {
+    alignItems: 'center',
+    padding: 1,
+    borderRadius: 15,
+  },
+  text_categoria: {
+    color: '#fff700',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  bottomCardScrollView: {
+    marginBottom: 30,
+  },
+  bottomCard: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  bottomCardText: {
+    width: '70%',
+  },
+  bottomCardRating: {
+    width: '20%',
+  },
+  cardStyle: {
+    backgroundColor: '#000000',
+    borderColor: '#fff700',
+  },
+  cardStyleImage: {
+    width: '100%',
+    height: 100,
+  },
+  BottomCardStyle: {
+    backgroundColor: '#000000',
+    borderColor: '#fff700',
+    borderRadius: 15,
+  },
+  colorText: {
+    color: '#fff700',
+  },
+  imageBack: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
+
+export default Home;
