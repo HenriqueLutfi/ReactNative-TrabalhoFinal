@@ -29,10 +29,6 @@ type ProdutoType = {
 };
 
 const Home = ({route, navigation}) => {
-  // const {token} = route.params; // sem o context
-  // console.log('param: ' + JSON.stringify(route));
-  // console.log('Token:' + token);
-
   const {usuario} = useContext(AutenticacaoContext);
 
   console.log('Usuario : ' + JSON.stringify(usuario));
@@ -100,37 +96,6 @@ const Home = ({route, navigation}) => {
                 <CategoriasCard categoria={k} />
               </TouchableHighlight>
             ))}
-            {/* <TouchableOpacity
-          onPress={() => console.log('Categoria 1 Clicada')}
-          style={styles.botao_categoria}>
-          <View style={styles.view}>
-            <Text style={styles.text_categoria}>{'Categoria 1'}</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => console.log('Categoria 2 Clicada')}
-          style={styles.botao_categoria}>
-          <View style={styles.view}>
-            <Text style={styles.text_categoria}>{'Categoria 2'}</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => console.log('Categoria 3 Clicada')}
-          style={styles.botao_categoria}>
-          <View style={styles.view}>
-            <Text style={styles.text_categoria}>{'Categoria 3'}</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => console.log('Categoria 4 Clicada')}
-          style={styles.botao_categoria}>
-          <View style={styles.view}>
-            <Text style={styles.text_categoria}>{'Categoria 4'}</Text>
-          </View>
-        </TouchableOpacity> */}
           </ScrollView>
           <Text style={{color: '#fff700'}}>{'Recentes'}</Text>
           <ScrollView horizontal={true}>
@@ -141,28 +106,6 @@ const Home = ({route, navigation}) => {
                 <ProdutosCard produto={k} />
               </TouchableOpacity>
             ))}
-
-            {/* <TouchableOpacity>
-          <Card containerStyle={styles.cardStyle}>
-            <Card.Image
-              style={styles.cardStyleImage}
-              source={{
-                uri: 'https://media.contentapi.ea.com/content/dam/star-wars-battlefront-2/images/2019/08/swbf2-refresh-hero-large-about-page-06-16x9-xl.jpg.adapt.crop1x1.320w.jpg',
-              }}
-            />
-            <Card.Divider />
-            <Card.Title>Titulo</Card.Title>
-            <Text> {'Descrição'}</Text>
-          </Card>
-        </TouchableOpacity> */}
-            {/* <TouchableOpacity>
-          <Card containerStyle={styles.cardStyle}>
-            <Card.Image source={require('../../assets/a.jpg')} />
-            <Card.Divider />
-            <Card.Title>Titulo</Card.Title>
-            <Text> {'Descrição'}</Text>
-          </Card>
-        </TouchableOpacity> */}
           </ScrollView>
           <Text style={{color: '#fff700'}}> {'Destaque'}</Text>
           <ScrollView style={styles.bottomCardScrollView}>
@@ -199,35 +142,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   containerItems: {
-    // flex: 1,
-    // backgroundColor: '#1f1e25',
-    // borderWidth: 4,
-    // borderColor: '#fff700',
-    // borderRadius: 15,
     padding: 16,
-    // alignItems: 'stretch',
-    // justifyContent: 'center',
-    // opacity: 0.5,
   },
   scrollCategoria: {
     flexGrow: 0,
-  },
-  view: {
-    with: 120,
-    height: 120,
-    backgroundColor: '#000000',
-    borderColor: '#fff700',
-    justifyContent: 'center',
   },
   botao_categoria: {
     alignItems: 'center',
     padding: 1,
     borderRadius: 15,
-  },
-  text_categoria: {
-    color: '#fff700',
-    textAlign: 'center',
-    fontWeight: 'bold',
   },
   bottomCardScrollView: {
     marginBottom: 30,
@@ -241,14 +164,6 @@ const styles = StyleSheet.create({
   },
   bottomCardRating: {
     width: '20%',
-  },
-  cardStyle: {
-    backgroundColor: '#000000',
-    borderColor: '#fff700',
-  },
-  cardStyleImage: {
-    width: '100%',
-    height: 100,
   },
   BottomCardStyle: {
     backgroundColor: '#000000',

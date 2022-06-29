@@ -18,7 +18,6 @@ import {CategoriaType} from '../../models/CategoriaType';
 const Categoria = () => {
   const [categoria, setCategoria] = useState<CategoriaType[]>([]);
 
-
   useEffect(() => {
     getDadosCategoria();
   }, []);
@@ -46,7 +45,6 @@ const Categoria = () => {
       }}
       resizeMode="cover"
       style={styles.imageBack}>
-      
       <FlatList
         data={categoria}
         contentContainerStyle={{alignItems: 'center'}}
@@ -79,17 +77,6 @@ const styles = StyleSheet.create({
     padding: 16,
     flexWrap: 'wrap',
     flexDirection: 'row',
-  },
-  row: {},
-  button: {
-    width: '48%',
-    background: '#ff0000',
-  },
-  listItem: {
-    backgroundColor: 'orange',
-    borderWidth: 1,
-    borderColor: '#333',
-    padding: 25,
   },
   imageBack: {
     flex: 1,
