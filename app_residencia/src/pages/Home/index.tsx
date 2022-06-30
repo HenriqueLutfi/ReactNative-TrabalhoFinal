@@ -4,42 +4,36 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  ActivityIndicator,
   ImageBackground,
   TouchableHighlight,
 } from 'react-native';
 import {Rating, AirbnbRating} from 'react-native-ratings';
-import {Text, Card} from 'react-native-elements';
+import {Text, Card, Input, Icon} from 'react-native-elements';
 import AxiosInstance from '../../api/AxiosInstance';
 import {AutenticacaoContext} from '../../context/AutenticacaoContext';
 import ProdutosCard from '../../components/ProdutoCards/ProdutosCards';
 import CategoriasCard from '../../components/CategoriaCards/categoriaCard';
-
-type CategoriaType = {
-  idCategoria: number;
-  nomeCategoria: String;
-  nomeImagem: String;
-};
-
-type ProdutoType = {
-  idProduto: number;
-  sku: string;
-  nomeProduto: string;
-  imagemProduto: any;
-};
+import {LoadingContext} from '../../context/LoadingContext';
+import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
+import {CategoriasContext} from '../../context/CategoriasContext';
+import {ProdutosContext} from '../../context/ProdutosContext';
 
 const Home = ({route, navigation}) => {
   const {usuario} = useContext(AutenticacaoContext);
-
+  const {loading, setLoading} = useContext(LoadingContext);
+  const {categorias, setcategorias} = useContext(CategoriasContext);
+  const {produtos, setProdutos} = useContext(ProdutosContext);
+  const [busca, setBusca] = useState('');
   console.log('Usuario : ' + JSON.stringify(usuario));
-
-  const [categoria, setCategoria] = useState<CategoriaType[]>([]);
-  const [produto, setProduto] = useState<ProdutoType[]>([]);
 
   useEffect(() => {
     getDadosCategoria();
     getProdutos();
   }, []);
+
+  useEffect(() => {
+    pesquisarCategoria(busca);
+  }, [busca]);
 
   const getDadosCategoria = async () => {
     AxiosInstance.get(`/categoria`, {
@@ -47,7 +41,7 @@ const Home = ({route, navigation}) => {
     })
       .then(result => {
         console.log('dados das categorias: ' + JSON.stringify(result.data));
-        setCategoria(result.data);
+        setcategorias(result.data);
       })
       .catch(error => {
         console.log(
@@ -62,13 +56,26 @@ const Home = ({route, navigation}) => {
     })
       .then(result => {
         console.log('Dados dos produtos' + JSON.stringify(result.data));
-        setProduto(result.data);
+        setProdutos(result.data);
+        setLoading(false);
       })
       .catch(error => {
         console.log(
           'Erro ao carregar a lista de produtos' + JSON.stringify(error),
         );
       });
+  };
+
+  const pesquisarCategoria = (busca: string) => {
+    if (busca !== '') {
+      setcategorias(
+        categorias.filter(res =>
+          res.nomeCategoria.toLowerCase().includes(busca.toLowerCase()),
+        ),
+      );
+    } else {
+      getDadosCategoria();
+    }
   };
 
   return (
@@ -80,18 +87,36 @@ const Home = ({route, navigation}) => {
         resizeMode="cover"
         style={styles.imageBack}>
         <ScrollView style={styles.containerItems}>
+          <LoadingComponent />
+          <View>
+            <Input
+              placeholder="buscar produto"
+              placeholderTextColor={'#e4e4e4'}
+              onChangeText={setBusca}
+              value={busca}
+              leftIcon={
+                <Icon
+                  name="search"
+                  color="#000"
+                  type="font-awesome"
+                  size={24}
+                />
+              }
+            />
+          </View>
           <Text style={{color: '#fff700'}}>{'Categorias'}</Text>
           <ScrollView style={styles.scrollCategoria} horizontal={true}>
-            {categoria.map((k, i) => (
+            {categorias.map((k, i) => (
               <TouchableHighlight
                 key={i}
                 underlayColor="#fff700"
-                activeOpacity={100}
-                onPress={() =>
+                activeOpacity={0}
+                onPress={() => {
                   console.log(
                     `Categoria 1 Clicada ${k.nomeCategoria} foi clicada`,
-                  )
-                }
+                  );
+                  navigation.navigate('CategoriasDrawerScreen');
+                }}
                 style={styles.botao_categoria}>
                 <CategoriasCard categoria={k} />
               </TouchableHighlight>
@@ -99,7 +124,7 @@ const Home = ({route, navigation}) => {
           </ScrollView>
           <Text style={{color: '#fff700'}}>{'Recentes'}</Text>
           <ScrollView horizontal={true}>
-            {produto.map((k, i) => (
+            {produtos.map((k, i) => (
               <TouchableOpacity
                 key={i}
                 onPress={() => console.log(`Produto ${k.nomeProduto} Clicado`)}>
@@ -137,7 +162,6 @@ const Home = ({route, navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     alignItems: 'stretch',
     justifyContent: 'center',
   },

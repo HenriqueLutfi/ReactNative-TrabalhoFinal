@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Categoria from '../pages/Categoria';
 import {Icon} from 'react-native-elements';
+import Cart from '../pages/Cart';
 
 const TabNavigation = createBottomTabNavigator();
 
@@ -38,6 +39,19 @@ const BottomTabNavigator = () => {
             return (
               // <FontAwesomeIcon icon="fa-solid fa-user-bounty-hunter" />
               <Icon name="bars" color="#fff700" type="font-awesome" size={24} />
+            );
+          },
+        }}
+      />
+      <TabNavigation.Screen
+        name="CartTabScreen"
+        component={Cart}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: () => {
+            return (
+              // <FontAwesomeIcon icon="fa-solid fa-user-bounty-hunter" />
+              <Icon name="car" color="#fff700" type="font-awesome" size={24} />
             );
           },
         }}

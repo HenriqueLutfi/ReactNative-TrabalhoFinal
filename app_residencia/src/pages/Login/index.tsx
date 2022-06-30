@@ -10,15 +10,18 @@ import {Input, Text, Button, Icon} from 'react-native-elements';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {color} from 'react-native-reanimated';
 import {AutenticacaoContext} from '../../context/AutenticacaoContext';
+import {LoadingContext} from '../../context/LoadingContext';
+import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const {login} = useContext(AutenticacaoContext);
-  const [loading, setLoading] = useState(false);
+  const {loading, setLoading} = useContext(LoadingContext);
 
   const handleLogin = async (email: string, senha: string) => {
     console.log(`handleLogin - Email: ${email} - Senha: ${senha}`);
+    showLoading();
     setLoading(true);
 
     const respostaLogin = await login(email, senha);
@@ -28,11 +31,15 @@ const Login = ({navigation}) => {
         {text: 'OK'},
         {text: 'nao foi possivel realizar login'},
       ]);
-      setLoading(false);
+      // setLoading(false);
     } else {
-      setLoading(false);
+      // setLoading(false);
       navigation.navigate('HomeScreen');
     }
+  };
+
+  const showLoading = () => {
+    <LoadingComponent />;
   };
 
   return (
@@ -78,13 +85,7 @@ const Login = ({navigation}) => {
             onPress={() => handleLogin(email, senha)}
           />
         </View>
-        <View>
-          <ActivityIndicator
-            animating={loading}
-            size={'large'}
-            color="#fff700"
-          />
-        </View>
+        <LoadingComponent />
       </ImageBackground>
     </View>
   );
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
     justifyContent: 'center',
+    
   },
   containerItems: {
     borderWidth: 4,
@@ -103,6 +105,7 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'stretch',
     justifyContent: 'center',
+    zIndex:0,
   },
   texto_entrada: {
     textAlign: 'center',
