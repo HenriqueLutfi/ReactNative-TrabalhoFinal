@@ -112,7 +112,7 @@ const NavigationDrawer = () => {
       />
       <DrawerNavigation.Screen
         name="CategoriaProdutoDrawerScreen"
-        options={{title: 'Categoria'}}
+        options={{title: 'CategoriaProduto'}}
         component={CategoriaProduto}
       />
     </DrawerNavigation.Navigator>

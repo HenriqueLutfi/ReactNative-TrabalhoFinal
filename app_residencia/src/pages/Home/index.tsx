@@ -118,7 +118,7 @@ const Home = ({route, navigation}) => {
                     `Categoria 1 Clicada ${k.nomeCategoria} foi clicada`,
                   );
                   setChosenCategory(k)
-                  navigation.navigate('CategoriasDrawerScreen');
+                  navigation.navigate('CategoriaProdutoDrawerScreen');
                 }}
                 style={styles.botao_categoria}>
                 <CategoriasCard categoria={k} />

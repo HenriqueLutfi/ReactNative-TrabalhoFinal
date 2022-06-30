@@ -5,4 +5,6 @@ export type ProdutoType = {
   imagemProduto: any;
   precoProduto: number;
   descricaoProduto: string;
+  idCategoria: number;
+  nomeCategoria: string;
 };
