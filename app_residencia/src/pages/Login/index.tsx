@@ -58,21 +58,21 @@ const Login = ({navigation}) => {
             placeholder="Senha"
             onChangeText={setSenha}
             value={senha}
-            style={{color: '#fff700'}}
+            style={{color: '#00ff0d'}}
             leftIcon={
-              <Icon name="key" color="#fff700" type="font-awesome" size={24} />
+              <Icon name="key" color="#ff00dd" type="font-awesome" size={24} />
             }
             secureTextEntry
           />
           <Button
             title="Entrar"
             titleStyle={{
-              color: '#fff700',
+              color: '#ff5e00',
             }}
             buttonStyle={{
-              backgroundColor: '#000000',
+              backgroundColor: '#e0cccc',
               borderWidth: 2,
-              borderColor: '#fff700',
+              borderColor: '#0051ff',
               borderRadius: 3,
             }}
             onPress={() => handleLogin(email, senha)}
@@ -82,7 +82,7 @@ const Login = ({navigation}) => {
           <ActivityIndicator
             animating={loading}
             size={'large'}
-            color="#fff700"
+            color="#1eff00"
           />
         </View>
       </ImageBackground>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   containerItems: {
     borderWidth: 4,
-    borderColor: '#fff700',
+    borderColor: '#ff6d18c7',
     borderRadius: 15,
     padding: 16,
     alignItems: 'stretch',
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 50,
     marginBottom: 10,
-    color: '#fff700',
+    color: '#0099ff',
     borderStyle: 'solid',
   },
   image: {

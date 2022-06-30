@@ -167,11 +167,11 @@ const styles = StyleSheet.create({
   },
   BottomCardStyle: {
     backgroundColor: '#000000',
-    borderColor: '#fff700',
+    borderColor: '#00eeff',
     borderRadius: 15,
   },
   colorText: {
-    color: '#fff700',
+    color: '#ff00dd',
   },
   imageBack: {
     flex: 1,
