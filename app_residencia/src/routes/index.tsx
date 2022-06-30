@@ -6,6 +6,7 @@ import React from 'react';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Categoria from '../pages/Categoria';
+import CategoriaProduto from '../pages/CategoriaProduto/Index';
 import {Icon} from 'react-native-elements';
 import Cart from '../pages/Cart';
 
@@ -56,6 +57,20 @@ const BottomTabNavigator = () => {
           },
         }}
       />
+      <TabNavigation.Screen
+        name="CategoriaProdutoTabScreen"
+        component={CategoriaProduto}
+        options={{
+          tabBarLabel: '',
+          headerShown:false,
+          // tabBarIcon: () => {
+          //   return (
+          //     // <FontAwesomeIcon icon="fa-solid fa-user-bounty-hunter" />
+          //     <Icon name="car" color="#fff700" type="font-awesome" size={24} />
+          //   );
+          // },
+        }}
+      />
     </TabNavigation.Navigator>
   );
 };
@@ -89,6 +104,16 @@ const NavigationDrawer = () => {
         name="CategoriasDrawerScreen"
         options={{title: 'Categorias'}}
         component={Categoria}
+      />
+      <DrawerNavigation.Screen
+        name="CartDrawerScreen"
+        options={{title: 'Carrinho'}}
+        component={Cart}
+      />
+      <DrawerNavigation.Screen
+        name="CategoriaProdutoDrawerScreen"
+        options={{title: 'Categoria'}}
+        component={CategoriaProduto}
       />
     </DrawerNavigation.Navigator>
   );

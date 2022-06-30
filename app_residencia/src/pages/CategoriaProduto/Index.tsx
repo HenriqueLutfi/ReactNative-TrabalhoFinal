@@ -14,16 +14,14 @@ import {AutenticacaoContext} from '../../context/AutenticacaoContext';
 import CategoriasCard from '../../components/CategoriaCards/categoriaCard';
 import CategoriaService from '../../services/CategoriaService';
 import {CategoriaType} from '../../models/CategoriaType';
-import { ChosenCategoryContext } from '../../context/ChosenCategory';
+import {ChosenCategoryContext} from '../../context/ChosenCategory';
+import {ProdutosContext} from '../../context/ProdutosContext';
 
-const Categoria = () => {
-//   const [categoria, setCategoria] = useState<CategoriaType[]>([]);
-
-
+const CategoriaProduto = () => {
   const {usuario} = useContext(AutenticacaoContext);
-  
-  const {chosenCategory} = useContext(ChosenCategoryContext)
-  
+  const {chosenCategory} = useContext(ChosenCategoryContext);
+  const {produtos} = useContext(ProdutosContext);
+
   return (
     <ImageBackground
       source={{
@@ -32,7 +30,7 @@ const Categoria = () => {
       resizeMode="cover"
       style={styles.imageBack}>
       <FlatList
-        data={categoria}
+        data={chosenCategory}
         contentContainerStyle={{alignItems: 'center'}}
         keyExtractor={(item, index) => index.toString()}
         renderItem={categoria => {
@@ -75,4 +73,4 @@ const styles = StyleSheet.create({
     margin: 5,
   },
 });
-export default Categoria;
+export default CategoriaProduto;

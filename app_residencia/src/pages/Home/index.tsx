@@ -17,11 +17,13 @@ import {LoadingContext} from '../../context/LoadingContext';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import {CategoriasContext} from '../../context/CategoriasContext';
 import {ProdutosContext} from '../../context/ProdutosContext';
+import { ChosenCategoryContext } from '../../context/ChosenCategory';
 
 const Home = ({route, navigation}) => {
   const {usuario} = useContext(AutenticacaoContext);
   const {loading, setLoading} = useContext(LoadingContext);
   const {categorias, setcategorias} = useContext(CategoriasContext);
+  const {setChosenCategory} = useContext(ChosenCategoryContext);
   const {produtos, setProdutos} = useContext(ProdutosContext);
   const [busca, setBusca] = useState('');
   console.log('Usuario : ' + JSON.stringify(usuario));
@@ -115,6 +117,7 @@ const Home = ({route, navigation}) => {
                   console.log(
                     `Categoria 1 Clicada ${k.nomeCategoria} foi clicada`,
                   );
+                  setChosenCategory(k)
                   navigation.navigate('CategoriasDrawerScreen');
                 }}
                 style={styles.botao_categoria}>
