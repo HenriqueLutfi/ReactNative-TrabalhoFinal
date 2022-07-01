@@ -31,7 +31,7 @@ const Login = ({navigation}) => {
         {text: 'OK'},
         {text: 'nao foi possivel realizar login'},
       ]);
-      // setLoading(false);
+      setLoading(false);
     } else {
       // setLoading(false);
       navigation.navigate('HomeScreen');
