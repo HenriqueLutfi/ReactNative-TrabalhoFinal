@@ -17,7 +17,7 @@ function ProdutosCard({produto}) {
           }}
         />
         <Text style={styles.text}>{produto.nomeProduto}</Text>
-        <ButtonAddCart produto={produto}/>
+        {/* <ButtonAddCart produto={produto}/> */}
       </View>
     </View>
   );

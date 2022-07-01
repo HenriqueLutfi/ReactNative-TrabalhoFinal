@@ -9,6 +9,7 @@ import Categoria from '../pages/Categoria';
 import CategoriaProduto from '../pages/CategoriaProduto/Index';
 import {Icon} from 'react-native-elements';
 import Cart from '../pages/Cart';
+import Produto from '../pages/Produto';
 
 const TabNavigation = createBottomTabNavigator();
 
@@ -128,6 +129,10 @@ const Routes = () => {
         <StackNavigation.Screen
           name="HomeScreen"
           component={NavigationDrawer}
+        />
+        <StackNavigation.Screen
+          name="ProdutoScreen"
+          component={Produto}
         />
       </StackNavigation.Navigator>
     </NavigationContainer>

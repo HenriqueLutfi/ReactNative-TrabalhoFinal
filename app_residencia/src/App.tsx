@@ -7,6 +7,7 @@ import {ChosenCategoryProvider} from './context/ChosenCategory';
 import {ProdutosProvider} from './context/ProdutosContext';
 import {CategoriasProvider} from './context/CategoriasContext';
 import {CartProvider} from './context/CartContext';
+import {CarrinhoProvider} from './context/CarrinhoContext';
 
 export default () => {
   return (
@@ -16,7 +17,9 @@ export default () => {
           <CategoriasProvider>
             <ProdutosProvider>
               <CartProvider>
-                <Routes />
+                <CarrinhoProvider>
+                  <Routes />
+                </CarrinhoProvider>
               </CartProvider>
             </ProdutosProvider>
           </CategoriasProvider>

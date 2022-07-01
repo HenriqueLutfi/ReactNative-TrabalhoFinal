@@ -17,7 +17,7 @@ import {LoadingContext} from '../../context/LoadingContext';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import {CategoriasContext} from '../../context/CategoriasContext';
 import {ProdutosContext} from '../../context/ProdutosContext';
-import { ChosenCategoryContext } from '../../context/ChosenCategory';
+import {ChosenCategoryContext} from '../../context/ChosenCategory';
 
 const Home = ({route, navigation}) => {
   const {usuario} = useContext(AutenticacaoContext);
@@ -117,7 +117,7 @@ const Home = ({route, navigation}) => {
                   console.log(
                     `Categoria 1 Clicada ${k.nomeCategoria} foi clicada`,
                   );
-                  setChosenCategory(k)
+                  setChosenCategory(k);
                   navigation.navigate('CategoriaProdutoDrawerScreen');
                 }}
                 style={styles.botao_categoria}>
@@ -130,7 +130,19 @@ const Home = ({route, navigation}) => {
             {produtos.map((k, i) => (
               <TouchableOpacity
                 key={i}
-                onPress={() => console.log(`Produto ${k.nomeProduto} Clicado`)}>
+                onPress={() => {
+                  navigation.navigate({
+                    name: 'ProdutoScreen',
+                    params: {
+                      id_produto: k.idProduto,
+                      sku: k.sku,
+                      nome_produto: k.nomeProduto,
+                      descricao_produto: k.descricaoProduto,
+                      preco_produto: k.precoProduto,
+                      imagem_produto: k.imagemProduto,
+                    },
+                  });
+                }}>
                 <ProdutosCard produto={k} />
               </TouchableOpacity>
             ))}
