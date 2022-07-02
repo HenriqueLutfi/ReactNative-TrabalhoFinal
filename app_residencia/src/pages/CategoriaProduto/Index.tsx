@@ -17,7 +17,7 @@ import {CategoriaType} from '../../models/CategoriaType';
 import {ChosenCategoryContext} from '../../context/ChosenCategory';
 import {ProdutosContext} from '../../context/ProdutosContext';
 import ProdutosCard from '../../components/ProdutoCards/ProdutosCards';
-import { ProdutoType } from '../../models/ProdutoType';
+import {ProdutoType} from '../../models/ProdutoType';
 
 const CategoriaProduto = () => {
   const {usuario} = useContext(AutenticacaoContext);
@@ -29,10 +29,10 @@ const CategoriaProduto = () => {
   }, []);
 
   const pesquisarCategoria = () => {
-    setProdutosCategoria([])
+    setProdutosCategoria([]);
     for (var i = 0; i < produtos.length; i++) {
       console.log('produto: ' + produtos[i].nomeCategoria);
-      console.log('nome categoria escolhida: '+ chosenCategory.nomeCategoria)
+      console.log('nome categoria escolhida: ' + chosenCategory.nomeCategoria);
       if (chosenCategory.nomeCategoria === produtos[i].nomeCategoria) {
         console.log('produto: ' + produtos[i]);
         const aux = produtosCategoria;
@@ -80,7 +80,6 @@ const CategoriaProduto = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6a6a6a',
     padding: 16,
     flexWrap: 'wrap',
     flexDirection: 'row',

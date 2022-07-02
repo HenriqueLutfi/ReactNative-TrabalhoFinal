@@ -93,13 +93,13 @@ const Home = ({route, navigation}) => {
           <View>
             <Input
               placeholder="buscar produto"
-              placeholderTextColor={'#e4e4e4'}
+              placeholderTextColor={'#fff700'}
               onChangeText={setBusca}
               value={busca}
               leftIcon={
                 <Icon
                   name="search"
-                  color="#000"
+                  color="#fff700"
                   type="font-awesome"
                   size={24}
                 />
@@ -132,7 +132,7 @@ const Home = ({route, navigation}) => {
                 key={i}
                 onPress={() => {
                   navigation.navigate({
-                    name: 'CategoriaProdutoScreen',
+                    name: 'ProdutoScreen',
                     params: {
                       id_produto: k.idProduto,
                       sku: k.sku,
