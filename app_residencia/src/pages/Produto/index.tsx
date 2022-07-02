@@ -44,14 +44,14 @@ const Produto = ({route, navigation}) => {
         resizeMode="cover"
         style={styles.imageBack}>
         <ScrollView style={styles.containerItems}>
-          <View style={styles.container_imagem}>
+          {/* <View style={styles.container_imagem}> */}
             <Image
               style={styles.image}
               source={{
                 uri: imagem_produto,
               }}
             />
-          </View>
+          {/* </View> */}
           <View style={styles.container_produto}>
             <Text style={styles.colorText}>{nome_produto}</Text>
             <Text>{nome_produto}</Text>

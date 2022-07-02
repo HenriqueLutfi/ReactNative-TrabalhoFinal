@@ -59,20 +59,6 @@ const BottomTabNavigator = () => {
           },
         }}
       />
-      {/* <TabNavigation.Screen
-        name="CategoriaProdutoTabScreen"
-        component={CategoriaProduto}
-        options={{
-          tabBarLabel: '',
-          headerShown: false,
-          // tabBarIcon: () => {
-          //   return (
-          //     // <FontAwesomeIcon icon="fa-solid fa-user-bounty-hunter" />
-          //     <Icon name="car" color="#fff700" type="font-awesome" size={24} />
-          //   );
-          // },
-        }}
-      /> */}
     </TabNavigation.Navigator>
   );
 };
@@ -112,11 +98,6 @@ const NavigationDrawer = () => {
         options={{title: 'Carrinho'}}
         component={Cart}
       />
-      {/* <DrawerNavigation.Screen
-        name="CategoriaProdutoDrawerScreen"
-        options={{ title: 'CategoriaProduto' }}
-        component={CategoriaProduto}
-      /> */}
       <DrawerNavigation.Screen
         name="CadastroScreen"
         options={{title: 'Cadastro'}}
