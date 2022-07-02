@@ -19,23 +19,17 @@ const Produto = ({route, navigation}) => {
     preco_produto,
     imagem_produto,
   } = route.params;
-  //const {adicionarProduto} = useContext(CartContext);
 
-  //   _sku: string,
-  //     _nome: string,
-  //     _descricao: string,
-  //     _preco: number,
-  //     _image: string,
-  //const handleAddProduto = () => {
-    
-  //   adicionarProduto(
-  //     sku,
-  //     nome_produto,
-  //     descricao_produto,
-  //     preco_produto,
-  //     imagem_produto,
-  //   );
-  // };
+  const handleAddProduto = () => {
+    // adicionarProduto(
+    //   sku,
+    //   nome_produto,
+    //   descricao_produto,
+    //   preco_produto,
+    //   imagem_produto,
+    // );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.container_imagem}>
