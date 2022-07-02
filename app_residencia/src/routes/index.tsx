@@ -11,6 +11,7 @@ import {Icon} from 'react-native-elements';
 import Cart from '../pages/Cart';
 import Produto from '../pages/Produto';
 import Cadastro from '../pages/Cadastro';
+import AlterarSenha from '../pages/AlterarSenha';
 
 const TabNavigation = createBottomTabNavigator();
 
@@ -103,6 +104,11 @@ const NavigationDrawer = () => {
         options={{title: 'Cadastro'}}
         component={Cadastro}
       />
+       <DrawerNavigation.Screen
+        name="AlterarSenhaScreen"
+        options={{title: 'AlterarSenha'}}
+        component={AlterarSenha}
+      />
     </DrawerNavigation.Navigator>
   );
 };
@@ -118,6 +124,7 @@ const Routes = () => {
           component={NavigationDrawer}
         />
         <StackNavigation.Screen name="ProdutoScreen" component={Produto} />
+        <StackNavigation.Screen name="AlterarSenhaScreen" component={AlterarSenha} />
         <StackNavigation.Screen
           name="CategoriaProdutoScreen"
           component={CategoriaProduto}
