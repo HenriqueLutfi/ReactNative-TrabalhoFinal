@@ -17,9 +17,9 @@ export default () => {
           <CategoriasProvider>
             <ProdutosProvider>
               <CartProvider>
-                <CarrinhoProvider>
+                {/* <CarrinhoProvider> */}
                   <Routes />
-                </CarrinhoProvider>
+                {/* </CarrinhoProvider> */}
               </CartProvider>
             </ProdutosProvider>
           </CategoriasProvider>
