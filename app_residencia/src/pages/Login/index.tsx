@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -6,18 +6,21 @@ import {
   ActivityIndicator,
   ImageBackground,
 } from 'react-native';
-import {Input, Text, Button, Icon} from 'react-native-elements';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {color} from 'react-native-reanimated';
-import {AutenticacaoContext} from '../../context/AutenticacaoContext';
-import {LoadingContext} from '../../context/LoadingContext';
+import { Input, Text, Button, Icon } from 'react-native-elements';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { color } from 'react-native-reanimated';
+import { AutenticacaoContext } from '../../context/AutenticacaoContext';
+import { LoadingContext } from '../../context/LoadingContext';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
+import Cadastro from '../Cadastro';
 
-const Login = ({navigation}) => {
+
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const {login} = useContext(AutenticacaoContext);
-  const {loading, setLoading} = useContext(LoadingContext);
+  const { login } = useContext(AutenticacaoContext);
+  const { loading, setLoading } = useContext(LoadingContext);
+
 
   const handleLogin = async (email: string, senha: string) => {
     console.log(`handleLogin - Email: ${email} - Senha: ${senha}`);
@@ -28,8 +31,8 @@ const Login = ({navigation}) => {
 
     if (!respostaLogin) {
       Alert.alert('erro', '', [
-        {text: 'OK'},
-        {text: 'nao foi possivel realizar login'},
+        { text: 'OK' },
+        { text: 'nao foi possivel realizar login' },
       ]);
       setLoading(false);
     } else {
@@ -37,6 +40,7 @@ const Login = ({navigation}) => {
       navigation.navigate('HomeScreen');
     }
   };
+
 
   const showLoading = () => {
     <LoadingComponent />;
@@ -56,7 +60,7 @@ const Login = ({navigation}) => {
             placeholder="E-mail"
             onChangeText={setEmail}
             value={email}
-            style={{color: '#fff700'}}
+            style={{ color: '#fff700' }}
             leftIcon={
               <Icon name="user" color="#fff700" type="font-awesome" size={24} />
             }
@@ -65,7 +69,7 @@ const Login = ({navigation}) => {
             placeholder="Senha"
             onChangeText={setSenha}
             value={senha}
-            style={{color: '#fff700'}}
+            style={{ color: '#fff700' }}
             leftIcon={
               <Icon name="key" color="#fff700" type="font-awesome" size={24} />
             }
@@ -83,6 +87,20 @@ const Login = ({navigation}) => {
               borderRadius: 3,
             }}
             onPress={() => handleLogin(email, senha)}
+          />
+          <Button
+            title="Cadastre-se"
+            titleStyle={{
+              color: '#fff700',
+            }}
+            buttonStyle={{
+              backgroundColor: '#000000',
+              borderWidth: 2,
+              borderColor: '#fff700',
+              borderRadius: 3,
+              marginTop: 8,
+            }}
+            onPress={() => navigation.navigate('CadastroScreen')}
           />
         </View>
         <LoadingComponent />
@@ -104,7 +122,7 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'stretch',
     justifyContent: 'center',
-    zIndex:0,
+    zIndex: 0,
   },
   texto_entrada: {
     textAlign: 'center',
