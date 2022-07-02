@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -7,24 +7,24 @@ import {
   ImageBackground,
   TouchableHighlight,
 } from 'react-native';
-import {Rating, AirbnbRating} from 'react-native-ratings';
-import {Text, Card, Input, Icon} from 'react-native-elements';
+import { Rating, AirbnbRating } from 'react-native-ratings';
+import { Text, Card, Input, Icon } from 'react-native-elements';
 import AxiosInstance from '../../api/AxiosInstance';
-import {AutenticacaoContext} from '../../context/AutenticacaoContext';
+import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 import ProdutosCard from '../../components/ProdutoCards/ProdutosCards';
 import CategoriasCard from '../../components/CategoriaCards/categoriaCard';
-import {LoadingContext} from '../../context/LoadingContext';
+import { LoadingContext } from '../../context/LoadingContext';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
-import {CategoriasContext} from '../../context/CategoriasContext';
-import {ProdutosContext} from '../../context/ProdutosContext';
-import {ChosenCategoryContext} from '../../context/ChosenCategory';
+import { CategoriasContext } from '../../context/CategoriasContext';
+import { ProdutosContext } from '../../context/ProdutosContext';
+import { ChosenCategoryContext } from '../../context/ChosenCategory';
 
-const Home = ({route, navigation}) => {
-  const {usuario} = useContext(AutenticacaoContext);
-  const {loading, setLoading} = useContext(LoadingContext);
-  const {categorias, setcategorias} = useContext(CategoriasContext);
-  const {setChosenCategory} = useContext(ChosenCategoryContext);
-  const {produtos, setProdutos} = useContext(ProdutosContext);
+const Home = ({ route, navigation }) => {
+  const { usuario } = useContext(AutenticacaoContext);
+  const { loading, setLoading } = useContext(LoadingContext);
+  const { categorias, setcategorias } = useContext(CategoriasContext);
+  const { setChosenCategory } = useContext(ChosenCategoryContext);
+  const { produtos, setProdutos } = useContext(ProdutosContext);
   const [busca, setBusca] = useState('');
   console.log('Usuario : ' + JSON.stringify(usuario));
 
@@ -39,7 +39,7 @@ const Home = ({route, navigation}) => {
 
   const getDadosCategoria = async () => {
     AxiosInstance.get(`/categoria`, {
-      headers: {Authorization: `Bearer ${usuario.token}`},
+      headers: { Authorization: `Bearer ${usuario.token}` },
     })
       .then(result => {
         console.log('dados das categorias: ' + JSON.stringify(result.data));
@@ -54,7 +54,7 @@ const Home = ({route, navigation}) => {
 
   const getProdutos = async () => {
     AxiosInstance.get(`/produto`, {
-      headers: {Authorization: `Bearer ${usuario.token}`},
+      headers: { Authorization: `Bearer ${usuario.token}` },
     })
       .then(result => {
         console.log('Dados dos produtos' + JSON.stringify(result.data));
@@ -79,6 +79,10 @@ const Home = ({route, navigation}) => {
       getDadosCategoria();
     }
   };
+
+
+
+
 
   return (
     <View style={styles.container}>
@@ -106,7 +110,7 @@ const Home = ({route, navigation}) => {
               }
             />
           </View>
-          <Text style={{color: '#fff700'}}>{'Categorias'}</Text>
+          <Text style={{ color: '#fff700' }}>{'Categorias'}</Text>
           <ScrollView style={styles.scrollCategoria} horizontal={true}>
             {categorias.map((k, i) => (
               <TouchableHighlight
@@ -125,7 +129,7 @@ const Home = ({route, navigation}) => {
               </TouchableHighlight>
             ))}
           </ScrollView>
-          <Text style={{color: '#fff700'}}>{'Recentes'}</Text>
+          <Text style={{ color: '#fff700' }}>{'Recentes'}</Text>
           <ScrollView horizontal={true}>
             {produtos.map((k, i) => (
               <TouchableOpacity
@@ -147,7 +151,7 @@ const Home = ({route, navigation}) => {
               </TouchableOpacity>
             ))}
           </ScrollView>
-          <Text style={{color: '#fff700'}}> {'Destaque'}</Text>
+          <Text style={{ color: '#fff700' }}> {'Destaque'}</Text>
           <ScrollView style={styles.bottomCardScrollView}>
             <TouchableOpacity>
               <Card containerStyle={styles.BottomCardStyle}>
