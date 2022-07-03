@@ -1,27 +1,31 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import React, { useContext } from 'react';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Categoria from '../pages/Categoria';
 import CategoriaProduto from '../pages/CategoriaProduto/Index';
-import {Icon} from 'react-native-elements';
+import { Icon, Badge, withBadge } from 'react-native-elements';
 import Cart from '../pages/Cart';
 import Produto from '../pages/Produto';
 import Cadastro from '../pages/Cadastro';
 import AlterarSenha from '../pages/AlterarSenha';
 import PerfilDoUsuario from '../pages/PerfilDoUsuario';
+import { CarrinhoContext } from '../context/CarrinhoContext';
+
 
 const TabNavigation = createBottomTabNavigator();
-
 const BottomTabNavigator = () => {
+  const { contarQtdProdutos } = useContext(CarrinhoContext);
+
+  const BadgeIcon = withBadge(contarQtdProdutos())(Icon)
   return (
     <TabNavigation.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {backgroundColor: '#000', borderBottomWidth: 0},
+        tabBarStyle: { backgroundColor: '#000', borderBottomWidth: 0 },
       }}>
       <TabNavigation.Screen
         name="HomeTabScreen"
@@ -56,7 +60,7 @@ const BottomTabNavigator = () => {
           tabBarIcon: () => {
             return (
               // <FontAwesomeIcon icon="fa-solid fa-user-bounty-hunter" />
-              <Icon name="car" color="#fff700" type="font-awesome" size={24} />
+              <BadgeIcon name="shopping-cart" color="#fff700" type="font-awesome" size={24} />
             );
           },
         }}
@@ -87,22 +91,22 @@ const NavigationDrawer = () => {
       }}>
       <DrawerNavigation.Screen
         name="StackNavigationScreen"
-        options={{title: 'Home Principal'}}
+        options={{ title: 'Home Principal' }}
         component={BottomTabNavigator}
       />
       <DrawerNavigation.Screen
         name="CategoriasDrawerScreen"
-        options={{title: 'Categorias'}}
+        options={{ title: 'Categorias' }}
         component={Categoria}
       />
       <DrawerNavigation.Screen
         name="CartDrawerScreen"
-        options={{title: 'Carrinho'}}
+        options={{ title: 'Carrinho' }}
         component={Cart}
       />
       <DrawerNavigation.Screen
         name="CadastroScreen"
-        options={{title: 'Cadastro'}}
+        options={{ title: 'Cadastro' }}
         component={Cadastro}
       />
        <DrawerNavigation.Screen
@@ -123,7 +127,7 @@ const StackNavigation = createNativeStackNavigator();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <StackNavigation.Navigator screenOptions={{headerShown: false}}>
+      <StackNavigation.Navigator screenOptions={{ headerShown: false }}>
         <StackNavigation.Screen name="LoginScreen" component={Login} />
         <StackNavigation.Screen
           name="HomeScreen"
@@ -136,7 +140,10 @@ const Routes = () => {
           name="CategoriaProdutoScreen"
           component={CategoriaProduto}
         />
+        <StackNavigation.Screen name="CadastroScreen" component={Cadastro} />
       </StackNavigation.Navigator>
+
+
     </NavigationContainer>
   );
 };
