@@ -12,6 +12,7 @@ import Cart from '../pages/Cart';
 import Produto from '../pages/Produto';
 import Cadastro from '../pages/Cadastro';
 import AlterarSenha from '../pages/AlterarSenha';
+import PerfilDoUsuario from '../pages/PerfilDoUsuario';
 
 const TabNavigation = createBottomTabNavigator();
 
@@ -106,8 +107,13 @@ const NavigationDrawer = () => {
       />
        <DrawerNavigation.Screen
         name="AlterarSenhaScreen"
-        options={{title: 'AlterarSenha'}}
+        options={{title: 'Alterar Senha'}}
         component={AlterarSenha}
+      />
+       <DrawerNavigation.Screen
+        name="PerfilDoUsuarioScreen"
+        options={{title: 'Perfil Do Usuario'}}
+        component={PerfilDoUsuario}
       />
     </DrawerNavigation.Navigator>
   );
@@ -125,6 +131,7 @@ const Routes = () => {
         />
         <StackNavigation.Screen name="ProdutoScreen" component={Produto} />
         <StackNavigation.Screen name="AlterarSenhaScreen" component={AlterarSenha} />
+        <StackNavigation.Screen name="PerfilDoUsuarioScreen" component={PerfilDoUsuario} />
         <StackNavigation.Screen
           name="CategoriaProdutoScreen"
           component={CategoriaProduto}
