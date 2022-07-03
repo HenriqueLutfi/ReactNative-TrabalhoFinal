@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import {
   ViewBase,
   StyleSheet,
@@ -9,11 +9,13 @@ import {
   ImageBackground,
   ScrollView,
 } from 'react-native';
-import {CartContext} from '../../context/CartContext';
+import { CartContext } from '../../context/CartContext';
 import { CarrinhoContext } from '../../context/CarrinhoContext';
-import {ButtonAddCart} from '../../components/ButtonAddCart/ButtonAddCart';
+import { ButtonAddCart } from '../../components/ButtonAddCart/ButtonAddCart';
+import { Button } from 'react-native-elements';
+import { Rating, AirbnbRating } from 'react-native-ratings';
 
-const Produto = ({route, navigation}) => {
+const Produto = ({ route, navigation }) => {
   const {
     id_produto,
     sku,
@@ -23,7 +25,7 @@ const Produto = ({route, navigation}) => {
     imagem_produto,
   } = route.params;
 
-  const {adicionarProduto} = useContext(CarrinhoContext)
+  const { adicionarProduto } = useContext(CarrinhoContext)
 
   const handleAddProduto = () => {
     adicionarProduto(
@@ -45,23 +47,44 @@ const Produto = ({route, navigation}) => {
         style={styles.imageBack}>
         <ScrollView style={styles.containerItems}>
           {/* <View style={styles.container_imagem}> */}
-            <Image
-              style={styles.image}
-              source={{
-                uri: imagem_produto,
-              }}
-            />
+          <Image
+            style={styles.image}
+            source={{
+              uri: imagem_produto,
+            }}
+          />
           {/* </View> */}
           <View style={styles.container_produto}>
             <Text style={styles.colorText}>{nome_produto}</Text>
             <Text>{nome_produto}</Text>
-            <TouchableOpacity onPress={() => handleAddProduto()}>
-              <Text style={styles.colorText}>Comprar</Text>
+            <Text>{preco_produto}</Text>
+            <TouchableOpacity >
+              <Button
+                onPress={() => handleAddProduto()}
+                title="Comprar"
+                titleStyle={{
+                  color: '#fff700',
+                }}
+                buttonStyle={{
+                  backgroundColor: '#000000',
+                  borderWidth: 2,
+                  borderColor: '#fff700',
+                  borderRadius: 3,
+                  marginTop: 8,
+                  width: '70%',
+                  marginLeft: 50
+                }}
+
+              />
             </TouchableOpacity>
             {/* <ButtonAddCart produto={route}/> */}
             <TouchableOpacity>
               <Text>Favoritar</Text>
             </TouchableOpacity>
+            <View style={styles.container_starts}>
+              <Text style={styles.colorText}>Avalie:</Text>
+              <AirbnbRating showRating={false} size={20} />
+            </View>
           </View>
         </ScrollView>
       </ImageBackground>
@@ -71,36 +94,57 @@ const Produto = ({route, navigation}) => {
 
 const styles = StyleSheet.create({
   container_imagem: {
-    width: '50%',
+    width: 70,
+
+
+
+
+
   },
   container_produto: {
-    width: '50%',
+    width: '100%',
   },
   container: {
     flex: 1,
     flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#fff700',
+
+
   },
   imageBack: {
     flex: 1,
     justifyContent: 'center',
   },
-  botao_categoria: {
-    alignItems: 'center',
-    padding: 1,
-    borderRadius: 15,
-    margin: 5,
-  },
+
   colorText: {
     color: '#fff700',
+    fontSize: 30,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginLeft: 25,
+    width: '80%'
+
   },
   image: {
-    width: 100,
-    height: 100,
+    width: '100%',
+    height: 300,
+    alignItems: 'center'
+
+
+
   },
   containerItems: {
     padding: 16,
   },
+  container_starts: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+
+  }
 });
 export default Produto;

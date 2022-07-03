@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,12 +6,12 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import {Input, Text, Button, Icon} from 'react-native-elements';
+import { Input, Text, Button, Icon } from 'react-native-elements';
 import AxiosInstance from '../../api/AxiosInstance';
-import {AutenticacaoContext} from '../../context/AutenticacaoContext';
+import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 
 const Cadastro = () => {
-  const {usuario} = useContext(AutenticacaoContext);
+  const { usuario } = useContext(AutenticacaoContext);
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [dataNasc, setDataNasc] = useState('');
@@ -23,7 +23,7 @@ const Cadastro = () => {
 
   const InsertUsuario = async () => {
     AxiosInstance.post(`/usuario`, {
-      headers: {Authorization: `Bearer ${usuario.token}`},
+      headers: { Authorization: `Bearer ${usuario.token}` },
     })
       .then(result => {
         console.log('Dados do cliente' + JSON.stringify(result.data));
@@ -49,7 +49,7 @@ const Cadastro = () => {
               placeholder="Nome completo"
               onChangeText={nome}
               value={setNome}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
             />
 
             <Input
@@ -57,39 +57,39 @@ const Cadastro = () => {
               onChangeText={dataNasc}
               keyboardType="numeric"
               value={setDataNasc}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
             />
             <Input
               placeholder="Telefone"
               onChangeText={tel}
               keyboardType="numeric"
               value={setTel}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
             />
             <Input
               placeholder="Endereço"
               onChangeText={endereco}
               keyboardType="numeric"
               value={setEndereco}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
             />
             <Input
               placeholder="Email"
               onChangeText={email}
               value={setEmail}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
             />
             <Input
               placeholder="Defina uma senha"
               onChangeText={senha}
               value={setSenha}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
             />
             <Input
               placeholder="URL da foto"
               onChangeText={url}
               value={setUrl}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
             />
             <Button
               title="Cadastrar"
