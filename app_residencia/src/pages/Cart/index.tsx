@@ -15,10 +15,12 @@ import {CarrinhoContext} from '../../context/CarrinhoContext';
 
 const Cart = () => {
   const {cart} = useContext(CartContext);
-  const {listarProdutos} = useContext(CarrinhoContext);
+  const {listarProdutos, isFetching, setIsFetching} = useContext(CarrinhoContext);
 
   const {usuario} = useContext(AutenticacaoContext);
   const [carrinho, setCarrinho] = useState();
+
+
 
   useEffect(() => {
     getDadosCarrinho();
@@ -27,7 +29,18 @@ const Cart = () => {
   const getDadosCarrinho = () => {
     setCarrinho(listarProdutos());
   };
+  // const wait = (timeout) => {
+  //   return new Promise(resolve => setTimeout(resolve, timeout));
+  // }
+
+  const onRefresh = () => {
+    getDadosCarrinho();
+    // wait(2000).then(() => setIsFetching(false));
+    setIsFetching(false);
+  };
+
   var soma = 0;
+
   return (
     <ImageBackground
       source={{
@@ -38,6 +51,8 @@ const Cart = () => {
       <FlatList
         data={carrinho}
         keyExtractor={(item, index) => index.toString()}
+        onRefresh={() => onRefresh()}
+        refreshing={isFetching}
         extraData={carrinho}
         renderItem={({item, index}) => {
           return (
