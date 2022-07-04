@@ -15,13 +15,7 @@ import {CarrinhoContext} from '../../context/CarrinhoContext';
 
 const Cart = () => {
   const {cart} = useContext(CartContext);
-  const {
-    listarProdutos,
-    removerProduto,
-    removerItemCarrinho,
-    isFetching,
-    setIsFetching,
-  } = useContext(CarrinhoContext);
+  const {listarProdutos} = useContext(CarrinhoContext);
 
   const {usuario} = useContext(AutenticacaoContext);
   const [carrinho, setCarrinho] = useState();
@@ -33,7 +27,7 @@ const Cart = () => {
   const getDadosCarrinho = () => {
     setCarrinho(listarProdutos());
   };
-
+  var soma = 0;
   return (
     <ImageBackground
       source={{
@@ -48,7 +42,6 @@ const Cart = () => {
         renderItem={({item, index}) => {
           return (
             <View>
-              {console.log(item)}
               <CartCard produto={item} />
             </View>
           );

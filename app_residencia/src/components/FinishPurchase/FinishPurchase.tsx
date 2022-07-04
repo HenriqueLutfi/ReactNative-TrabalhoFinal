@@ -4,18 +4,26 @@ import {Button, Text} from 'react-native-elements';
 import {CartContext} from '../../context/CartContext';
 import {ButtonWipeCart} from '../ButtonWipeCart/ButtonWipeCart';
 import {styles} from './style';
-import { CarrinhoContext } from '../../context/CarrinhoContext';
+import {CarrinhoContext} from '../../context/CarrinhoContext';
 
 export const FinishPurchase = () => {
-  const {cart} = useContext(CartContext);
-  const {contarQtdProdutos} = useContext(CarrinhoContext);
+  // const {cart} = useContext(CartContext);
+  const {contarQtdProdutos, listarProdutos} = useContext(CarrinhoContext);
 
   const [somaTotal, setSomaTotal] = useState(0);
   const [carrinho, setCarrinho] = useState();
-  console.log(cart);
+  // console.log(cart);
   useEffect(() => {
     SomaProdutos();
-  }, [cart]);
+  }, [carrinho]);
+
+  useEffect(() => {
+    getDadosCarrinho();
+  }, []);
+
+  const getDadosCarrinho = () => {
+    setCarrinho(listarProdutos());
+  };
 
   function SomaProdutos() {
     let soma = 0;
@@ -30,11 +38,12 @@ export const FinishPurchase = () => {
     // }
   }
 
-
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.textColor}>quantidade de produtos {contarQtdProdutos()}</Text>
+        <Text style={styles.textColor}>
+          quantidade de produtos {contarQtdProdutos()}
+        </Text>
         <Text style={styles.textColor}>Valor Total R${somaTotal},00</Text>
         <ButtonWipeCart />
       </View>
