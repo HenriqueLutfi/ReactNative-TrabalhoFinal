@@ -42,6 +42,15 @@ const Produto = ({ route, navigation }) => {
       imagem_produto,
     );
   };
+  const handleFav = () => {
+    addFave(
+      sku,
+      nome_produto,
+      descricao_produto,
+      preco_produto,
+      imagem_produto,
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -89,7 +98,7 @@ const Produto = ({ route, navigation }) => {
             </TouchableOpacity>
             <View>
               <Button
-                onPress={() => addFave()}
+                onPress={() => handleFav()}
                 title="Favoritar"
                 titleStyle={{
                   color: '#fff700',

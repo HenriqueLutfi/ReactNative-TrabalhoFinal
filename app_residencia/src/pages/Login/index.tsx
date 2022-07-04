@@ -5,6 +5,7 @@ import {
   View,
   ActivityIndicator,
   ImageBackground,
+  Image,
 } from 'react-native';
 import { Input, Text, Button, Icon } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -13,6 +14,7 @@ import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 import { LoadingContext } from '../../context/LoadingContext';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Cadastro from '../Cadastro';
+import storewars from '../../assets/storewars.png'
 
 
 const Login = ({ navigation }) => {
@@ -55,6 +57,10 @@ const Login = ({ navigation }) => {
         resizeMode="cover"
         style={styles.image}>
         <View style={styles.containerItems}>
+          <View style={styles.container_logo}>
+            <Image source={storewars} style={styles.image_store} />
+          </View>
+
           <Text style={styles.texto_entrada}>{'Bem-vindo'}</Text>
           <Input
             placeholder="E-mail"
@@ -135,6 +141,16 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: 'center',
+  },
+  container_logo: {
+    width: 200,
+    height: 80,
+    marginBottom: 12
+  },
+  image_store: {
+    width: 300,
+    height: 300,
+    marginLeft: 40,
   },
 });
 
