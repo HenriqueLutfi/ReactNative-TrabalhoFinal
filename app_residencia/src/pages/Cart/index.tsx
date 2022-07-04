@@ -1,18 +1,38 @@
-import React, {useEffect, useContext} from 'react';
-import {StyleSheet, FlatList, ImageBackground} from 'react-native';
+import React, {useEffect, useContext, useState} from 'react';
+import {
+  StyleSheet,
+  FlatList,
+  ImageBackground,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {Icon, Text} from 'react-native-elements';
 import {AutenticacaoContext} from '../../context/AutenticacaoContext';
 import {CartContext} from '../../context/CartContext';
 import CartCard from '../../components/CartCardComponent/CartCardComponent';
 import {FinishPurchase} from '../../components/FinishPurchase/FinishPurchase';
-import { CarrinhoContext } from '../../context/CarrinhoContext';
+import {CarrinhoContext} from '../../context/CarrinhoContext';
 
 const Cart = () => {
   const {cart} = useContext(CartContext);
+  const {
+    listarProdutos,
+    removerProduto,
+    removerItemCarrinho,
+    isFetching,
+    setIsFetching,
+  } = useContext(CarrinhoContext);
 
   const {usuario} = useContext(AutenticacaoContext);
-  
+  const [carrinho, setCarrinho] = useState();
 
-  useEffect(() => {}, [cart]);
+  useEffect(() => {
+    getDadosCarrinho();
+  }, []);
+
+  const getDadosCarrinho = () => {
+    setCarrinho(listarProdutos());
+  };
 
   return (
     <ImageBackground
@@ -22,11 +42,16 @@ const Cart = () => {
       resizeMode="cover"
       style={styles.imageBack}>
       <FlatList
-        data={cart}
-        // contentContainerStyle={{alignItems: 'center'}}
+        data={carrinho}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={cart => {
-          return <CartCard produto={cart.item} />;
+        extraData={carrinho}
+        renderItem={({item, index}) => {
+          return (
+            <View>
+              {console.log(item)}
+              <CartCard produto={item} />
+            </View>
+          );
         }}
       />
       <FinishPurchase />
