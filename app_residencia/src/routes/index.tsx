@@ -15,6 +15,7 @@ import AlterarSenha from '../pages/AlterarSenha';
 import PerfilDoUsuario from '../pages/PerfilDoUsuario';
 import { CarrinhoContext } from '../context/CarrinhoContext';
 import Favoritos from '../pages/Favoritos';
+import Splash from '../pages/SplashScrenn';
 
 
 const TabNavigation = createBottomTabNavigator();
@@ -125,6 +126,12 @@ const NavigationDrawer = () => {
         options={{ title: 'Favoritos' }}
         component={Favoritos}
       />
+      <DrawerNavigation.Screen
+        name="SplashScreen"
+        options={{ title: 'splash' }}
+        component={Splash}
+      />
+
     </DrawerNavigation.Navigator>
   );
 };
@@ -134,6 +141,7 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <StackNavigation.Navigator screenOptions={{ headerShown: false }}>
+        <StackNavigation.Screen name="SplashScreen" component={Splash} />
         <StackNavigation.Screen name="LoginScreen" component={Login} />
         <StackNavigation.Screen
           name="HomeScreen"
@@ -148,6 +156,7 @@ const Routes = () => {
         />
         <StackNavigation.Screen name="CadastroScreen" component={Cadastro} />
         <StackNavigation.Screen name="FavoritosScreen" component={Favoritos} />
+
       </StackNavigation.Navigator>
 
 
