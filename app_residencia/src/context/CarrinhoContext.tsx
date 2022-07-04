@@ -56,14 +56,20 @@ export function CarrinhoProvider({children}) {
     console.log(JSON.stringify(listarProdutos()));
   };
 
-  // const deletarProduto=()=>{
+  const removerProduto = (produto) => {
+    realm_carrinho.write(() => {
+       realm_carrinho.delete(produto)
+    })
+    console.log(JSON.stringify(listarProdutos()));
+ }
 
-  //   realm_carrinho.write(()=>{
-  //     const produto = realm_carrinho.delete('Produto',{
-
-  //     })
-  //   })
-  // }
+ const removerItemCarrinho = (_id) => {
+    realm_carrinho.write(() => {
+       realm_carrinho.delete(
+          realm_carrinho.objects('Produto').filter(produto => produto.id_produto == _id)
+       )
+    })
+ }
 
   return (
     <CarrinhoContext.Provider
@@ -71,6 +77,8 @@ export function CarrinhoProvider({children}) {
         listarProdutos,
         contarQtdProdutos,
         adicionarProduto,
+        removerProduto,
+        removerItemCarrinho,
       }}>
       {children}
     </CarrinhoContext.Provider>
