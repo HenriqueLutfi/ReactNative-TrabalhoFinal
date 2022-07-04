@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { useEffect, useState } from 'react';
 import Routes from './routes';
+
 import { AutenticacaoProvider } from './context/AutenticacaoContext';
 import { LoadingProvider } from './context/LoadingContext';
 import { ChosenCategoryProvider } from './context/ChosenCategory';
@@ -12,6 +13,8 @@ import AnimatedSplash from 'react-native-animated-splash-screen';
 import Splash from './pages/SplashScrenn';
 import splash from './assets/splash.gif'
 import storewars from './assets/storewars.png';
+import {FavoritosProvider} from './context/FavoritosContext';
+
 
 export default () => {
   // const [isLoaded, setIsLoaded] = useState(false);
@@ -31,7 +34,9 @@ export default () => {
             <ProdutosProvider>
               <CartProvider>
                 <CarrinhoProvider>
-                  <Routes />
+                  {/* <FavoritosProvider> */}
+                    <Routes />
+                  {/* </FavoritosProvider> */}
                 </CarrinhoProvider>
               </CartProvider>
             </ProdutosProvider>
