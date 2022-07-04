@@ -28,7 +28,7 @@ const Produto = ({ route, navigation }) => {
   } = route.params;
 
   const { adicionarProduto } = useContext(CarrinhoContext)
-  const { favoritos, setFavoritos, addFave } = useContext(FavoritosContext);
+  const { adicionarProdutoFav } = useContext(FavoritosContext);
   const { produtos, setProdutos } = useContext(ProdutosContext);
 
 
@@ -43,7 +43,7 @@ const Produto = ({ route, navigation }) => {
     );
   };
   const handleFav = () => {
-    addFave(
+    adicionarProdutoFav(
       sku,
       nome_produto,
       descricao_produto,
@@ -112,7 +112,6 @@ const Produto = ({ route, navigation }) => {
                   width: '70%',
                   marginLeft: 50
                 }}
-
               />
             </View>
             <View style={styles.container_starts}>

@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   container_logo: {
     width: 200,
     height: 80,
-    marginBottom: 12
+    marginBottom: 12,
   },
   image_store: {
     width: 300,

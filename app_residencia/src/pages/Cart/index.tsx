@@ -4,11 +4,14 @@ import {AutenticacaoContext} from '../../context/AutenticacaoContext';
 import {CartContext} from '../../context/CartContext';
 import CartCard from '../../components/CartCardComponent/CartCardComponent';
 import {FinishPurchase} from '../../components/FinishPurchase/FinishPurchase';
+import { CarrinhoContext } from '../../context/CarrinhoContext';
 
 const Cart = () => {
   const {cart} = useContext(CartContext);
 
   const {usuario} = useContext(AutenticacaoContext);
+  
+
   useEffect(() => {}, [cart]);
 
   return (

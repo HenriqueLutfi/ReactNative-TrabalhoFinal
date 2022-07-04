@@ -8,6 +8,7 @@ import {ProdutosProvider} from './context/ProdutosContext';
 import {CategoriasProvider} from './context/CategoriasContext';
 import {CartProvider} from './context/CartContext';
 import {CarrinhoProvider} from './context/CarrinhoContext';
+import {FavoritosProvider} from './context/FavoritosContext';
 
 export default () => {
   return (
@@ -18,7 +19,9 @@ export default () => {
             <ProdutosProvider>
               <CartProvider>
                 <CarrinhoProvider>
-                <Routes />
+                  {/* <FavoritosProvider> */}
+                    <Routes />
+                  {/* </FavoritosProvider> */}
                 </CarrinhoProvider>
               </CartProvider>
             </ProdutosProvider>
