@@ -7,6 +7,7 @@ const Favoritos = () => {
 
 const  {adicionarProdutoFav, contarQtdProdutos} = useContext(FavoritosContext)
 
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -17,6 +18,7 @@ const  {adicionarProdutoFav, contarQtdProdutos} = useContext(FavoritosContext)
         style={styles.imageBack}
       >
         <Text style={styles.colorText}>Favoritos</Text>
+
       </ImageBackground>
 
     </View>

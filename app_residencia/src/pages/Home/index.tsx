@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   TouchableHighlight,
+  BackHandler
 } from 'react-native';
 import { Rating, AirbnbRating } from 'react-native-ratings';
 import { Text, Card, Input, Icon } from 'react-native-elements';
@@ -40,6 +41,12 @@ const Home = ({ route, navigation }) => {
   useEffect(() => {
     pesquisarProdutos(busca);
   }, [busca]);
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      return true
+    })
+  }, [])
 
   const getDadosCategoria = async () => {
     AxiosInstance.get(`/categoria`, {
@@ -108,6 +115,7 @@ const Home = ({ route, navigation }) => {
           <LoadingComponent />
           <View>
             <Input
+              style={{color: '#fff700'}}
               placeholder="buscar produto"
               placeholderTextColor={'#fff700'}
               onChangeText={setBusca}
