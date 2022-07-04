@@ -61,7 +61,7 @@ const Login = ({ navigation }) => {
             <Image source={storewars} style={styles.image_store} />
           </View>
 
-          <Text style={styles.texto_entrada}>{'Bem-vindo'}</Text>
+          <Text style={styles.texto_entrada} >{'Bem-vindo'}</Text>
           <Input
             placeholder="E-mail"
             onChangeText={setEmail}
