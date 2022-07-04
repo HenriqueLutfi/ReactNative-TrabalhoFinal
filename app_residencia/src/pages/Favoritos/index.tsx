@@ -5,7 +5,7 @@ import { FavoritosContext } from "../../context/FavoritosContext";
 
 const Favoritos = () => {
 
-
+const  {adicionarProdutoFav, contarQtdProdutos} = useContext(FavoritosContext)
 
   return (
     <View style={styles.container}>
@@ -16,7 +16,7 @@ const Favoritos = () => {
         resizeMode="cover"
         style={styles.imageBack}
       >
-        <Text style={styles.colorText}>Favoritros</Text>
+        <Text style={styles.colorText}>Favoritos</Text>
       </ImageBackground>
 
     </View>
@@ -26,15 +26,17 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    flexWrap: 'wrap',
-    flexDirection: 'row',
+    alignItems: 'stretch',
     justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#fff700',
-
-
-
   },
+  // container: {
+  //   flex: 1,
+  //   flexWrap: 'wrap',
+  //   flexDirection: 'row',
+  //   justifyContent: 'center',
+  //   borderWidth: 1,
+  //   borderColor: '#fff700',
+  // },
   imageBack: {
     flex: 1,
     justifyContent: 'center',
