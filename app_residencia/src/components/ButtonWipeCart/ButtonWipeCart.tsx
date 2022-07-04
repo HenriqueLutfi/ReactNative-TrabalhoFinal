@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {Button} from 'react-native-elements';
 import {CartContext} from '../../context/CartContext';
+import {CarrinhoContext} from '../../context/CarrinhoContext';
 
 export const ButtonWipeCart = () => {
-  const {setCart} = useContext(CartContext);
-  
+  // const {setCart} = useContext(CartContext);
+  const {LimparCarrinho} = useContext(CarrinhoContext);
   return (
     <>
       <Button
@@ -18,8 +19,10 @@ export const ButtonWipeCart = () => {
           borderColor: '#fff700',
           borderRadius: 3,
         }}
+        // onPress={() => {
+        //   setCart([]);
         onPress={() => {
-          setCart([]);
+          LimparCarrinho();
         }}
       />
     </>
