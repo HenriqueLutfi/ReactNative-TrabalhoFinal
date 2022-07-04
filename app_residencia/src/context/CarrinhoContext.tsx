@@ -1,4 +1,4 @@
-import React, {createContext} from 'react';
+import React, {createContext,useState} from 'react';
 import Realm from 'realm';
 
 export const CarrinhoContext = createContext({});
@@ -27,6 +27,8 @@ export function CarrinhoProvider({children}) {
     return realm_carrinho.objects('Produto').length;
   };
 
+  const [isFetching, setIsFetching] = useState(false);
+
   const adicionarProduto = (
     _sku: string,
     _nome: string,
@@ -53,6 +55,7 @@ export function CarrinhoProvider({children}) {
       });
     });
     // console.log(_nome)
+    setIsFetching(true)
     console.log(JSON.stringify(listarProdutos()));
   };
 
@@ -60,6 +63,7 @@ export function CarrinhoProvider({children}) {
     realm_carrinho.write(() => {
       realm_carrinho.delete(produto);
     });
+    setIsFetching(true)
     console.log(JSON.stringify(listarProdutos()));
   };
 
@@ -84,6 +88,7 @@ export function CarrinhoProvider({children}) {
       });
       i++
     }
+    setIsFetching(true)
   };
 
   return (
@@ -95,6 +100,8 @@ export function CarrinhoProvider({children}) {
         removerProduto,
         removerItemCarrinho,
         LimparCarrinho,
+        isFetching, 
+        setIsFetching,
       }}>
       {children}
     </CarrinhoContext.Provider>
