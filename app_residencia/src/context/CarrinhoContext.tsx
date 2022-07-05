@@ -101,7 +101,7 @@ export function CarrinhoProvider({children}) {
         removerItemCarrinho,
         LimparCarrinho,
         isFetching, 
-        setIsFetching,
+        setIsFetching
       }}>
       {children}
     </CarrinhoContext.Provider>

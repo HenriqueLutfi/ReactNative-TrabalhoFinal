@@ -43,9 +43,9 @@ const Home = ({ route, navigation }) => {
   }, [busca]);
 
   useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      return true
-    })
+    // BackHandler.addEventListener('hardwareBackPress', () => {
+    //   return true
+    // })
   }, [])
 
   const getDadosCategoria = async () => {

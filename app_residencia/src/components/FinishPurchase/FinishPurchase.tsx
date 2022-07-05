@@ -15,7 +15,7 @@ export const FinishPurchase = () => {
   // console.log(cart);
   useEffect(() => {
     SomaProdutos();
-  }, [carrinho]);
+  }, []);
 
   useEffect(() => {
     getDadosCarrinho();
