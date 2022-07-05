@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {Text, Card, Icon, SearchBar} from 'react-native-elements';
+import React, { useState, useEffect, useContext } from 'react';
+import { Text, Card, Icon, SearchBar } from 'react-native-elements';
 import {
   ScrollView,
   StyleSheet,
@@ -10,39 +10,49 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import AxiosInstance from '../../api/AxiosInstance';
-import {AutenticacaoContext} from '../../context/AutenticacaoContext';
+import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 import CategoriasCard from '../../components/CategoriaCards/categoriaCard';
 import CategoriaService from '../../services/CategoriaService';
-import {CategoriaType} from '../../models/CategoriaType';
-import {ChosenCategoryContext} from '../../context/ChosenCategory';
-import {ProdutosContext} from '../../context/ProdutosContext';
+import { CategoriaType } from '../../models/CategoriaType';
+import { ChosenCategoryContext } from '../../context/ChosenCategory';
+import { ProdutosContext } from '../../context/ProdutosContext';
 import ProdutosCard from '../../components/ProdutoCards/ProdutosCards';
-import {ProdutoType} from '../../models/ProdutoType';
+import { ProdutoType } from '../../models/ProdutoType';
 
 const CategoriaProduto = () => {
-  const {usuario} = useContext(AutenticacaoContext);
-  const {chosenCategory} = useContext(ChosenCategoryContext);
-  const {produtos} = useContext(ProdutosContext);
+  const { usuario } = useContext(AutenticacaoContext);
+  const { chosenCategory } = useContext(ChosenCategoryContext);
+  const { produtos } = useContext(ProdutosContext);
   const [produtosCategoria, setProdutosCategoria] = useState<ProdutoType[]>([]);
+
   useEffect(() => {
-    pesquisarCategoria();
-  }, []);
+    chosenCategory && pesquisarCategoria();
+    console.log(chosenCategory)
+  }, [chosenCategory]);
+
 
   const pesquisarCategoria = () => {
     setProdutosCategoria([]);
-    for (var i = 0; i < produtos.length; i++) {
-      console.log('produto: ' + produtos[i].nomeCategoria);
-      console.log('nome categoria escolhida: ' + chosenCategory.nomeCategoria);
-      if (chosenCategory.nomeCategoria === produtos[i].nomeCategoria) {
-        console.log('produto: ' + produtos[i]);
-        const aux = produtosCategoria;
-        aux.push(produtos[i]);
-        setProdutosCategoria(aux);
-        console.log('lista produtos: ' + produtosCategoria);
-      } else {
-        // getDadosCategoria();
-      }
-    }
+
+    console.log(produtos)
+
+    let filtroProds = produtos.filter((produto) => { return produto.nomeCategoria === chosenCategory.nomeCategoria })
+    setProdutosCategoria(filtroProds);
+
+
+    // for (var i = 0; i < produtos.length; i++) {
+    //   console.log('produto: ' + produtos[i].nomeCategoria);
+    //   console.log('nome categoria escolhida: ' + chosenCategory.nomeCategoria);
+    //   if (chosenCategory.nomeCategoria === produtos[i].nomeCategoria) {
+    //     console.log('produto: ' + produtos[i]);
+    //     const aux = produtosCategoria;
+    //     aux.push(produtos[i]);
+    //     setProdutosCategoria(aux);
+    //     console.log('lista produtos: ' + produtosCategoria);
+    //   } else {
+    //     // getDadosCategoria();
+    //   }
+    // }
   };
 
   return (
@@ -54,7 +64,7 @@ const CategoriaProduto = () => {
       style={styles.imageBack}>
       <FlatList
         data={produtosCategoria}
-        contentContainerStyle={{alignItems: 'center'}}
+        contentContainerStyle={{ alignItems: 'center' }}
         keyExtractor={(item, index) => index.toString()}
         renderItem={categoria => {
           return (

@@ -1,11 +1,12 @@
-import React, {createContext, useState} from 'react';
+import React, { createContext, useState } from 'react';
 import { CategoriaType } from '../models/CategoriaType';
+import Categoria from '../pages/Categoria';
 
 
 export const ChosenCategoryContext = createContext({});
 
 
-export const ChosenCategoryProvider = ({children}) => {
+export const ChosenCategoryProvider = ({ children }) => {
   const [chosenCategory, setChosenCategory] = useState<CategoriaType>();
   return (
     <ChosenCategoryContext.Provider

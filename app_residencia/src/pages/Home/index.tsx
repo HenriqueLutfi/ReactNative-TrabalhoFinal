@@ -19,6 +19,7 @@ import LoadingComponent from '../../components/LoadingComponent/LoadingComponent
 import { CategoriasContext } from '../../context/CategoriasContext';
 import { ProdutosContext } from '../../context/ProdutosContext';
 import { ChosenCategoryContext } from '../../context/ChosenCategory';
+import { FlatList } from 'react-native-gesture-handler';
 
 const Home = ({ route, navigation }) => {
   const { usuario } = useContext(AutenticacaoContext);
@@ -115,7 +116,7 @@ const Home = ({ route, navigation }) => {
           <LoadingComponent />
           <View>
             <Input
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
               placeholder="buscar produto"
               placeholderTextColor={'#fff700'}
               onChangeText={setBusca}
@@ -131,46 +132,35 @@ const Home = ({ route, navigation }) => {
             />
           </View>
           <Text style={{ color: '#fff700' }}>{'Categorias'}</Text>
-          <ScrollView style={styles.scrollCategoria} horizontal={true}>
-            {categorias.map((k, i) => (
-              <TouchableHighlight
-                key={i}
-                underlayColor="#fff700"
-                activeOpacity={0}
-                onPress={() => {
-                  console.log(
-                    `Categoria 1 Clicada ${k.nomeCategoria} foi clicada`,
-                  );
-                  setChosenCategory(k);
-                  navigation.navigate('CategoriaProdutoScreen');
-                }}
-                style={styles.botao_categoria}>
-                <CategoriasCard categoria={k} />
-              </TouchableHighlight>
-            ))}
-          </ScrollView>
+
+          <FlatList
+            data={categorias}
+            contentContainerStyle={{ alignItems: 'center' }}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={categoria => {
+              return (
+
+                <CategoriasCard categoria={categoria.item} />
+              )
+            }}
+          />
+
           <Text style={{ color: '#fff700' }}>{'Recentes'}</Text>
-          <ScrollView horizontal={true}>
-            {produtos.map((k, i) => (
-              <TouchableOpacity
-                key={i}
-                onPress={() => {
-                  navigation.navigate({
-                    name: 'ProdutoScreen',
-                    params: {
-                      id_produto: k.idProduto,
-                      sku: k.sku,
-                      nome_produto: k.nomeProduto,
-                      descricao_produto: k.descricaoProduto,
-                      preco_produto: k.precoProduto,
-                      imagem_produto: k.imagemProduto,
-                    },
-                  });
-                }}>
-                <ProdutosCard produto={k} />
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
+
+          <FlatList
+            data={produtos}
+            horizontal={true}
+            renderItem={({ item }) =>
+              <ProdutosCard
+                imagemProduto={item.imagemProduto}
+                nomeProduto={item.nomeProduto}
+                precoProduto={item.precoProduto}
+                descricaoProduto={item.descricaoProduto}
+
+
+              />}
+          />
+
           <Text style={{ color: '#fff700' }}> {'Destaque'}</Text>
           <ScrollView style={styles.bottomCardScrollView}>
             <TouchableOpacity>

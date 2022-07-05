@@ -1,6 +1,6 @@
 export type ProdutoType = {
   idProduto: number;
-  sku: string;
+  // sku: string;
   nomeProduto: string;
   imagemProduto: any;
   precoProduto: number;

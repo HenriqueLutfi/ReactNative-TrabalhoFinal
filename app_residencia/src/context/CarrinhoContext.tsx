@@ -1,13 +1,13 @@
-import React, {createContext,useState} from 'react';
+import React, { createContext, useState } from 'react';
 import Realm from 'realm';
 
 export const CarrinhoContext = createContext({});
 
-class ProdutoSchema extends Realm.Object {}
+class ProdutoSchema extends Realm.Object { }
 ProdutoSchema.schema = {
   name: 'Produto',
   properties: {
-    id_produto: {type: 'int', default: 0},
+    id_produto: { type: 'int', default: 0 },
     sku: 'string',
     nome_produto: 'string',
     descricao_produto: 'string',
@@ -16,9 +16,9 @@ ProdutoSchema.schema = {
   },
 };
 
-let realm_carrinho = new Realm({schema: [ProdutoSchema], schemaVersion: 1});
+let realm_carrinho = new Realm({ schema: [ProdutoSchema], schemaVersion: 1 });
 
-export function CarrinhoProvider({children}) {
+export function CarrinhoProvider({ children }) {
   const listarProdutos = () => {
     return realm_carrinho.objects('Produto');
   };
@@ -30,7 +30,7 @@ export function CarrinhoProvider({children}) {
   const [isFetching, setIsFetching] = useState(false);
 
   const adicionarProduto = (
-    _sku: string,
+    // _sku: string,
     _nome: string,
     _descricao: string,
     _preco: number,
@@ -47,7 +47,7 @@ export function CarrinhoProvider({children}) {
     realm_carrinho.write(() => {
       const produto = realm_carrinho.create('Produto', {
         id_produto: proximoId,
-        sku: _sku,
+        // sku: _sku,
         nome_produto: _nome,
         descricao_produto: _descricao,
         preco_produto: _preco,
@@ -77,7 +77,7 @@ export function CarrinhoProvider({children}) {
     });
   };
   const LimparCarrinho = () => {
-    var i=1;
+    var i = 1;
     while (realm_carrinho.objects('Produto').length > 0) {
       realm_carrinho.write(() => {
         realm_carrinho.delete(
@@ -100,7 +100,7 @@ export function CarrinhoProvider({children}) {
         removerProduto,
         removerItemCarrinho,
         LimparCarrinho,
-        isFetching, 
+        isFetching,
         setIsFetching
       }}>
       {children}

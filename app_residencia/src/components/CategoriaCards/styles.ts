@@ -8,6 +8,14 @@ export const styles = StyleSheet.create({
 
 
     },
+    scrollCategoria: {
+        flexGrow: 0,
+    },
+    botao_categoria: {
+        alignItems: 'center',
+        padding: 1,
+        borderRadius: 15,
+    },
 
     card: {
         display: 'flex',

@@ -20,7 +20,7 @@ import { ProdutosContext } from '../../context/ProdutosContext';
 const Produto = ({ route, navigation }) => {
   const {
     id_produto,
-    sku,
+    // sku,
     nome_produto,
     descricao_produto,
     preco_produto,
@@ -35,16 +35,17 @@ const Produto = ({ route, navigation }) => {
 
   const handleAddProduto = () => {
     adicionarProduto(
-      sku,
+      // sku,
       nome_produto,
       descricao_produto,
       preco_produto,
       imagem_produto,
     );
+
   };
   const handleFav = () => {
     adicionarProdutoFav(
-      sku,
+      // sku,
       nome_produto,
       descricao_produto,
       preco_produto,
@@ -71,8 +72,8 @@ const Produto = ({ route, navigation }) => {
           {/* </View> */}
           <View style={styles.container_produto}>
             <Text style={styles.colorText}>{nome_produto}</Text>
-            <Text>{nome_produto}</Text>
-            <Text>{preco_produto}</Text>
+            <Text style={styles.colorText}>R${preco_produto},00</Text>
+
             <TouchableOpacity >
               <Button
                 onPress={() => handleAddProduto()}

@@ -1,26 +1,26 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import {StatusBar, SafeAreaView} from 'react-native';
-import React, {useContext} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { StatusBar, SafeAreaView } from 'react-native';
+import React, { useContext } from 'react';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Categoria from '../pages/Categoria';
 import CategoriaProduto from '../pages/CategoriaProduto/Index';
-import {Icon, Badge, withBadge} from 'react-native-elements';
+import { Icon, Badge, withBadge } from 'react-native-elements';
 import Cart from '../pages/Cart';
 import Produto from '../pages/Produto';
 import Cadastro from '../pages/Cadastro';
 import AlterarSenha from '../pages/AlterarSenha';
 import PerfilDoUsuario from '../pages/PerfilDoUsuario';
-import {CarrinhoContext} from '../context/CarrinhoContext';
+import { CarrinhoContext } from '../context/CarrinhoContext';
 import Favoritos from '../pages/Favoritos';
 import Splash from '../pages/SplashScrenn';
 
 const TabNavigation = createBottomTabNavigator();
 const BottomTabNavigator = () => {
-  const {contarQtdProdutos} = useContext(CarrinhoContext);
+  const { contarQtdProdutos } = useContext(CarrinhoContext);
 
   const BadgeIcon = withBadge(contarQtdProdutos())(Icon);
   return (
@@ -28,7 +28,7 @@ const BottomTabNavigator = () => {
       screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
-        tabBarStyle: {backgroundColor: '#141414', borderBottomWidth: 0},
+        tabBarStyle: { backgroundColor: '#141414', borderBottomWidth: 0 },
       }}>
       <TabNavigation.Screen
         name="HomeTabScreen"
@@ -105,7 +105,7 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <StatusBar barStyle={'light-content'} hidden={true} animated={true} />
-      <StackNavigation.Navigator screenOptions={{headerShown: false}}>
+      <StackNavigation.Navigator screenOptions={{ headerShown: false }}>
         <StackNavigation.Screen name="SplashScreen" component={Splash} />
         <StackNavigation.Screen name="LoginScreen" component={Login} />
         <StackNavigation.Screen
