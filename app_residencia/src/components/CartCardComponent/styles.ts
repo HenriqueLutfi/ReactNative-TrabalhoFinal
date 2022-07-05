@@ -22,13 +22,11 @@ export const styles = StyleSheet.create({
     fontFamily: 'Starjout',
     color: '#fff700',
     fontSize: 15,
-    // fontWeight: 'bold',
   },
   textDescricao: {
     fontFamily: 'Starjout',
     color: '#fff700',
     fontSize: 10,
-    // fontWeight: 'bold',
   },
   viewImage:{
     width: '30%',

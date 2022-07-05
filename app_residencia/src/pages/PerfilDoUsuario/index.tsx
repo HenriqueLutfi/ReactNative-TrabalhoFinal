@@ -70,8 +70,7 @@ const styles = StyleSheet.create({
   },
   titulo_perfil_usuario: {
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 30,
+    fontFamily: 'Starjout',
     marginBottom: 10,
     color: '#fff700',
     borderStyle: 'solid',
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   containerItems: {
-    borderWidth: 4,
+    borderWidth: 2,
     borderColor: '#fff700',
     borderRadius: 15,
     alignItems: 'stretch',
@@ -91,9 +90,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 25,
   },
-  containerInput: {
-    borderWidth: 4,
-    borderColor: '#fff700',
+  containerInput: { 
+    borderWidth: 1,
+    borderColor: '#fffb00',
     borderRadius: 10,
     alignItems: 'stretch',
     justifyContent: 'center',
@@ -101,13 +100,12 @@ const styles = StyleSheet.create({
     // marginBottom: 20,
     color: '#fff700',
     textAlign: 'center',
-    fontSize: 25,
+    fontfamily: 'Starjo',
     margin: 5,
   },
   containerText: {
     textAlign: 'left',
-    fontWeight: 'bold',
-    fontSize: 25,
+    fontFamily: 'Starjout',
     marginTop: 10,
     marginLeft: 20,
     color: '#fff700',
