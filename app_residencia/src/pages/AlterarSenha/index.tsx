@@ -126,13 +126,12 @@ const styles = StyleSheet.create({
     zIndex: 0,
     marginBottom: 20,
   },
-  texto_entrada: {
+  texto_entrada: { 
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 50,
+    fontFamily: 'Starjout',
     marginBottom: 10,
     color: '#fff700',
-    borderStyle: 'solid',
+    // (botao alterar)
   },
   imageBack: {
     flex: 1,
