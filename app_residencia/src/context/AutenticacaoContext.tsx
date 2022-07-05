@@ -1,10 +1,10 @@
-import React, {createContext, useState} from 'react';
-import {UsuarioType} from '../models/UsuarioType';
-import {LoginService} from '../services/LoginService';
+import React, { createContext, useState } from 'react';
+import { UsuarioType } from '../models/UsuarioType';
+import { LoginService } from '../services/LoginService';
 
 export const AutenticacaoContext = createContext({});
 
-export const AutenticacaoProvider = ({children}) => {
+export const AutenticacaoProvider = ({ children }) => {
   const [usuario, setUsuario] = useState<UsuarioType>();
 
   const login = async (email, senha) => {
@@ -27,6 +27,7 @@ export const AutenticacaoProvider = ({children}) => {
       value={{
         login,
         usuario,
+        setUsuario
       }}>
       {children}
     </AutenticacaoContext.Provider>
