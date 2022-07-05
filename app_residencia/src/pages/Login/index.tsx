@@ -1,26 +1,26 @@
-import React, { useState, useContext } from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Alert,
   StyleSheet,
   View,
   ActivityIndicator,
   ImageBackground,
+  Image,
 } from 'react-native';
-import { Input, Text, Button, Icon } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { color } from 'react-native-reanimated';
-import { AutenticacaoContext } from '../../context/AutenticacaoContext';
-import { LoadingContext } from '../../context/LoadingContext';
+import {Input, Text, Button, Icon} from 'react-native-elements';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {color} from 'react-native-reanimated';
+import {AutenticacaoContext} from '../../context/AutenticacaoContext';
+import {LoadingContext} from '../../context/LoadingContext';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import Cadastro from '../Cadastro';
+import storewars from '../../assets/storewars.png';
 
-
-const Login = ({ navigation }) => {
+const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const { login } = useContext(AutenticacaoContext);
-  const { loading, setLoading } = useContext(LoadingContext);
-
+  const {login} = useContext(AutenticacaoContext);
+  const {loading, setLoading} = useContext(LoadingContext);
 
   const handleLogin = async (email: string, senha: string) => {
     console.log(`handleLogin - Email: ${email} - Senha: ${senha}`);
@@ -31,8 +31,8 @@ const Login = ({ navigation }) => {
 
     if (!respostaLogin) {
       Alert.alert('erro', '', [
-        { text: 'OK' },
-        { text: 'nao foi possivel realizar login' },
+        {text: 'OK'},
+        {text: 'nao foi possivel realizar login'},
       ]);
       setLoading(false);
     } else {
@@ -40,7 +40,6 @@ const Login = ({ navigation }) => {
       navigation.navigate('HomeScreen');
     }
   };
-
 
   const showLoading = () => {
     <LoadingComponent />;
@@ -55,12 +54,16 @@ const Login = ({ navigation }) => {
         resizeMode="cover"
         style={styles.image}>
         <View style={styles.containerItems}>
-          <Text style={styles.texto_entrada}>{'Bem-vindo'}</Text>
+          <View style={styles.container_logo}>
+            <Image source={storewars} style={styles.image_store} />
+          </View>
+
+          <Text style={styles.texto_entrada} >{'Bem-vindo'}</Text>
           <Input
             placeholder="E-mail"
             onChangeText={setEmail}
             value={email}
-            style={{ color: '#fff700' }}
+            style={{color: '#fff700'}}
             leftIcon={
               <Icon name="user" color="#fff700" type="font-awesome" size={24} />
             }
@@ -69,7 +72,7 @@ const Login = ({ navigation }) => {
             placeholder="Senha"
             onChangeText={setSenha}
             value={senha}
-            style={{ color: '#fff700' }}
+            style={{color: '#fff700'}}
             leftIcon={
               <Icon name="key" color="#fff700" type="font-awesome" size={24} />
             }
@@ -135,6 +138,17 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: 'center',
+  },
+  container_logo: {
+    width: 200,
+    height: 80,
+    marginBottom: 50,
+    alignContent: 'center',
+  },
+  image_store: {
+    width: 300,
+    height: 300,
+    marginLeft: 40,
   },
 });
 

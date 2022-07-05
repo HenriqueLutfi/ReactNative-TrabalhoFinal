@@ -30,6 +30,10 @@
 		1134D1F6195643D09CDC721F /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8DA6DFF441249E6AAF7B340 /* Octicons.ttf */; };
 		1771802B29BE4D41B09FEAEE /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A2B6CF7A5454979A3356203 /* SimpleLineIcons.ttf */; };
 		FCFAC609E8C6406E9B213948 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51702EC98BC74119B3EFC4AA /* Zocial.ttf */; };
+		E031FD1674E649199B02DB8D /* Stjldbl1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F166C2F56C341E7A77CD03B /* Stjldbl1.ttf */; };
+		09C5DB31039B4495ABBA8245 /* Stjldbl2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 448055F7D6C24CB3ADD0DF99 /* Stjldbl2.ttf */; };
+		624E8231427F4B4B914439CC /* Strjmono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1174CBD0A3BD4EF0B976E3FD /* Strjmono.ttf */; };
+		D08E8ED162DC4CCD85707E4C /* Star Jedi Logo MonoLine.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFD563F484C14768A8E69962 /* Star Jedi Logo MonoLine.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +80,10 @@
 		E8DA6DFF441249E6AAF7B340 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0A2B6CF7A5454979A3356203 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		51702EC98BC74119B3EFC4AA /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4F166C2F56C341E7A77CD03B /* Stjldbl1.ttf */ = {isa = PBXFileReference; name = "Stjldbl1.ttf"; path = "../src/assets/fonts/Stjldbl1.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		448055F7D6C24CB3ADD0DF99 /* Stjldbl2.ttf */ = {isa = PBXFileReference; name = "Stjldbl2.ttf"; path = "../src/assets/fonts/Stjldbl2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1174CBD0A3BD4EF0B976E3FD /* Strjmono.ttf */ = {isa = PBXFileReference; name = "Strjmono.ttf"; path = "../src/assets/fonts/Strjmono.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CFD563F484C14768A8E69962 /* Star Jedi Logo MonoLine.ttf */ = {isa = PBXFileReference; name = "Star Jedi Logo MonoLine.ttf"; path = "../src/assets/fonts/Star Jedi Logo MonoLine.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +208,10 @@
 				E8DA6DFF441249E6AAF7B340 /* Octicons.ttf */,
 				0A2B6CF7A5454979A3356203 /* SimpleLineIcons.ttf */,
 				51702EC98BC74119B3EFC4AA /* Zocial.ttf */,
+				4F166C2F56C341E7A77CD03B /* Stjldbl1.ttf */,
+				448055F7D6C24CB3ADD0DF99 /* Stjldbl2.ttf */,
+				1174CBD0A3BD4EF0B976E3FD /* Strjmono.ttf */,
+				CFD563F484C14768A8E69962 /* Star Jedi Logo MonoLine.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -317,6 +329,10 @@
 				1134D1F6195643D09CDC721F /* Octicons.ttf in Resources */,
 				1771802B29BE4D41B09FEAEE /* SimpleLineIcons.ttf in Resources */,
 				FCFAC609E8C6406E9B213948 /* Zocial.ttf in Resources */,
+				E031FD1674E649199B02DB8D /* Stjldbl1.ttf in Resources */,
+				09C5DB31039B4495ABBA8245 /* Stjldbl2.ttf in Resources */,
+				624E8231427F4B4B914439CC /* Strjmono.ttf in Resources */,
+				D08E8ED162DC4CCD85707E4C /* Star Jedi Logo MonoLine.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
