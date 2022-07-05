@@ -42,11 +42,11 @@ const Home = ({ route, navigation }) => {
     pesquisarProdutos(busca);
   }, [busca]);
 
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      return true
-    })
-  }, [])
+  // useEffect(() => {
+  //   BackHandler.addEventListener('hardwareBackPress', () => {
+  //     return true
+  //   })
+  // }, [])
 
   const getDadosCategoria = async () => {
     AxiosInstance.get(`/categoria`, {
@@ -115,7 +115,7 @@ const Home = ({ route, navigation }) => {
           <LoadingComponent />
           <View>
             <Input
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
               placeholder="buscar produto"
               placeholderTextColor={'#fff700'}
               onChangeText={setBusca}
