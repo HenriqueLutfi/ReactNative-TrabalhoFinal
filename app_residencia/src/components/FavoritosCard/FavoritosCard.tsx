@@ -2,13 +2,11 @@ import React, {useContext} from 'react';
 import {TouchableOpacity, Image, Text, View} from 'react-native';
 import {Card, Icon} from 'react-native-elements';
 import {styles} from './styles';
-import {ButtonAddCart} from '../ButtonAddCart/ButtonAddCart';
-import {ButtonRemoveCart} from '../ButtonRemoveCart/ButtonRemoveCart';
 import {CarrinhoContext} from '../../context/CarrinhoContext';
-function CartCard({produto}) {
+function FavoritosCard({produto}) {
   console.log('aqui' + produto);
 
-  const {removerItemProduto} = useContext(CarrinhoContext);
+  const {removerItemFavoritos} = useContext(CarrinhoContext);
 
   return (
     <View style={styles.container}>
@@ -23,7 +21,7 @@ function CartCard({produto}) {
         <Text style={styles.text}>{produto.preco_produto}</Text>
         <Text style={styles.text}>{produto.descricao_produto}</Text>
         <TouchableOpacity
-          onPress={() => removerItemProduto(produto.id_produto)}>
+          onPress={() => removerItemFavoritos(produto.id_produto)}>
           {/* <TouchableOpacity onPress={() => removerProduto(produto)}> */}
           <Icon name="trash" color="#fff700" type="font-awesome" size={36} />
         </TouchableOpacity>
@@ -33,4 +31,4 @@ function CartCard({produto}) {
     </View>
   );
 }
-export default CartCard;
+export default FavoritosCard;

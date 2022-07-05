@@ -12,10 +12,11 @@ export const FinishPurchase = () => {
 
   const [somaTotal, setSomaTotal] = useState(0);
   const [carrinho, setCarrinho] = useState();
+  const [qtd, setQtd] = useState()
   // console.log(cart);
   useEffect(() => {
     SomaProdutos();
-  }, [carrinho]);
+  }, []);
 
   useEffect(() => {
     getDadosCarrinho();
@@ -23,6 +24,7 @@ export const FinishPurchase = () => {
 
   const getDadosCarrinho = () => {
     setCarrinho(listarProdutos());
+    setQtd(contarQtdProdutos())
   };
 
   function SomaProdutos() {
@@ -42,7 +44,7 @@ export const FinishPurchase = () => {
     <View style={styles.container}>
       <View>
         <Text style={styles.textColor}>
-          quantidade de produtos {contarQtdProdutos()}
+          quantidade de produtos {qtd}
         </Text>
         <Text style={styles.textColor}>Valor Total R${somaTotal},00</Text>
         <ButtonWipeCart />
