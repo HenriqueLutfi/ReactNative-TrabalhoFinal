@@ -1,8 +1,9 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import React, {useContext} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { StatusBar, SafeAreaView } from 'react-native';
+import React, { useContext } from 'react';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Categoria from '../pages/Categoria';
@@ -26,7 +27,8 @@ const BottomTabNavigator = () => {
     <TabNavigation.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {backgroundColor: '#000', borderBottomWidth: 0},
+        tabBarHideOnKeyboard: true,
+        tabBarStyle: { backgroundColor: '#141414', borderBottomWidth: 0 },
       }}>
       <TabNavigation.Screen
         name="HomeTabScreen"
@@ -168,8 +170,11 @@ const NavigationDrawer = () => {
 const StackNavigation = createNativeStackNavigator();
 const Routes = () => {
   return (
+   
     <NavigationContainer>
-      <StackNavigation.Navigator screenOptions={{headerShown: false}}>
+
+      <StatusBar  barStyle={'light-content'} hidden={true} animated={true}/>
+      <StackNavigation.Navigator screenOptions={{ headerShown: false }}>
         <StackNavigation.Screen name="SplashScreen" component={Splash} />
         <StackNavigation.Screen name="LoginScreen" component={Login} />
         <StackNavigation.Screen
