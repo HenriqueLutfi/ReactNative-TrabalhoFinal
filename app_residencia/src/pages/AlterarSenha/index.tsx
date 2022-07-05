@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {
   Alert,
   StyleSheet,
@@ -8,16 +8,37 @@ import {
 } from 'react-native';
 import {Input, Text, Button, Icon} from 'react-native-elements';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import AxiosInstance from '../../api/AxiosInstance';
 import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 
 const AlterarSenha = ({navigation}) => {
   const [senha, setSenha] = useState('');
   const [novaSenha, setNovaSenha] = useState('');
-  const [confirmaSenha, setConfirmaSenha] = useState('');
   const {usuario} = useContext(AutenticacaoContext);
 
+  
+    const alterSenha = async (senha: String) => {
+    console.log(senha)
+    const data = {
+      idUsuario: usuario.id,
+      nomeUsuario: usuario.nomeUsuario,
+      email: usuario.email,
+      senha: senha, 
+     };
+     try{
+      await AxiosInstance.post("/autenticacao/recuperar-senha", data)
+      setSenha("");
+      setNovaSenha("");
+      navigation.goBack();
+      Alert.alert("Registro feito sucesso");
+     }catch{
+      Alert.alert("Ops, acho que sua senha está errada");
+     };
+    };
+  
+
   const ValidarSenha = () => {
-    if (novaSenha === confirmaSenha) {
+    if (novaSenha === senha) {
       console.log('Nova senha digitada corretamente!');
       Alert.alert(
         "Senha",
@@ -65,8 +86,9 @@ const AlterarSenha = ({navigation}) => {
         <ScrollView style={styles.containerScroll}>
           <View style={styles.containerItems}>
             <Text style={styles.texto_entrada}>{'Alterar Senha'}</Text>
+            
             <Input
-              placeholder="Digite sua Senha Atual"
+              placeholder="Digite sua Nova Atual"
               onChangeText={setSenha}
               value={senha}
               style={{color: '#fff700'}}
@@ -74,19 +96,13 @@ const AlterarSenha = ({navigation}) => {
             />
 
             <Input
-              placeholder="Digite sua Nova Senha"
+              placeholder="Confirme sua nova Senha"
               onChangeText={setNovaSenha}
               value={novaSenha}
               style={{color: '#fff700'}}
               secureTextEntry
             />
-            <Input
-              placeholder="Confirme sua Nova Senha"
-              onChangeText={setConfirmaSenha}
-              value={confirmaSenha}
-              style={{color: '#fff700'}}
-              secureTextEntry
-            />
+           
 
             <Button
               title="Salvar"
@@ -100,7 +116,7 @@ const AlterarSenha = ({navigation}) => {
                 borderRadius: 3,
                 margin: 5,
               }}
-              onPress={ValidarSenha}
+              onPress= { () => alterSenha(senha)}
             />
           </View>
         </ScrollView>
