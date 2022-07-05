@@ -19,7 +19,7 @@ import LoadingComponent from '../../components/LoadingComponent/LoadingComponent
 import { CategoriasContext } from '../../context/CategoriasContext';
 import { ProdutosContext } from '../../context/ProdutosContext';
 import { ChosenCategoryContext } from '../../context/ChosenCategory';
-
+ 
 const Home = ({ route, navigation }) => {
   const { usuario } = useContext(AutenticacaoContext);
   const { loading, setLoading } = useContext(LoadingContext);
@@ -235,6 +235,7 @@ const styles = StyleSheet.create({
   },
   colorText: {
     color: '#fff700',
+    fontFamily: 'Starjout',
   },
   imageBack: {
     flex: 1,

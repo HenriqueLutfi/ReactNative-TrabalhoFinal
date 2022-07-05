@@ -34,6 +34,8 @@
 		09C5DB31039B4495ABBA8245 /* Stjldbl2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 448055F7D6C24CB3ADD0DF99 /* Stjldbl2.ttf */; };
 		624E8231427F4B4B914439CC /* Strjmono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1174CBD0A3BD4EF0B976E3FD /* Strjmono.ttf */; };
 		D08E8ED162DC4CCD85707E4C /* Star Jedi Logo MonoLine.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFD563F484C14768A8E69962 /* Star Jedi Logo MonoLine.ttf */; };
+		064D2BCB26784695865459FA /* Starjout.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AF832A7CCEE426CA4056962 /* Starjout.ttf */; };
+		D4DF26EF16604BA2BC877487 /* STJEDISE.TTF in Resources */ = {isa = PBXBuildFile; fileRef = CFDBBFEC90B44CC589E15715 /* STJEDISE.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		448055F7D6C24CB3ADD0DF99 /* Stjldbl2.ttf */ = {isa = PBXFileReference; name = "Stjldbl2.ttf"; path = "../src/assets/fonts/Stjldbl2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		1174CBD0A3BD4EF0B976E3FD /* Strjmono.ttf */ = {isa = PBXFileReference; name = "Strjmono.ttf"; path = "../src/assets/fonts/Strjmono.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		CFD563F484C14768A8E69962 /* Star Jedi Logo MonoLine.ttf */ = {isa = PBXFileReference; name = "Star Jedi Logo MonoLine.ttf"; path = "../src/assets/fonts/Star Jedi Logo MonoLine.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2AF832A7CCEE426CA4056962 /* Starjout.ttf */ = {isa = PBXFileReference; name = "Starjout.ttf"; path = "../src/assets/fonts/Starjout.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CFDBBFEC90B44CC589E15715 /* STJEDISE.TTF */ = {isa = PBXFileReference; name = "STJEDISE.TTF"; path = "../src/assets/fonts/STJEDISE.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,8 @@
 				448055F7D6C24CB3ADD0DF99 /* Stjldbl2.ttf */,
 				1174CBD0A3BD4EF0B976E3FD /* Strjmono.ttf */,
 				CFD563F484C14768A8E69962 /* Star Jedi Logo MonoLine.ttf */,
+				2AF832A7CCEE426CA4056962 /* Starjout.ttf */,
+				CFDBBFEC90B44CC589E15715 /* STJEDISE.TTF */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -333,6 +339,8 @@
 				09C5DB31039B4495ABBA8245 /* Stjldbl2.ttf in Resources */,
 				624E8231427F4B4B914439CC /* Strjmono.ttf in Resources */,
 				D08E8ED162DC4CCD85707E4C /* Star Jedi Logo MonoLine.ttf in Resources */,
+				064D2BCB26784695865459FA /* Starjout.ttf in Resources */,
+				D4DF26EF16604BA2BC877487 /* STJEDISE.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
