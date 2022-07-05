@@ -29,7 +29,12 @@ FavoritosSchema.schema = {
   },
 };
 
-let realm_carrinho = new Realm({schema: [ProdutoSchema, FavoritosSchema], schemaVersion: 2});
+let realm_carrinho = new Realm({
+  schema: [ProdutoSchema, FavoritosSchema],
+  schemaVersion: 2,
+});
+
+const [isFetching, setIsFetching] = useState(false);
 
 export function CarrinhoProvider({children}) {
   const listarProdutos = () => {
@@ -47,8 +52,6 @@ export function CarrinhoProvider({children}) {
   const contarQtdFavoritos = () => {
     return realm_carrinho.objects('Favoritos').length;
   };
-
-  const [isFetching, setIsFetching] = useState(false);
 
   const adicionarProduto = (
     _sku: string,
@@ -103,10 +106,11 @@ export function CarrinhoProvider({children}) {
     });
     // console.log(_nome)
     setIsFetching(true);
-    console.log(JSON.stringify(listarFavoritos()));
+    console.log('favoritos' + JSON.stringify(listarFavoritos()));
   };
 
   const removerProduto = produto => {
+    console.log(produto);
     realm_carrinho.write(() => {
       realm_carrinho.delete(produto);
     });
@@ -114,22 +118,27 @@ export function CarrinhoProvider({children}) {
     console.log(JSON.stringify(listarProdutos()));
   };
 
-  // const removerFavoritos = produto => {
-  //   realm_carrinho.write(() => {
-  //     realm_carrinho.delete(produto);
-  //   });
-  //   setIsFetching(true);
-  //   console.log(JSON.stringify(listarFavoritos()));
-  // };
-
+  const removerItemProduto = _id => {
+    console.log('dadada' + _id);
+    realm_carrinho.write(() => {
+      realm_carrinho.delete(
+        realm_carrinho
+          .objects('Produto')
+          .filter(produto => produto.id_produto === _id),
+      );
+    });
+    console.log(JSON.stringify(listarProdutos()));
+  };
   const removerItemFavoritos = _id => {
+    console.log(_id);
     realm_carrinho.write(() => {
       realm_carrinho.delete(
         realm_carrinho
           .objects('Favoritos')
-          .filter(produto => produto.id_produto == _id),
+          .filter(produto => produto.id_produto === _id),
       );
     });
+    console.log('favoritos' + JSON.stringify(listarFavoritos()));
   };
 
   const LimparCarrinho = () => {
@@ -146,6 +155,7 @@ export function CarrinhoProvider({children}) {
     }
     setIsFetching(true);
   };
+
   const LimparFavoritos = () => {
     var i = 1;
     while (realm_carrinho.objects('Favoritos').length > 0) {
@@ -167,13 +177,17 @@ export function CarrinhoProvider({children}) {
         listarProdutos,
         contarQtdProdutos,
         adicionarProduto,
+        removerItemProduto,
         removerProduto,
+        adicionarFavorito,
         // removerItemCarrinho,
         LimparCarrinho,
         isFetching,
         setIsFetching,
         listarFavoritos,
         LimparFavoritos,
+        contarQtdFavoritos,
+        removerItemFavoritos,
       }}>
       {children}
     </CarrinhoContext.Provider>

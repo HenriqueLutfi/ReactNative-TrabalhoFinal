@@ -27,8 +27,8 @@ const Produto = ({ route, navigation }) => {
     imagem_produto,
   } = route.params;
 
-  const { adicionarProduto } = useContext(CarrinhoContext)
-  const { adicionarProdutoFav } = useContext(FavoritosContext);
+  const { adicionarProduto, adicionarFavorito } = useContext(CarrinhoContext)
+  // const { adicionarProdutoFav } = useContext(FavoritosContext);
   const { produtos, setProdutos } = useContext(ProdutosContext);
 
 
@@ -42,8 +42,9 @@ const Produto = ({ route, navigation }) => {
       imagem_produto,
     );
   };
+  
   const handleFav = () => {
-    adicionarProdutoFav(
+    adicionarFavorito(
       sku,
       nome_produto,
       descricao_produto,
@@ -93,10 +94,8 @@ const Produto = ({ route, navigation }) => {
               />
             </TouchableOpacity>
             {/* <ButtonAddCart produto={route}/> */}
+            
             <TouchableOpacity>
-              <Text>Favoritar</Text>
-            </TouchableOpacity>
-            <View>
               <Button
                 onPress={() => handleFav()}
                 title="Favoritar"
@@ -113,7 +112,7 @@ const Produto = ({ route, navigation }) => {
                   marginLeft: 50
                 }}
               />
-            </View>
+            </TouchableOpacity>
             <View style={styles.container_starts}>
               <Text style={styles.colorText}>Avalie:</Text>
               <AirbnbRating showRating={false} size={20} />
