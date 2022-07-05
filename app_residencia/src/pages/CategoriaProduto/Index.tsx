@@ -19,7 +19,7 @@ import {ProdutosContext} from '../../context/ProdutosContext';
 import ProdutosCard from '../../components/ProdutoCards/ProdutosCards';
 import {ProdutoType} from '../../models/ProdutoType';
 
-const CategoriaProduto = () => {
+const CategoriaProduto = ({navigation}) => {
   const {usuario} = useContext(AutenticacaoContext);
   const {chosenCategory} = useContext(ChosenCategoryContext);
   const {produtos} = useContext(ProdutosContext);
@@ -28,6 +28,16 @@ const CategoriaProduto = () => {
     pesquisarCategoria();
   }, []);
 
+  const onRefresh = () => {
+    // pesquisarCategoria();
+    // wait(2000).then(() => setIsFetching(false));
+    // setIsFetching(false);
+  };
+
+  // let filtroProds = produtos.filter(produto => {
+  //   return produto.nomeCategoria === chosenCategory.nomeCategoria;
+  // });
+  // setProdutosCategoria(filtroProds);
   const pesquisarCategoria = () => {
     setProdutosCategoria([]);
     for (var i = 0; i < produtos.length; i++) {
@@ -56,17 +66,28 @@ const CategoriaProduto = () => {
         data={produtosCategoria}
         contentContainerStyle={{alignItems: 'center'}}
         keyExtractor={(item, index) => index.toString()}
+        // onRefresh={() => onRefresh()}
+        // refreshing={true}
+        // extraData={produtosCategoria}
         renderItem={categoria => {
           return (
             <TouchableHighlight
               // key={i}
               underlayColor="#fff700"
               activeOpacity={100}
-              // onPress={() =>
-              //   console.log(
-              //     `Categoria 1 Clicada ${categoria.item.nomeCategoria} foi clicada`,
-              //   )
-              // }
+              onPress={() => {
+                navigation.navigate({
+                  name: 'ProdutoScreen',
+                  params: {
+                    id_produto: categoria.item.idProduto,
+                    sku: categoria.item.sku,
+                    nome_produto: categoria.item.nomeProduto,
+                    descricao_produto: categoria.item.descricaoProduto,
+                    preco_produto: categoria.item.precoProduto,
+                    imagem_produto: categoria.item.imagemProduto,
+                  },
+                });
+              }}
               style={styles.botao_categoria}>
               <ProdutosCard produto={categoria.item} />
             </TouchableHighlight>
