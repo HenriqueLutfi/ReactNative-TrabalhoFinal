@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { FavoritosContext } from "../../context/FavoritosContext";
 
 
-const Favoritos = () => {
+const Favoritos = ({navigation}) => {
 
 const  {adicionarProdutoFav, contarQtdProdutos} = useContext(FavoritosContext)
 
