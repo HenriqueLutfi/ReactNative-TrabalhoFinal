@@ -14,6 +14,8 @@ import { CarrinhoContext } from '../../context/CarrinhoContext';
 import { ButtonAddCart } from '../../components/ButtonAddCart/ButtonAddCart';
 import { Button } from 'react-native-elements';
 import { Rating, AirbnbRating } from 'react-native-ratings';
+import { FavoritosContext } from '../../context/FavoritosContext';
+import { ProdutosContext } from '../../context/ProdutosContext';
 
 const Produto = ({ route, navigation }) => {
   const {
@@ -26,9 +28,22 @@ const Produto = ({ route, navigation }) => {
   } = route.params;
 
   const { adicionarProduto } = useContext(CarrinhoContext)
+  const { adicionarProdutoFav } = useContext(FavoritosContext);
+  const { produtos, setProdutos } = useContext(ProdutosContext);
+
+
 
   const handleAddProduto = () => {
     adicionarProduto(
+      sku,
+      nome_produto,
+      descricao_produto,
+      preco_produto,
+      imagem_produto,
+    );
+  };
+  const handleFav = () => {
+    adicionarProdutoFav(
       sku,
       nome_produto,
       descricao_produto,
@@ -81,6 +96,24 @@ const Produto = ({ route, navigation }) => {
             <TouchableOpacity>
               <Text>Favoritar</Text>
             </TouchableOpacity>
+            <View>
+              <Button
+                onPress={() => handleFav()}
+                title="Favoritar"
+                titleStyle={{
+                  color: '#fff700',
+                }}
+                buttonStyle={{
+                  backgroundColor: '#000000',
+                  borderWidth: 2,
+                  borderColor: '#fff700',
+                  borderRadius: 3,
+                  marginTop: 8,
+                  width: '70%',
+                  marginLeft: 50
+                }}
+              />
+            </View>
             <View style={styles.container_starts}>
               <Text style={styles.colorText}>Avalie:</Text>
               <AirbnbRating showRating={false} size={20} />

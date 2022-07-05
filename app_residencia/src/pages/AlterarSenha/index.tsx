@@ -15,10 +15,10 @@ const AlterarSenha = () => {
     const [confirmaSenha, setConfirmaSenha] = useState ('');
 
     const ValidarSenha = () => {
-      if (novaSenha !== confirmaSenha) {
-        console.log("Verifique as senhas digitadas!")
-      } else {
+      if (novaSenha === confirmaSenha) {
         console.log("Nova senha digitada corretamente!")
+      } else {
+        console.log("Verifique as senhas digitadas!")
       }
     }
 

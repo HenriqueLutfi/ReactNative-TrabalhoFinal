@@ -15,6 +15,8 @@ import Cadastro from '../pages/Cadastro';
 import AlterarSenha from '../pages/AlterarSenha';
 import PerfilDoUsuario from '../pages/PerfilDoUsuario';
 import { CarrinhoContext } from '../context/CarrinhoContext';
+import Favoritos from '../pages/Favoritos';
+import Splash from '../pages/SplashScrenn';
 
 
 
@@ -112,16 +114,27 @@ const NavigationDrawer = () => {
         options={{ title: 'Cadastro' }}
         component={Cadastro}
       />
-       <DrawerNavigation.Screen
+      <DrawerNavigation.Screen
         name="AlterarSenhaScreen"
-        options={{title: 'Alterar Senha'}}
+        options={{ title: 'Alterar Senha' }}
         component={AlterarSenha}
       />
-       <DrawerNavigation.Screen
+      <DrawerNavigation.Screen
         name="PerfilDoUsuarioScreen"
-        options={{title: 'Perfil Do Usuario'}}
+        options={{ title: 'Perfil Do Usuario' }}
         component={PerfilDoUsuario}
       />
+      <DrawerNavigation.Screen
+        name="FavoritosUsuarioScreen"
+        options={{ title: 'Favoritos' }}
+        component={Favoritos}
+      />
+      <DrawerNavigation.Screen
+        name="SplashScreen"
+        options={{ title: 'splash' }}
+        component={Splash}
+      />
+
     </DrawerNavigation.Navigator>
   );
 };
@@ -134,6 +147,7 @@ const Routes = () => {
 
       <StatusBar  barStyle={'light-content'} hidden={true} animated={true}/>
       <StackNavigation.Navigator screenOptions={{ headerShown: false }}>
+        <StackNavigation.Screen name="SplashScreen" component={Splash} />
         <StackNavigation.Screen name="LoginScreen" component={Login} />
         <StackNavigation.Screen
           name="HomeScreen"
@@ -147,6 +161,8 @@ const Routes = () => {
           component={CategoriaProduto}
         />
         <StackNavigation.Screen name="CadastroScreen" component={Cadastro} />
+        <StackNavigation.Screen name="FavoritosScreen" component={Favoritos} />
+
       </StackNavigation.Navigator>
 
     </NavigationContainer>
