@@ -251,6 +251,7 @@ const styles = StyleSheet.create({
   },
   colorText: {
     color: '#fff700',
+    fontFamily: 'Starjout',
   },
   imageBack: {
     flex: 1,
