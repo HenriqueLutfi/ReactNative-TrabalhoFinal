@@ -1,6 +1,7 @@
 import React, {createContext, useState} from 'react';
 import Realm from 'realm';
 
+
 export const CarrinhoContext = createContext({});
 
 class ProdutoSchema extends Realm.Object {}
@@ -106,7 +107,7 @@ export function CarrinhoProvider({children}) {
     });
     // console.log(_nome)
     setIsFetching(true);
-    console.log('favoritos' + JSON.stringify(listarFavoritos()));
+    // console.log('favoritos' + JSON.stringify(listarFavoritos()));
   };
 
   const removerProduto = produto => {
@@ -115,7 +116,7 @@ export function CarrinhoProvider({children}) {
       realm_carrinho.delete(produto);
     });
     setIsFetching(true);
-    console.log(JSON.stringify(listarProdutos()));
+    // console.log(JSON.stringify(listarProdutos()));
   };
 
   const removerItemProduto = _id => {
@@ -127,7 +128,7 @@ export function CarrinhoProvider({children}) {
           .filter(produto => produto.id_produto === _id),
       );
     });
-    console.log(JSON.stringify(listarProdutos()));
+    // console.log(JSON.stringify(listarProdutos()));
   };
   const removerItemFavoritos = _id => {
     console.log(_id);
@@ -138,7 +139,7 @@ export function CarrinhoProvider({children}) {
           .filter(produto => produto.id_produto === _id),
       );
     });
-    console.log('favoritos' + JSON.stringify(listarFavoritos()));
+    // console.log('favoritos' + JSON.stringify(listarFavoritos()));
   };
 
   const LimparCarrinho = () => {
@@ -170,6 +171,21 @@ export function CarrinhoProvider({children}) {
     }
     setIsFetching(true);
   };
+  const ValorTotalCarrinho = () => {
+    var i = 1;
+    console.log('socorro'+i)
+    var soma = 0;
+    var produto;
+    // while (realm_carrinho.objects('Produto').length <= i) {
+      produto = realm_carrinho
+        .objects('Produto')
+        .filter(produto => produto.id_produto === 1),
+        console.log(produto)
+        // produto.preco_produto
+        i++;
+    // }
+    // setIsFetching(true);
+  };
 
   return (
     <CarrinhoContext.Provider
@@ -188,6 +204,7 @@ export function CarrinhoProvider({children}) {
         LimparFavoritos,
         contarQtdFavoritos,
         removerItemFavoritos,
+        ValorTotalCarrinho,
       }}>
       {children}
     </CarrinhoContext.Provider>
