@@ -7,7 +7,7 @@ import {
   ImageBackground,
   TouchableHighlight,
   BackHandler,
-  FlatList
+  FlatList,
 } from 'react-native';
 import {Rating, AirbnbRating} from 'react-native-ratings';
 import {Text, Card, Input, Icon} from 'react-native-elements';
@@ -112,8 +112,8 @@ const Home = ({route, navigation}) => {
         }}
         resizeMode="cover"
         style={styles.imageBack}>
+        <LoadingComponent />
         <ScrollView style={styles.containerItems}>
-          <LoadingComponent />
           <View>
             <Input
               style={{color: '#fff700'}}

@@ -1,7 +1,6 @@
 import React, {createContext, useState} from 'react';
 import Realm from 'realm';
 
-
 export const CarrinhoContext = createContext({});
 
 class ProdutoSchema extends Realm.Object {}
@@ -173,16 +172,15 @@ export function CarrinhoProvider({children}) {
   };
   const ValorTotalCarrinho = () => {
     var i = 1;
-    console.log('socorro'+i)
     var soma = 0;
     var produto;
     // while (realm_carrinho.objects('Produto').length <= i) {
-      produto = realm_carrinho
-        .objects('Produto')
-        .filter(produto => produto.id_produto === 1),
-        console.log(produto)
-        // produto.preco_produto
-        i++;
+    produto = realm_carrinho
+      .objects('Produto')
+      .filter(produto => produto.id_produto === 1);
+    console.log('tentativa soma' + produto.preco_produto);
+    // produto.preco_produto
+    i++;
     // }
     // setIsFetching(true);
   };
