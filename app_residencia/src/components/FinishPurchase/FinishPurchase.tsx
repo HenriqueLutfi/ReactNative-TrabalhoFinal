@@ -8,7 +8,7 @@ import {CarrinhoContext} from '../../context/CarrinhoContext';
 
 export const FinishPurchase = () => {
   // const {cart} = useContext(CartContext);
-  const {contarQtdProdutos, listarProdutos} = useContext(CarrinhoContext);
+  const {contarQtdProdutos, listarProdutos, ValorTotalCarrinho} = useContext(CarrinhoContext);
 
   const [somaTotal, setSomaTotal] = useState(0);
   const [carrinho, setCarrinho] = useState();
@@ -25,6 +25,7 @@ export const FinishPurchase = () => {
   const getDadosCarrinho = () => {
     setCarrinho(listarProdutos());
     setQtd(contarQtdProdutos())
+    setSomaTotal(ValorTotalCarrinho())
   };
 
   function SomaProdutos() {
@@ -39,6 +40,7 @@ export const FinishPurchase = () => {
     //   soma += parseFloat(cart[i].precoProduto);
     // }
   }
+  
 
   return (
     <View style={styles.container}>
