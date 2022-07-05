@@ -16,7 +16,6 @@ import LoadingComponent from '../../components/LoadingComponent/LoadingComponent
 import Cadastro from '../Cadastro';
 import storewars from '../../assets/storewars.png';
 
-
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
