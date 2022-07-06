@@ -76,7 +76,7 @@ const Cadastro = () => {
     );
 
   };
-  const [imageUser, setImageUser] = useState('https://thumbs.dreamstime.com/b/vetor-de-avatar-do-perfil-silhueta-masculino-desconhecido-pessoas-desconhecidas-masculina-175294833.jpg');
+  const [imageUser, setImageUser] = useState("https://i.imgur.com/EP6qndw.png");
   const pickImageFromGalery = async () => {
 
     const options: ImageLibraryOptions = {
