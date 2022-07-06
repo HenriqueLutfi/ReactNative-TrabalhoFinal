@@ -48,19 +48,20 @@ const Login = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={{
-          uri: 'https://i.pinimg.com/originals/d7/a6/11/d7a61190a836bdcfc62bf97af4f4c74b.png',
-        }}
+        source={require('../../assets/maior.png')}
+        // source={{
+          // uri: 'https://i.pinimg.com/originals/d7/a6/11/d7a61190a836bdcfc62bf97af4f4c74b.png',
+        // }}
         resizeMode="cover"
         style={styles.image}>
         <View style={styles.containerItems}>
           <View style={styles.container_logo}>
-            <Image source={storewars} style={styles.image_store} />
+            <Image source={require('../../assets/logotrans.png')} style={styles.image_store} />
           </View>
 
-          <Text style={styles.texto_entrada}>{'Bem-vindo'}</Text>
+          {/* <Text style={styles.texto_entrada}>{'Bem-vindo'}</Text> */}
           <Input
-            placeholder="E-mail"
+            placeholder="senha"
             onChangeText={setEmail}
             value={email}
             style={{color: '#f0D906'}}
@@ -77,29 +78,30 @@ const Login = ({navigation}) => {
               <Icon name="key" color="#f0D906" type="font-awesome" size={24} />
             }
             secureTextEntry
-          />
+            />
           <Button
             title="Entrar"
             titleStyle={{
-              color: '#f0D906',
+              color: '#050505',
             }}
             buttonStyle={{
-              backgroundColor: '#BDC55068',
-              borderWidth: 2,
-              borderColor: '#BDC55068',
+              backgroundColor: '#ffdf4e68',
+              borderWidth: 1,
+              borderColor: '#ffdf4e68',
               borderRadius: 3,
+              // height: 
             }}
             onPress={() => handleLogin(email, senha)}
           />
           <Button
             title="Cadastre-se"
             titleStyle={{
-              color: '#f0D906',
+              color: '#080808',
             }}
             buttonStyle={{
-              backgroundColor: '#BDC55068',
-              borderWidth: 2,
-              borderColor: '#f0D906',
+              backgroundColor: '#ffdf4e68',
+              borderWidth: 1,
+              borderColor: '#ffdf4e68',
               borderRadius: 3,
               marginTop: 8,
             }}
@@ -119,19 +121,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   containerItems: {
-    borderWidth: 4,
-    borderColor: '#BDC55068',
+    // borderWidth: 10,
+    // borderColor: '#c5505068',
     borderRadius: 15,
-    padding: 16,
+    padding: 40,
     alignItems: 'stretch',
     justifyContent: 'center',
+    marginBottom: 250,
     zIndex: 0,
   },
   texto_entrada: {
     textAlign: 'center',
-   
     fontFamily:'Starjout',
-    marginBottom: 10,
+    marginBottom: 100,
     color: '#f0D906',
     borderStyle: 'solid',
   },
@@ -140,15 +142,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   container_logo: {
-    width: 200,
+    width: 50,
     height: 80,
-    marginBottom: 50,
+    marginBottom: 150,
     alignContent: 'center',
   },
   image_store: {
     width: 300,
     height: 300,
-    marginLeft: '5%',
+    marginLeft: '10%',
   },
 });
 
