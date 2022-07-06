@@ -40,10 +40,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    
   },
   container: {
     justifyContent: 'flex-start',
     alignItems: 'center',
+
   },
   containerItems: {
     borderWidth: 4,
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'stretch',
     justifyContent: 'center',
-    // zIndex: 0,
+    zIndex: 1,
     backgroundColor: '#000000a9',
   },
   colorText: {
