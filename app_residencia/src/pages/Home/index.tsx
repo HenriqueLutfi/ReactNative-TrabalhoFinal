@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   BackHandler,
   FlatList,
+  Image
 } from 'react-native';
 import {Rating, AirbnbRating} from 'react-native-ratings';
 import {Text, Card, Input, Icon} from 'react-native-elements';
@@ -113,8 +114,9 @@ const Home = ({route, navigation}) => {
         resizeMode="cover"
         style={styles.imageBack}>
         <LoadingComponent />
-        <View style={styles.titulos}>
-          <Text style={styles.tituloText}>Carrinho</Text>
+        <View style={styles.containerLogo}>
+          <Image style={styles.logo} source={require('../../assets/logohome.png')}/>
+          {/* <Text style={styles.tituloText}>Home</Text> */}
         </View>
         <ScrollView style={styles.containerItems}>
           <View>
@@ -267,6 +269,16 @@ const styles = StyleSheet.create({
     color: '#fff700',
     fontFamily: 'Starjout',
     fontSize:35,
+  },
+  logo:{
+    width: '50%',
+    height: '50%',
+  },
+  containerLogo:{
+    alignItems:'center',
+    justifyContent:'center',
+    width: 'auto',
+    height: '20%',
   }
 });
 
