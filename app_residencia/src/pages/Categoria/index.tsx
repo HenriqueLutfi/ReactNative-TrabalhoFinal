@@ -56,7 +56,7 @@ const Categoria = () => {
           return (
             <TouchableHighlight
               // key={i}
-              underlayColor="#fff700"
+              underlayColor="#f0D906"
               activeOpacity={100}
               onPress={() =>
                 console.log(
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   colorText: {
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
     fontSize:35,
   },

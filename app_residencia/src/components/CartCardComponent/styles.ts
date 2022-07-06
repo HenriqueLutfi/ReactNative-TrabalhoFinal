@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Starjout',
-    color: '#fff700',
+    color: '#f0D906',
     fontSize: 15,
   },
   textDescricao: {

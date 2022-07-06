@@ -25,7 +25,7 @@ function LoadingComponent() {
             <ActivityIndicator
               animating={loading}
               size={'large'}
-              color="#fff700"
+              color="#f0D906"
             />
           </View>
         </View>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   containerItems: {
     borderWidth: 4,
-    borderColor: '#fff700',
+    borderColor: '#f0D906',
     borderRadius: 15,
     padding: 16,
     alignItems: 'stretch',
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000a9',
   },
   colorText: {
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
     textAlign: 'center',
   },
