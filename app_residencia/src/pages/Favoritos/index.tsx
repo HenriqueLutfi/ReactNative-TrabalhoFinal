@@ -64,9 +64,8 @@ const styles = StyleSheet.create({
 
   colorText: {
     color: '#fff700',
-    fontSize: 30,
+    fontFamily: 'Starjout',
     textAlign: 'center',
-    fontWeight: 'bold',
     marginLeft: 25,
     width: '80%',
   },
