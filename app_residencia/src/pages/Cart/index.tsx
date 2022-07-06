@@ -53,7 +53,7 @@ const Cart = () => {
       <FlatList
         data={carrinho}
         keyExtractor={(item, index) => index.toString()}
-        onRefresh={() => onRefresh()}
+        onRefresh={onRefresh}
         refreshing={isFetching}
         extraData={carrinho}
         renderItem={({item, index}) => {
