@@ -33,6 +33,7 @@ const Cart = () => {
   // }
 
   const onRefresh = () => {
+    
     getDadosCarrinho();
     // wait(2000).then(() => setIsFetching(false));
     setIsFetching(false);

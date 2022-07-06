@@ -13,8 +13,8 @@ import {color} from 'react-native-reanimated';
 import {AutenticacaoContext} from '../../context/AutenticacaoContext';
 
 const PerfilDoUsuario = ({navigation}) => {
-  const {usuario} = useContext(AutenticacaoContext);
-  console.log("usuario" + JSON.stringify(usuario.fotoPerfil));
+  const {usuario, setUsuario} = useContext(AutenticacaoContext);
+  console.log('usuario' + JSON.stringify(usuario.fotoPerfil));
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -35,8 +35,8 @@ const PerfilDoUsuario = ({navigation}) => {
               <Image
                 style={styles.imageUser}
                 source={{
-                  uri: usuario.fotoPerfil
-                }}           
+                  uri: usuario.fotoPerfil,
+                }}
               />
             </View>
             <Text style={styles.containerText}>Nome do Usuário</Text>
@@ -55,6 +55,28 @@ const PerfilDoUsuario = ({navigation}) => {
               }}
               onPress={() => navigation.navigate('AlterarSenhaScreen')}
             />
+            <Button
+              title="LogOut"
+              titleStyle={styles.textButton}
+              buttonStyle={{
+                backgroundColor: '#bdc55068',
+                borderWidth: 2,
+                borderColor: '#bdc55068',
+                borderRadius: 3,
+                margin: 5,
+              }}
+              onPress={() => {
+                setUsuario(({
+                  id: 0,
+                  name: '',
+                  fotoPerfil: '',
+                  email: '',
+                  token: '',
+                }))
+                console.log(usuario)
+                navigation.navigate('LoginScreen');
+              }}
+            />
           </View>
         </ScrollView>
       </ImageBackground>
@@ -70,7 +92,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   // (botao alterar senha)
-  textButton: {  
+  textButton: {
     color: '#f0D906',
     fontFamily: 'Starjout',
   },
@@ -112,7 +134,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#f0D906',
     textAlign: 'center',
-    fontSize:20,
+    fontSize: 20,
     margin: 5,
   },
   // (titulo nome usuario e email)
