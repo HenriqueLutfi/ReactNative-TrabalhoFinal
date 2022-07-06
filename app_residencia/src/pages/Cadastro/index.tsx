@@ -135,6 +135,7 @@ const Cadastro = () => {
               onChangeText={setSenha}
               value={senha}
               style={{ color: '#fff700' }}
+              secureTextEntry
             />
 
             <Button

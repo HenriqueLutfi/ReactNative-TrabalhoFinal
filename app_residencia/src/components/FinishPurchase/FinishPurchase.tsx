@@ -44,11 +44,6 @@ export const FinishPurchase = () => {
   }
   function showAlert() {
     Alert.alert('Compra', 'Compra Finalizada com sucesso', [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
       {text: 'OK', onPress: () => console.log(LimparCarrinho())},
     ]);
   }

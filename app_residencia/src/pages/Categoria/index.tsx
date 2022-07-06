@@ -14,9 +14,11 @@ import {AutenticacaoContext} from '../../context/AutenticacaoContext';
 import CategoriasCard from '../../components/CategoriaCards/categoriaCard';
 import CategoriaService from '../../services/CategoriaService';
 import {CategoriaType} from '../../models/CategoriaType';
+import { ChosenCategoryContext } from '../../context/ChosenCategory';
 
-const Categoria = () => {
+const Categoria = ({navigation}) => {
   const [categoria, setCategoria] = useState<CategoriaType[]>([]);
+  const {setChosenCategory} = useContext(ChosenCategoryContext);
 
   useEffect(() => {
     getDadosCategoria();
@@ -38,6 +40,7 @@ const Categoria = () => {
       });
     // setCategoria(CategoriaService())
   };
+  
   return (
     <ImageBackground
       source={{
@@ -56,13 +59,15 @@ const Categoria = () => {
           return (
             <TouchableHighlight
               // key={i}
-              underlayColor="#fff700"
+              underlayColor="#f0D906"
               activeOpacity={100}
-              onPress={() =>
+              onPress={() => {
                 console.log(
                   `Categoria 1 Clicada ${categoria.item.nomeCategoria} foi clicada`,
-                )
-              }
+                );
+                setChosenCategory(categoria.item);
+                navigation.navigate('CategoriaProdutoScreen');
+              }}
               style={styles.botao_categoria}>
               <CategoriasCard categoria={categoria.item} />
             </TouchableHighlight>
@@ -92,7 +97,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   colorText: {
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
     fontSize:35,
   },

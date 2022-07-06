@@ -37,7 +37,7 @@ const BottomTabNavigator = () => {
           tabBarLabel: '',
           tabBarIcon: () => {
             return (
-              <Icon name="home" color="#fff700" type="font-awesome" size={24} />
+              <Icon name="home" color="#f0D700" type="font-awesome" size={24} />
             );
           },
         }}
@@ -49,7 +49,7 @@ const BottomTabNavigator = () => {
           tabBarLabel: '',
           tabBarIcon: () => {
             return (
-              <Icon name="bars" color="#fff700" type="font-awesome" size={24} />
+              <Icon name="bars" color="#f0D700" type="font-awesome" size={24} />
             );
           },
         }}
@@ -61,7 +61,7 @@ const BottomTabNavigator = () => {
           tabBarLabel: '',
           tabBarIcon: () => {
             return (
-              <Icon name="star" color="#fff700" type="font-awesome" size={24} />
+              <Icon name="star" color="#f0D700" type="font-awesome" size={24} />
             );
           },
         }}
@@ -73,7 +73,7 @@ const BottomTabNavigator = () => {
           tabBarLabel: '',
           tabBarIcon: () => {
             return (
-              <Icon name="user" color="#fff700" type="font-awesome" size={24} />
+              <Icon name="user" color="#f0D700" type="font-awesome" size={24} />
             );
           },
         }}
@@ -87,7 +87,7 @@ const BottomTabNavigator = () => {
             return (
               <BadgeIcon
                 name="shopping-cart"
-                color="#fff700"
+                color="#f0D906"
                 type="font-awesome"
                 size={24}
               />

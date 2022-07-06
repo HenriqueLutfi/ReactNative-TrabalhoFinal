@@ -139,15 +139,17 @@ const Home = ({ route, navigation }) => {
         <ScrollView style={styles.containerItems}>
           <View>
             <Input
-              style={{ color: '#fff700' }}
+
+              style={{ color: '#f0D906' }}
               placeholder="buscar produto"
-              placeholderTextColor={'#fff700'}
+              placeholderTextColor={'#f0D906'}
               onChangeText={(e) => { setBusca(e) }}
+
               value={busca}
               leftIcon={
                 <Icon
                   name="search"
-                  color='#fff700'
+                  color="#f0D906"
                   type="font-awesome"
                   size={24}
                 />
@@ -164,7 +166,7 @@ const Home = ({ route, navigation }) => {
               return (
                 <TouchableHighlight
                   // key={i}
-                  underlayColor="#fff700"
+                  underlayColor="#f0D906"
                   activeOpacity={10}
                   onPress={() => {
                     console.log(
@@ -180,6 +182,7 @@ const Home = ({ route, navigation }) => {
             }}
           />
           <Text style={styles.colorText}>{'Recentes'}</Text>
+
           {!loading &&
             <FlatList
               onEndReached={() => { getProdutos() }}
@@ -214,6 +217,7 @@ const Home = ({ route, navigation }) => {
               }}
             />
           }
+
           <Text style={styles.colorText}> {'Destaque'}</Text>
           <ScrollView style={styles.bottomCardScrollView}>
             <TouchableOpacity>
@@ -273,11 +277,11 @@ const styles = StyleSheet.create({
   },
   BottomCardStyle: {
     backgroundColor: '#000000',
-    borderColor: '#fff700',
+    borderColor: '#f0D906',
     borderRadius: 15,
   },
   colorText: {
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
   },
   imageBack: {
@@ -287,8 +291,10 @@ const styles = StyleSheet.create({
   titulos: {
     alignItems: 'center'
   },
-  tituloText: {
-    color: '#fff700',
+
+  tituloText:{
+    color: '#f0D906',
+
     fontFamily: 'Starjout',
     fontSize: 35,
   },

@@ -110,11 +110,12 @@ const AlterarSenha = ({navigation}) => {
                 color: '#fff700',
               }}
               buttonStyle={{
-                backgroundColor: '#000000',
+                backgroundColor: '#bdc55068',
                 borderWidth: 2,
-                borderColor: '#fff700',
+                borderHeight: 5,
+                borderColor: '#bdc55068',
                 borderRadius: 3,
-                margin: 5,
+                margin: 50,
               }}
               onPress= { () => alterSenha(senha)}
             />
@@ -135,7 +136,8 @@ const styles = StyleSheet.create({
   },
   containerItems: {
     borderWidth: 4,
-    borderColor: '#fff700',
+    borderColor: '#bdc55068',
+    backgroundColor: '#bdc55068',
     borderRadius: 15,
     alignItems: 'stretch',
     justifyContent: 'center',
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
   texto_entrada: { 
     textAlign: 'center',
     fontFamily: 'Starjout',
-    marginBottom: 10,
+    marginBottom: 60,
     color: '#fff700',
     // (botao alterar)
   },

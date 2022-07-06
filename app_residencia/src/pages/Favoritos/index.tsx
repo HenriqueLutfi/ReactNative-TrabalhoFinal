@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   colorText: {
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
     fontSize: 35,
   },

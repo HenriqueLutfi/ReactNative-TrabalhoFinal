@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
 //   },
   textColor: {
     // textAlign: 'center',
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
     },
   image: {
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
   textButton: {
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
     fontSize:15,
   },
