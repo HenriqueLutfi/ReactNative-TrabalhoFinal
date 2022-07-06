@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     zIndex: 0,
     // (font imput usuario e email)
     fontWeight: 'bold',
-    color: '##f0D906',
+    color: '#f0D906',
     textAlign: 'center',
     fontSize:20,
     margin: 5,
