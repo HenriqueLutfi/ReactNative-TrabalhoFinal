@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'center',
-        color: '#fff700',
+        color: '#f0D906',
         fontFamily: 'Starjout',
     },
     image: {
