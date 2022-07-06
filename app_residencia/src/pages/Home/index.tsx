@@ -306,7 +306,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: 'auto',
-    height: '20%',
+
+    height: '22%',
   },
   loading: {
     padding: 10
