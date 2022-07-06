@@ -3,4 +3,4 @@ export type UsuarioType={
     name:string;
     email:string;
     token:string;
-}
+};
