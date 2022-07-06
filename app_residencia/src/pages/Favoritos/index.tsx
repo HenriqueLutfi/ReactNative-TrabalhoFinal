@@ -32,7 +32,9 @@ const Favoritos = ({navigation}) => {
         }}
         resizeMode="cover"
         style={styles.imageBack}>
-        <Text style={styles.colorText}>Favoritos</Text>
+        <View style={styles.titulos}>
+          <Text style={styles.colorText}>Favoritos</Text>
+        </View>
         <FlatList
           data={favoritos}
           keyExtractor={(item, index) => index.toString()}
@@ -61,13 +63,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-
   colorText: {
     color: '#fff700',
     fontFamily: 'Starjout',
-    textAlign: 'center',
-    marginLeft: 25,
-    width: '80%',
+    fontSize: 35,
+  },
+  titulos: {
+    alignItems:'center'
   },
 });
 
