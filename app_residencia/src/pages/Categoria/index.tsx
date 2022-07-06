@@ -45,6 +45,9 @@ const Categoria = () => {
       }}
       resizeMode="cover"
       style={styles.imageBack}>
+      <View style={styles.titulos}>
+        <Text style={styles.colorText}>Categorias</Text>
+      </View>
       <FlatList
         data={categoria}
         contentContainerStyle={{alignItems: 'center'}}
@@ -88,5 +91,13 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     margin: 5,
   },
+  colorText: {
+    color: '#fff700',
+    fontFamily: 'Starjout',
+    fontSize:35,
+  },
+  titulos:{
+    alignItems:'center'
+  }
 });
 export default Categoria;

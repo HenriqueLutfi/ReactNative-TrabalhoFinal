@@ -113,6 +113,9 @@ const Home = ({route, navigation}) => {
         resizeMode="cover"
         style={styles.imageBack}>
         <LoadingComponent />
+        <View style={styles.titulos}>
+          <Text style={styles.tituloText}>Carrinho</Text>
+        </View>
         <ScrollView style={styles.containerItems}>
           <View>
             <Input
@@ -131,7 +134,7 @@ const Home = ({route, navigation}) => {
               }
             />
           </View>
-          <Text style={{color: '#fff700'}}>{'Categorias'}</Text>
+          <Text style={styles.colorText}>{'Categorias'}</Text>
           <FlatList
             data={categorias}
             horizontal={true}
@@ -156,7 +159,7 @@ const Home = ({route, navigation}) => {
               );
             }}
           />
-          <Text style={{color: '#fff700'}}>{'Recentes'}</Text>
+          <Text style={styles.colorText}>{'Recentes'}</Text>
           <FlatList
             data={produtos}
             horizontal={true}
@@ -187,7 +190,7 @@ const Home = ({route, navigation}) => {
               );
             }}
           />
-          <Text style={{color: '#fff700'}}> {'Destaque'}</Text>
+          <Text style={styles.colorText}> {'Destaque'}</Text>
           <ScrollView style={styles.bottomCardScrollView}>
             <TouchableOpacity>
               <Card containerStyle={styles.BottomCardStyle}>
@@ -257,6 +260,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  titulos:{
+    alignItems:'center'
+  },
+  tituloText:{
+    color: '#fff700',
+    fontFamily: 'Starjout',
+    fontSize:35,
+  }
 });
 
 export default Home;
