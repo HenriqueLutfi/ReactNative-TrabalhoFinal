@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   titulo_perfil_usuario: {
     textAlign: 'center',
     fontFamily: 'Starjout',
-    marginBottom: 10,
+    marginBottom: 40,
     color: '#fff700',
     // borderStyle: 'solid',
   },
@@ -86,18 +86,20 @@ const styles = StyleSheet.create({
   containerItems: {
     borderWidth: 2,
     borderColor: '#fff700',
+    // background-color: '#fff700',
+    // padding: 1.5rem
     borderRadius: 15,
     alignItems: 'stretch',
     justifyContent: 'center',
     zIndex: 0,
-    // marginBottom: 20,
+    marginBottom: 20,
     color: '#fff700',
     textAlign: 'center',
     fontSize: 25,
   },
   containerInput: {
     borderWidth: 1,
-    borderColor: '#fffb00',
+    borderColor: '#fff700',
     borderRadius: 10,
     alignItems: 'stretch',
     justifyContent: 'center',
