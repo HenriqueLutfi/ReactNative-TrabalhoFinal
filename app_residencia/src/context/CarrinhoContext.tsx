@@ -127,6 +127,7 @@ export function CarrinhoProvider({children}) {
           .filter(produto => produto.id_produto === _id),
       );
     });
+    setIsFetching(true);
     // console.log(JSON.stringify(listarProdutos()));
   };
   const removerItemFavoritos = _id => {

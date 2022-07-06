@@ -10,6 +10,7 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
+import {Icon} from 'react-native-elements';
 import {CartContext} from '../../context/CartContext';
 import {CarrinhoContext} from '../../context/CarrinhoContext';
 import {ButtonAddCart} from '../../components/ButtonAddCart/ButtonAddCart';
@@ -41,11 +42,6 @@ const Produto = ({route, navigation}) => {
       imagem_produto,
     );
     Alert.alert('Carrinho', 'Produto adicionado ao carrinho', [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
       {text: 'OK', onPress: () => console.log()},
     ]);
   };
@@ -59,11 +55,6 @@ const Produto = ({route, navigation}) => {
       imagem_produto,
     );
     Alert.alert('Favoritos', 'Produto adicionado aos Favoritos', [
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'cancel',
-      },
       {text: 'OK', onPress: () => console.log()},
     ]);
   };
@@ -76,29 +67,22 @@ const Produto = ({route, navigation}) => {
         }}
         resizeMode="cover"
         style={styles.imageBack}>
-        <ScrollView style={styles.containerItems}>
-          <View>
-            <TouchableOpacity 
-                  onPress={() => () => navigation.goBack()}>
-              <Button
-                onPress={() => navigation.goBack()}
-                title="Voltar"
-                titleStyle={{
-                  color: '#fff700',
-                }}
-                buttonStyle={{
-                  backgroundColor: '#000000',
-                  borderWidth: 2,
-                  borderColor: '#fff700',
-                  borderRadius: 3,
-                  marginTop: 8,
-                  width: '70%',
-                  marginLeft: 50,
-                }}
+        <View style={styles.headerBackContainer}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.headerBackButton}>
+            <View style={styles.headerBackIcon}>
+              <Icon
+                name="arrow-left"
+                color="#fff700"
+                type="font-awesome"
+                size={24}
               />
-            </TouchableOpacity>
-          </View>
-
+            </View>
+            <Text style={styles.colorText}>Voltar</Text>
+          </TouchableOpacity>
+        </View>
+        <ScrollView style={styles.containerItems}>
           {/* <View style={styles.container_imagem}> */}
 
           {/* </View> */}
@@ -172,6 +156,7 @@ const styles = StyleSheet.create({
     borderColor: '#fff700',
     borderRadius: 10,
     padding: 10,
+    marginBottom: 20,
   },
   container: {
     flex: 1,
@@ -189,8 +174,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     fontFamily: 'Starjout',
-    marginLeft: 25,
-    width: '80%',
+  },
+  backText: {
+    color: '#fff700',
+    fontSize: 15,
+    textAlign: 'left',
+    fontFamily: 'Starjout',
   },
   image: {
     width: '100%',
@@ -207,8 +196,23 @@ const styles = StyleSheet.create({
     // flexDirection: 'row',
   },
   viewStar: {
-    alignItems:'center',
+    alignItems: 'center',
     // width: '50%',
+  },
+  headerBackContainer: {
+    width: '100%',
+  },
+  headerBackIcon: {
+    width: '20%',
+    justifyContent: 'center',
+
+  },
+  headerBackButton: {
+
+    width: '60%',
+    flexDirection: 'row',
+    // alignItems: 'flex-start',
+    justifyContent: 'center',
   },
 });
 export default Produto;
