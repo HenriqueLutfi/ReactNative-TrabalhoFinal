@@ -15,12 +15,11 @@ import {CarrinhoContext} from '../../context/CarrinhoContext';
 
 const Cart = () => {
   const {cart} = useContext(CartContext);
-  const {listarProdutos, isFetching, setIsFetching} = useContext(CarrinhoContext);
+  const {listarProdutos, isFetching, setIsFetching} =
+    useContext(CarrinhoContext);
 
   const {usuario} = useContext(AutenticacaoContext);
   const [carrinho, setCarrinho] = useState();
-
-
 
   useEffect(() => {
     getDadosCarrinho();
@@ -48,6 +47,9 @@ const Cart = () => {
       }}
       resizeMode="cover"
       style={styles.imageBack}>
+      <View style={styles.titulos}>
+        <Text style={styles.colorText}>Carrinho</Text>
+      </View>
       <FlatList
         data={carrinho}
         keyExtractor={(item, index) => index.toString()}
@@ -71,5 +73,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  colorText: {
+    color: '#fff700',
+    fontFamily: 'Starjout',
+    fontSize:35,
+  },
+  titulos:{
+    alignItems:'center'
+  }
 });
 export default Cart;

@@ -33,4 +33,20 @@ export const styles = StyleSheet.create({
     height: 100,
     borderRadius: 10,
   },
+  textButton: {
+    color: '#fff700',
+    fontFamily: 'Starjout',
+    fontSize:15,
+  },
+  viewButtonsRow:{
+    flexDirection:'row'
+  },
+  viewButtons:{
+    width:'50%',
+    justifyContent:'center',
+    padding: 5,
+  },
+  viewText:{
+    alignItems:'center'
+  }
 });

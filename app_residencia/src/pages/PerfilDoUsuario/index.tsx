@@ -23,10 +23,13 @@ const PerfilDoUsuario = ({navigation}) => {
         }}
         resizeMode="cover"
         style={styles.imageBack}>
+        <View style={styles.titulos}>
+          <Text style={styles.tituloText}>Perfil</Text>
+        </View>
         <ScrollView style={styles.containerScroll}>
           <View style={styles.containerItems}>
             <Text style={styles.titulo_perfil_usuario}>
-              {'Perfil do Usuário'}
+              {'informações do Usuário'}
             </Text>
             <View style={styles.containerFotoPerfil}>
               <Image
@@ -42,9 +45,7 @@ const PerfilDoUsuario = ({navigation}) => {
             <Text style={styles.containerInput}>{usuario.email}</Text>
             <Button
               title="Alterar Senha"
-              titleStyle={{
-                color: '#fff700',
-              }}
+              titleStyle={styles.textButton}
               buttonStyle={{
                 backgroundColor: '#000000',
                 borderWidth: 2,
@@ -66,14 +67,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
     justifyContent: 'center',
-    alignContent: 'center'
+    alignContent: 'center',
+  },
+  textButton: {
+    color: '#fff700',
+    fontFamily: 'Starjout',
   },
   titulo_perfil_usuario: {
     textAlign: 'center',
     fontFamily: 'Starjout',
     marginBottom: 40,
     color: '#fff700',
-    borderStyle: 'solid',
+    // borderStyle: 'solid',
   },
   containerScroll: {
     padding: 16,
@@ -92,17 +97,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 25,
   },
-  containerInput: { 
+  containerInput: {
     borderWidth: 1,
     borderColor: '#fff700',
     borderRadius: 10,
     alignItems: 'stretch',
     justifyContent: 'center',
     zIndex: 0,
-    marginBottom: 20,
+    fontWeight: 'bold',
     color: '#fff700',
     textAlign: 'center',
-    // fontfamily: 'Starjo',
+    fontSize:20,
     margin: 5,
   },
   containerText: {
@@ -127,6 +132,14 @@ const styles = StyleSheet.create({
   imageBack: {
     flex: 1,
     justifyContent: 'center',
+  },
+  titulos: {
+    alignItems: 'center',
+  },
+  tituloText: {
+    color: '#fff700',
+    fontFamily: 'Starjout',
+    fontSize: 35,
   },
 });
 

@@ -8,6 +8,7 @@ import {
   View,
   ImageBackground,
   ScrollView,
+  Alert
 } from 'react-native';
 import {CartContext} from '../../context/CartContext';
 import {CarrinhoContext} from '../../context/CarrinhoContext';
@@ -39,6 +40,14 @@ const Produto = ({route, navigation}) => {
       preco_produto,
       imagem_produto,
     );
+    Alert.alert('Carrinho', 'Produto adicionado ao carrinho', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log()},
+    ]);
   };
 
   const handleFav = () => {
@@ -49,6 +58,14 @@ const Produto = ({route, navigation}) => {
       preco_produto,
       imagem_produto,
     );
+    Alert.alert('Favoritos', 'Produto adicionado aos Favoritos', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => console.log()},
+    ]);
   };
 
   return (
@@ -160,7 +177,6 @@ const styles = StyleSheet.create({
   imageBack: {
     flex: 1,
     justifyContent: 'center',
-    
   },
 
   colorText: {
