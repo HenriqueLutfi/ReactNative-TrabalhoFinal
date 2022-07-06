@@ -14,9 +14,11 @@ import {AutenticacaoContext} from '../../context/AutenticacaoContext';
 import CategoriasCard from '../../components/CategoriaCards/categoriaCard';
 import CategoriaService from '../../services/CategoriaService';
 import {CategoriaType} from '../../models/CategoriaType';
+import { ChosenCategoryContext } from '../../context/ChosenCategory';
 
-const Categoria = () => {
+const Categoria = ({navigation}) => {
   const [categoria, setCategoria] = useState<CategoriaType[]>([]);
+  const {setChosenCategory} = useContext(ChosenCategoryContext);
 
   useEffect(() => {
     getDadosCategoria();
@@ -38,6 +40,7 @@ const Categoria = () => {
       });
     // setCategoria(CategoriaService())
   };
+  
   return (
     <ImageBackground
       source={{
@@ -58,11 +61,13 @@ const Categoria = () => {
               // key={i}
               underlayColor="#f0D906"
               activeOpacity={100}
-              onPress={() =>
+              onPress={() => {
                 console.log(
                   `Categoria 1 Clicada ${categoria.item.nomeCategoria} foi clicada`,
-                )
-              }
+                );
+                setChosenCategory(categoria.item);
+                navigation.navigate('CategoriaProdutoScreen');
+              }}
               style={styles.botao_categoria}>
               <CategoriasCard categoria={categoria.item} />
             </TouchableHighlight>

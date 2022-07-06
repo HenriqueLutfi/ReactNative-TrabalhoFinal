@@ -9,24 +9,24 @@ function LoadingComponent() {
   const {loading} = useContext(LoadingContext);
   if (loading) {
     return (
-      <View style={styles.centralizar}>
-        <View style={[styles.container, {position: 'absolute', zIndex: 1}]}>
+      <View style={[styles.centralizar, {position: 'absolute', zIndex: 1}]}>
+        <View style={[styles.container]}>
           <View style={styles.containerItems}>
-            <View style={styles.containerEspada}>
-              <Lottie
-                autoPlay
-                source={require('../../assets/espada.json')}
-                style={styles.Gif}
-              />
-            </View>
             <Text style={styles.colorText}>
               Paciência você deve ter, meu jovem Padawan
             </Text>
-            <ActivityIndicator
+            <View style={styles.containerEspada}>
+              <Lottie
+                autoPlay
+                source={require('../../assets/3010-bb8.json')}
+                style={styles.Gif}
+              />
+            </View>
+            {/* <ActivityIndicator
               animating={loading}
               size={'large'}
               color="#f0D906"
-            />
+            /> */}
           </View>
         </View>
       </View>
@@ -37,11 +37,11 @@ function LoadingComponent() {
 }
 const styles = StyleSheet.create({
   centralizar: {
+    flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   container: {
-    flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'stretch',
     justifyContent: 'center',
-    zIndex: 0,
+    // zIndex: 0,
     backgroundColor: '#000000a9',
   },
   colorText: {
