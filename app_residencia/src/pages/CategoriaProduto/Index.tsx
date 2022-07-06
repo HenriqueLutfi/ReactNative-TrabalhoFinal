@@ -24,14 +24,16 @@ const CategoriaProduto = ({navigation}) => {
   const {chosenCategory} = useContext(ChosenCategoryContext);
   const {produtos} = useContext(ProdutosContext);
   const [produtosCategoria, setProdutosCategoria] = useState<ProdutoType[]>([]);
+  const [isFetching, setIsFetching] = useState(true);
+
   useEffect(() => {
     pesquisarCategoria();
   }, []);
 
   const onRefresh = () => {
-    // pesquisarCategoria();
+    pesquisarCategoria();
     // wait(2000).then(() => setIsFetching(false));
-    // setIsFetching(false);
+    // 
   };
 
   // let filtroProds = produtos.filter(produto => {
@@ -41,18 +43,17 @@ const CategoriaProduto = ({navigation}) => {
   const pesquisarCategoria = () => {
     setProdutosCategoria([]);
     for (var i = 0; i < produtos.length; i++) {
-      console.log('produto: ' + produtos[i].nomeCategoria);
-      console.log('nome categoria escolhida: ' + chosenCategory.nomeCategoria);
       if (chosenCategory.nomeCategoria === produtos[i].nomeCategoria) {
-        console.log('produto: ' + produtos[i]);
         const aux = produtosCategoria;
         aux.push(produtos[i]);
         setProdutosCategoria(aux);
-        console.log('lista produtos: ' + produtosCategoria);
+        
       } else {
         // getDadosCategoria();
       }
     }
+    setIsFetching(false);
+    console.log('lista produtos: ' + produtosCategoria);
   };
 
   return (
@@ -62,13 +63,16 @@ const CategoriaProduto = ({navigation}) => {
       }}
       resizeMode="cover"
       style={styles.imageBack}>
+      <View style={styles.titulos}>
+        <Text style={styles.tituloText}>{chosenCategory.nomeCategoria}</Text>
+      </View>
       <FlatList
         data={produtosCategoria}
         contentContainerStyle={{alignItems: 'center'}}
         keyExtractor={(item, index) => index.toString()}
-        // onRefresh={() => onRefresh()}
-        // refreshing={true}
-        // extraData={produtosCategoria}
+        onRefresh={() => onRefresh()}
+        refreshing={isFetching}
+        extraData={produtosCategoria}
         renderItem={categoria => {
           return (
             <TouchableHighlight
@@ -114,6 +118,14 @@ const styles = StyleSheet.create({
     padding: 1,
     borderRadius: 15,
     margin: 5,
+  },
+  titulos:{
+    alignItems:'center'
+  },
+  tituloText:{
+    color: '#fff700',
+    fontFamily: 'Starjout',
+    fontSize:35,
   },
 });
 export default CategoriaProduto;
