@@ -63,30 +63,30 @@ const Login = ({navigation}) => {
             placeholder="E-mail"
             onChangeText={setEmail}
             value={email}
-            style={{color: '#fff700'}}
+            style={{color: '#f0D906'}}
             leftIcon={
-              <Icon name="user" color="#fff700" type="font-awesome" size={24} />
+              <Icon name="user" color="#f0D906" type="font-awesome" size={24} />
             }
           />
           <Input
             placeholder="Senha"
             onChangeText={setSenha}
             value={senha}
-            style={{color: '#fff700'}}
+            style={{color: '#f0D906'}}
             leftIcon={
-              <Icon name="key" color="#fff700" type="font-awesome" size={24} />
+              <Icon name="key" color="#f0D906" type="font-awesome" size={24} />
             }
             secureTextEntry
           />
           <Button
             title="Entrar"
             titleStyle={{
-              color: '#fff700',
+              color: '#f0D906',
             }}
             buttonStyle={{
-              backgroundColor: '#000000',
+              backgroundColor: '#BDC55068',
               borderWidth: 2,
-              borderColor: '#fff700',
+              borderColor: '#BDC55068',
               borderRadius: 3,
             }}
             onPress={() => handleLogin(email, senha)}
@@ -94,12 +94,12 @@ const Login = ({navigation}) => {
           <Button
             title="Cadastre-se"
             titleStyle={{
-              color: '#fff700',
+              color: '#f0D906',
             }}
             buttonStyle={{
-              backgroundColor: '#000000',
+              backgroundColor: '#BDC55068',
               borderWidth: 2,
-              borderColor: '#fff700',
+              borderColor: '#f0D906',
               borderRadius: 3,
               marginTop: 8,
             }}
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   containerItems: {
     borderWidth: 4,
-    borderColor: '#fff700',
+    borderColor: '#BDC55068',
     borderRadius: 15,
     padding: 16,
     alignItems: 'stretch',
@@ -129,10 +129,10 @@ const styles = StyleSheet.create({
   },
   texto_entrada: {
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 50,
+   
+    fontFamily:'Starjout',
     marginBottom: 10,
-    color: '#fff700',
+    color: '#f0D906',
     borderStyle: 'solid',
   },
   image: {

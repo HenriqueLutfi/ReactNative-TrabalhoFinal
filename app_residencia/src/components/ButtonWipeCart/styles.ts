@@ -14,13 +14,13 @@ export const styles = StyleSheet.create({
     backgroundColor: '#000000',
     borderRadius: 15,
     alignItems: 'center',
-    borderColor: '#fff700',
+    borderColor: '#f0D906',
     borderWidth: 1,
     flexDirection:'row'
   },
   text: {
     textAlign: 'center',
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
     },
   image: {
@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
   textButton: {
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
   },
 });

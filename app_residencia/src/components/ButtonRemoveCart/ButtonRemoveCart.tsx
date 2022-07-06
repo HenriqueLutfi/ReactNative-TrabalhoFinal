@@ -19,12 +19,12 @@ export const ButtonRemoveCart = ({produto}) => {
       <Button
         title="remove"
         titleStyle={{
-          color: '#fff700',
+          color: '#f0D906',
         }}
         buttonStyle={{
           backgroundColor: '#000000',
           borderWidth: 2,
-          borderColor: '#fff700',
+          borderColor: '#f0D906',
           borderRadius: 3,
         }}
         onPress={() => RemoveItemToCart()}

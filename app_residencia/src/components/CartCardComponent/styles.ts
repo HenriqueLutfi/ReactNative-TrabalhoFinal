@@ -14,18 +14,18 @@ export const styles = StyleSheet.create({
     backgroundColor: '#000000',
 
     alignItems: 'center',
-    borderColor: '#fff700',
+    borderColor: '#f0D906',
     borderWidth: 1,
     flexDirection: 'row',
   },
   text: {
     fontFamily: 'Starjout',
-    color: '#fff700',
+    color: '#f0D906',
     fontSize: 15,
   },
   textDescricao: {
     fontFamily: 'Starjout',
-    color: '#fff700',
+    color: '#f0D906',
     fontSize: 10,
   },
   viewImage:{
@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     width: '98%',
     flexDirection: 'row',
     backgroundColor: '#000000',
-    borderColor: '#fff700',
+    borderColor: '#f0D906',
     borderWidth: 1,
     borderRadius: 15,
     padding: 5,

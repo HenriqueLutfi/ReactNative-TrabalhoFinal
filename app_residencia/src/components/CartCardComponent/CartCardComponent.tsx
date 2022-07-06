@@ -43,7 +43,7 @@ function CartCard({produto}) {
           <Text style={styles.text}>R${produto.preco_produto},00</Text>
           <TouchableOpacity
             onPress={() => removerItemProduto(produto.id_produto)}>
-            <Icon name="trash" color="#fff700" type="font-awesome" size={24} />
+            <Icon name="trash" color="#f0D906" type="font-awesome" size={24} />
           </TouchableOpacity>
         </View>
       </View>

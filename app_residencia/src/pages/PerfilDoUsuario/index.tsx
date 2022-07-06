@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   // (botao alterar senha)
   textButton: {  
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
   },
   // (informacoes do usuario)
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Starjout',
     marginBottom: 40,
-    color: '#fff700',
+    color: '#f0D906',
     // borderStyle: 'solid',
   },
   containerScroll: {
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 0,
     marginBottom: 20,
-    color: '#fff700',
+    color: '#f0D906',
     textAlign: 'center',
     fontSize: 22,
   },
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     zIndex: 0,
     // (font imput usuario e email)
     fontWeight: 'bold',
-    color: '#fff700',
+    color: '##f0D906',
     textAlign: 'center',
     fontSize:20,
     margin: 5,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Starjout',
     marginTop: 10,
     marginLeft: 20,
-    color: '#918d23',
+    color: '#f0D906',
     borderStyle: 'solid',
   },
   containerFotoPerfil: {
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   // (titulo perfil)
   tituloText: {
-    color: '#fff700',
+    color: '#f0D906',
     fontFamily: 'Starjout',
     fontSize: 35,
   },
