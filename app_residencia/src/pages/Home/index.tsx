@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -8,27 +8,32 @@ import {
   TouchableHighlight,
   BackHandler,
   FlatList,
-  Image
+  Image,
+  ActivityIndicator
 } from 'react-native';
-import {Rating, AirbnbRating} from 'react-native-ratings';
-import {Text, Card, Input, Icon} from 'react-native-elements';
+import { Rating, AirbnbRating } from 'react-native-ratings';
+import { Text, Card, Input, Icon } from 'react-native-elements';
 import AxiosInstance from '../../api/AxiosInstance';
-import {AutenticacaoContext} from '../../context/AutenticacaoContext';
+import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 import ProdutosCard from '../../components/ProdutoCards/ProdutosCards';
 import CategoriasCard from '../../components/CategoriaCards/categoriaCard';
-import {LoadingContext} from '../../context/LoadingContext';
+import { LoadingContext } from '../../context/LoadingContext';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
-import {CategoriasContext} from '../../context/CategoriasContext';
-import {ProdutosContext} from '../../context/ProdutosContext';
-import {ChosenCategoryContext} from '../../context/ChosenCategory';
+import { CategoriasContext } from '../../context/CategoriasContext';
+import { ProdutosContext } from '../../context/ProdutosContext';
+import { ChosenCategoryContext } from '../../context/ChosenCategory';
 
-const Home = ({route, navigation}) => {
-  const {usuario} = useContext(AutenticacaoContext);
-  const {loading, setLoading} = useContext(LoadingContext);
-  const {categorias, setcategorias} = useContext(CategoriasContext);
-  const {setChosenCategory} = useContext(ChosenCategoryContext);
-  const {produtos, setProdutos} = useContext(ProdutosContext);
+const Home = ({ route, navigation }) => {
+  const { usuario } = useContext(AutenticacaoContext);
+  const { loading, setLoading } = useContext(LoadingContext);
+  const { categorias, setcategorias } = useContext(CategoriasContext);
+  const { setChosenCategory } = useContext(ChosenCategoryContext);
+  const { produtos, setProdutos } = useContext(ProdutosContext);
+
   const [busca, setBusca] = useState('');
+  const [page, setPage] = useState('0');
+  const [qtd, setQtd] = useState(8);
+
   console.log('Usuario : ' + JSON.stringify(usuario));
 
   useEffect(() => {
@@ -38,21 +43,20 @@ const Home = ({route, navigation}) => {
 
   useEffect(() => {
     pesquisarCategoria(busca);
-  }, [busca]);
-
-  useEffect(() => {
     pesquisarProdutos(busca);
   }, [busca]);
 
-  useEffect(() => {
-    // BackHandler.addEventListener('hardwareBackPress', () => {
-    //   return true
-    // })
-  }, []);
+
+
+  // useEffect(() => {
+  //   BackHandler.addEventListener('hardwareBackPress', () => {
+  //     return true
+  //   })
+  // }, []);
 
   const getDadosCategoria = async () => {
     AxiosInstance.get(`/categoria`, {
-      headers: {Authorization: `Bearer ${usuario.token}`},
+      headers: { Authorization: `Bearer ${usuario.token}` },
     })
       .then(result => {
         console.log('dados das categorias: ' + JSON.stringify(result.data));
@@ -66,12 +70,24 @@ const Home = ({route, navigation}) => {
   };
 
   const getProdutos = async () => {
-    AxiosInstance.get(`/produto`, {
-      headers: {Authorization: `Bearer ${usuario.token}`},
+    // setLoading(true);
+    AxiosInstance.get(`/produto?pagina=${page}&qtdRegistros=${qtd}`, {
+      headers: { Authorization: `Bearer ${usuario.token}` },
     })
       .then(result => {
-        console.log('Dados dos produtos' + JSON.stringify(result.data));
+        // console.log('Dados dos produtos' + JSON.stringify(result.data));
+
         setProdutos(result.data);
+        setPage('1');
+        if (page === '3') {
+          setProdutos(result.data);
+
+        }
+        else {
+          setProdutos([...produtos, ...result.data]);
+
+
+        }
         setLoading(false);
       })
       .catch(error => {
@@ -105,6 +121,8 @@ const Home = ({route, navigation}) => {
     }
   };
 
+
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -115,16 +133,18 @@ const Home = ({route, navigation}) => {
         style={styles.imageBack}>
         <LoadingComponent />
         <View style={styles.containerLogo}>
-          <Image style={styles.logo} source={require('../../assets/logohome.png')}/>
+          <Image style={styles.logo} source={require('../../assets/logohome.png')} />
           {/* <Text style={styles.tituloText}>Home</Text> */}
         </View>
         <ScrollView style={styles.containerItems}>
           <View>
             <Input
-              style={{color: '#f0D906'}}
+
+              style={{ color: '#f0D906' }}
               placeholder="buscar produto"
               placeholderTextColor={'#f0D906'}
-              onChangeText={setBusca}
+              onChangeText={(e) => { setBusca(e) }}
+
               value={busca}
               leftIcon={
                 <Icon
@@ -140,7 +160,7 @@ const Home = ({route, navigation}) => {
           <FlatList
             data={categorias}
             horizontal={true}
-            contentContainerStyle={{alignItems: 'center'}}
+            contentContainerStyle={{ alignItems: 'center' }}
             keyExtractor={(item, index) => index.toString()}
             renderItem={categoria => {
               return (
@@ -162,36 +182,42 @@ const Home = ({route, navigation}) => {
             }}
           />
           <Text style={styles.colorText}>{'Recentes'}</Text>
-          <FlatList
-            data={produtos}
-            horizontal={true}
-            contentContainerStyle={{alignItems: 'center'}}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={produto => {
-              return (
-                <TouchableHighlight
-                  // key={i}
-                  underlayColor="#f0D906"
-                  activeOpacity={10}
-                  onPress={() => {
-                    navigation.navigate({
-                      name: 'ProdutoScreen',
-                      params: {
-                        id_produto: produto.item.idProduto,
-                        sku: produto.item.sku,
-                        nome_produto: produto.item.nomeProduto,
-                        descricao_produto: produto.item.descricaoProduto,
-                        preco_produto: produto.item.precoProduto,
-                        imagem_produto: produto.item.imagemProduto,
-                      },
-                    });
-                  }}
-                  style={styles.botao_categoria}>
-                  <ProdutosCard produto={produto.item} />
-                </TouchableHighlight>
-              );
-            }}
-          />
+
+          {!loading &&
+            <FlatList
+              onEndReached={() => { getProdutos() }}
+
+              data={produtos}
+              horizontal={true}
+              contentContainerStyle={{ alignItems: 'center' }}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={produto => {
+                return (
+                  <TouchableHighlight
+                    // key={i}
+                    underlayColor="#fff700"
+                    activeOpacity={10}
+                    onPress={() => {
+                      navigation.navigate({
+                        name: 'ProdutoScreen',
+                        params: {
+                          id_produto: produto.item.idProduto,
+                          sku: produto.item.sku,
+                          nome_produto: produto.item.nomeProduto,
+                          descricao_produto: produto.item.descricaoProduto,
+                          preco_produto: produto.item.precoProduto,
+                          imagem_produto: produto.item.imagemProduto,
+                        },
+                      });
+                    }}
+                    style={styles.botao_categoria}>
+                    <ProdutosCard produto={produto.item} />
+                  </TouchableHighlight>
+                );
+              }}
+            />
+          }
+
           <Text style={styles.colorText}> {'Destaque'}</Text>
           <ScrollView style={styles.bottomCardScrollView}>
             <TouchableOpacity>
@@ -262,23 +288,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  titulos:{
-    alignItems:'center'
+  titulos: {
+    alignItems: 'center'
   },
+
   tituloText:{
     color: '#f0D906',
+
     fontFamily: 'Starjout',
-    fontSize:35,
+    fontSize: 35,
   },
-  logo:{
+  logo: {
     width: '50%',
     height: '50%',
   },
-  containerLogo:{
-    alignItems:'center',
-    justifyContent:'center',
+  containerLogo: {
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 'auto',
+
     height: '22%',
+  },
+  loading: {
+    padding: 10
   }
 });
 

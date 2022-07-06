@@ -1,10 +1,10 @@
 import React from 'react';
-import {TouchableOpacity, Image, Text, View} from 'react-native';
-import {styles} from './styles';
-import {ButtonAddCart} from '../ButtonAddCart/ButtonAddCart';
+import { TouchableOpacity, Image, Text, View } from 'react-native';
+import { styles } from './styles';
+import { ButtonAddCart } from '../ButtonAddCart/ButtonAddCart';
 
-function ProdutosCard({produto}) {
-  console.log(produto);
+function ProdutosCard({ produto }) {
+  // console.log(produto);
 
   return (
     <View style={styles.container}>

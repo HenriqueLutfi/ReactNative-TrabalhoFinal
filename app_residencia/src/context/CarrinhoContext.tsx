@@ -139,6 +139,7 @@ export function CarrinhoProvider({children}) {
           .filter(produto => produto.id_produto === _id),
       );
     });
+    setIsFetching(true);
     // console.log('favoritos' + JSON.stringify(listarFavoritos()));
   };
 
