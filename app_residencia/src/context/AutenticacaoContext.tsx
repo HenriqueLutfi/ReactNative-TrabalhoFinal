@@ -16,6 +16,7 @@ export const AutenticacaoProvider = ({ children }) => {
       setUsuario({
         id: respostaServiceLogin?.id,
         name: respostaServiceLogin?.name,
+        fotoPerfil: respostaServiceLogin?.foto_perfil,
         email: respostaServiceLogin?.email,
         token: respostaServiceLogin?.token,
       });
