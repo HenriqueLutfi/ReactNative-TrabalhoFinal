@@ -8,7 +8,7 @@ import {
   View,
   ImageBackground,
   ScrollView,
-  Alert
+  Alert,
 } from 'react-native';
 import {CartContext} from '../../context/CartContext';
 import {CarrinhoContext} from '../../context/CarrinhoContext';
@@ -76,25 +76,29 @@ const Produto = ({route, navigation}) => {
         }}
         resizeMode="cover"
         style={styles.imageBack}>
-        <TouchableOpacity>
-          <Button
-            onPress={() => navigation.goBack()}
-            title="Voltar"
-            titleStyle={{
-              color: '#fff700',
-            }}
-            buttonStyle={{
-              backgroundColor: '#000000',
-              borderWidth: 2,
-              borderColor: '#fff700',
-              borderRadius: 3,
-              marginTop: 8,
-              width: '70%',
-              marginLeft: 50,
-            }}
-          />
-        </TouchableOpacity>
         <ScrollView style={styles.containerItems}>
+          <View>
+            <TouchableOpacity 
+                  onPress={() => () => navigation.goBack()}>
+              <Button
+                onPress={() => navigation.goBack()}
+                title="Voltar"
+                titleStyle={{
+                  color: '#fff700',
+                }}
+                buttonStyle={{
+                  backgroundColor: '#000000',
+                  borderWidth: 2,
+                  borderColor: '#fff700',
+                  borderRadius: 3,
+                  marginTop: 8,
+                  width: '70%',
+                  marginLeft: 50,
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+
           {/* <View style={styles.container_imagem}> */}
 
           {/* </View> */}
@@ -106,8 +110,7 @@ const Produto = ({route, navigation}) => {
               }}
             />
             <Text style={styles.colorText}>{nome_produto}</Text>
-            <Text>{nome_produto}</Text>
-            <Text>{preco_produto}</Text>
+            <Text style={styles.colorText}>R${preco_produto},00</Text>
             <TouchableOpacity>
               <Button
                 onPress={() => handleAddProduto()}
@@ -148,7 +151,9 @@ const Produto = ({route, navigation}) => {
             </TouchableOpacity>
             <View style={styles.container_starts}>
               <Text style={styles.colorText}>Avalie:</Text>
-              <AirbnbRating showRating={false} size={20} />
+              <View style={styles.viewStar}>
+                <AirbnbRating showRating={false} size={20} />
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -183,7 +188,7 @@ const styles = StyleSheet.create({
     color: '#fff700',
     fontSize: 30,
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: 'Starjout',
     marginLeft: 25,
     width: '80%',
   },
@@ -199,7 +204,11 @@ const styles = StyleSheet.create({
   container_starts: {
     width: '100%',
     justifyContent: 'center',
-    alignItems: 'center',
+    // flexDirection: 'row',
+  },
+  viewStar: {
+    alignItems:'center',
+    // width: '50%',
   },
 });
 export default Produto;
