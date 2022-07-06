@@ -47,9 +47,9 @@ const PerfilDoUsuario = ({navigation}) => {
               title="Alterar Senha"
               titleStyle={styles.textButton}
               buttonStyle={{
-                backgroundColor: '#000000',
+                backgroundColor: '#bdc55068',
                 borderWidth: 2,
-                borderColor: '#fff700',
+                borderColor: '#bdc55068',
                 borderRadius: 3,
                 margin: 5,
               }}
@@ -69,10 +69,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
   },
-  textButton: {
+  // (botao alterar senha)
+  textButton: {  
     color: '#fff700',
     fontFamily: 'Starjout',
   },
+  // (informacoes do usuario)
   titulo_perfil_usuario: {
     textAlign: 'center',
     fontFamily: 'Starjout',
@@ -83,10 +85,11 @@ const styles = StyleSheet.create({
   containerScroll: {
     padding: 16,
   },
+  // (conatiner inteiro)
   containerItems: {
-    borderWidth: 2,
-    borderColor: '#fff700',
-    // background-color: '#fff700',
+    borderWidth: 80,
+    borderColor: '#bdc55068',
+    backgroundColor: '#bdc55068',
     // padding: 1.5rem
     borderRadius: 15,
     alignItems: 'stretch',
@@ -95,27 +98,30 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: '#fff700',
     textAlign: 'center',
-    fontSize: 25,
+    fontSize: 22,
   },
+  // (container imput usuario e email)
   containerInput: {
     borderWidth: 1,
-    borderColor: '#fff700',
+    borderColor: '#bdc55068',
     borderRadius: 10,
     alignItems: 'stretch',
     justifyContent: 'center',
     zIndex: 0,
+    // (font imput usuario e email)
     fontWeight: 'bold',
     color: '#fff700',
     textAlign: 'center',
     fontSize:20,
     margin: 5,
   },
+  // (titulo nome usuario e email)
   containerText: {
     textAlign: 'left',
     fontFamily: 'Starjout',
     marginTop: 10,
     marginLeft: 20,
-    color: '#fff700',
+    color: '#918d23',
     borderStyle: 'solid',
   },
   containerFotoPerfil: {
@@ -136,6 +142,7 @@ const styles = StyleSheet.create({
   titulos: {
     alignItems: 'center',
   },
+  // (titulo perfil)
   tituloText: {
     color: '#fff700',
     fontFamily: 'Starjout',
