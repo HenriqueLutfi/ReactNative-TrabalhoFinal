@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import { Alert } from 'react-native';
 import {Button} from 'react-native-elements';
 import {CartContext} from '../../context/CartContext';
 import {CarrinhoContext} from '../../context/CarrinhoContext';
@@ -6,6 +7,11 @@ import { styles } from './styles';
 export const ButtonWipeCart = () => {
   // const {setCart} = useContext(CartContext);
   const {LimparCarrinho} = useContext(CarrinhoContext);
+  function showAlert() {
+    Alert.alert('Carrinho', 'produtos foram excluidos do carrinho', [
+      {text: 'OK', onPress: () => console.log('')},
+    ]);
+  }
   return (
     <>
       <Button
@@ -22,6 +28,7 @@ export const ButtonWipeCart = () => {
         //   setCart([]);
         onPress={() => {
           LimparCarrinho();
+          showAlert();
         }}
       />
     </>
