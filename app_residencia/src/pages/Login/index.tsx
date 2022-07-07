@@ -84,9 +84,9 @@ const Login = ({navigation}) => {
           />
           <Button
             title="Entrar"
-            titleStyle={{
-             color: '#f0D906',
-            }}
+            titleStyle={
+              styles.buttonStyle
+            }
             buttonStyle={{
               backgroundColor: '#070707b0',
               borderWidth: 1,

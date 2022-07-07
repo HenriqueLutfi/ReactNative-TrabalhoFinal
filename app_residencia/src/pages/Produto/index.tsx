@@ -205,10 +205,8 @@ const styles = StyleSheet.create({
   headerBackIcon: {
     width: '20%',
     justifyContent: 'center',
-
   },
   headerBackButton: {
-
     width: '60%',
     flexDirection: 'row',
     // alignItems: 'flex-start',
