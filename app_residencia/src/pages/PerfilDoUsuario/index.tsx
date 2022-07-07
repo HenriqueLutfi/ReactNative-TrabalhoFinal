@@ -60,6 +60,7 @@ const PerfilDoUsuario = ({navigation}) => {
                 }}
                 onPress={() => navigation.navigate('AlterarSenhaScreen')}
               />
+              {/* <View style={styles.buttonContainer}> */}
               <Button
                 title="Logout"
                 titleStyle={styles.textButton}
@@ -83,6 +84,7 @@ const PerfilDoUsuario = ({navigation}) => {
                   navigation.navigate('LoginScreen');
                 }}
               />
+              {/* </View> */}
             </View>
           </View>
         </ScrollView>
@@ -157,6 +159,7 @@ const styles = StyleSheet.create({
   containerFotoPerfil: {
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 10,
   },
   imageUser: {
     alignItems: 'center',
@@ -164,8 +167,8 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 70,
-    borderColor:'#f0D906',
-    borderWidth:1,
+    borderColor: '#f0D906',
+    borderWidth: 1,
   },
   imageBack: {
     flex: 1,
