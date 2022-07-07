@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     color: '#f0D906',
     fontFamily: 'Starjout',
     textAlign: 'center',
+    fontSize:20,
   },
   containerEspada: {
     height: '70%',

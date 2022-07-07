@@ -39,44 +39,51 @@ const PerfilDoUsuario = ({navigation}) => {
                 }}
               />
             </View>
-            <Text style={styles.containerText}>Nome do Usuário</Text>
-            <Text style={styles.containerInput}>{usuario.name}</Text>
-            <Text style={styles.containerText}>E-mail</Text>
-            <Text style={styles.containerInput}>{usuario.email}</Text>
-            <Button
-              title="Alterar Senha"
-              titleStyle={styles.textButton}
-              buttonStyle={{
-                backgroundColor: '#bdc55068',
-                borderWidth: 2,
-                borderColor: '#bdc55068',
-                borderRadius: 3,
-                margin: 5,
-              }}
-              onPress={() => navigation.navigate('AlterarSenhaScreen')}
-            />
-            <Button
-              title="LogOut"
-              titleStyle={styles.textButton}
-              buttonStyle={{
-                backgroundColor: '#bdc55068',
-                borderWidth: 2,
-                borderColor: '#bdc55068',
-                borderRadius: 3,
-                margin: 5,
-              }}
-              onPress={() => {
-                setUsuario(({
-                  id: 0,
-                  name: '',
-                  fotoPerfil: '',
-                  email: '',
-                  token: '',
-                }))
-                console.log(usuario)
-                navigation.navigate('LoginScreen');
-              }}
-            />
+            <View style={styles.viewRow}>
+              <Text style={styles.containerText}>Nome: </Text>
+              <Text style={styles.containerInput}>{usuario.name}</Text>
+            </View>
+            <View style={styles.viewRow}>
+              <Text style={styles.containerText}>E-mail:</Text>
+              <Text style={styles.containerInput}>{usuario.email}</Text>
+            </View>
+            <View style={styles.buttonContainer}>
+              <Button
+                title="Alterar Senha"
+                titleStyle={styles.textButton}
+                buttonStyle={{
+                  backgroundColor: '#000000',
+                  borderWidth: 1,
+                  borderColor: '#fff700',
+                  borderRadius: 7,
+                  margin: 5,
+                }}
+                onPress={() => navigation.navigate('AlterarSenhaScreen')}
+              />
+              <Button
+                title="Logout"
+                titleStyle={styles.textButton}
+                buttonStyle={{
+                  backgroundColor: '#000000',
+                  borderWidth: 1,
+                  borderColor: '#fff700',
+                  borderRadius: 7,
+                  margin: 5,
+                  marginBottom: 10,
+                }}
+                onPress={() => {
+                  setUsuario({
+                    id: 0,
+                    name: '',
+                    fotoPerfil: '',
+                    email: '',
+                    token: '',
+                  });
+                  console.log(usuario);
+                  navigation.navigate('LoginScreen');
+                }}
+              />
+            </View>
           </View>
         </ScrollView>
       </ImageBackground>
@@ -100,6 +107,7 @@ const styles = StyleSheet.create({
   titulo_perfil_usuario: {
     textAlign: 'center',
     fontFamily: 'Starjout',
+    fontSize: 18,
     marginBottom: 40,
     color: '#f0D906',
     // borderStyle: 'solid',
@@ -109,9 +117,9 @@ const styles = StyleSheet.create({
   },
   // (conatiner inteiro)
   containerItems: {
-    borderWidth: 80,
-    borderColor: '#bdc55068',
-    backgroundColor: '#bdc55068',
+    borderWidth: 3,
+    borderColor: '#f0D906',
+    backgroundColor: '#000000',
     // padding: 1.5rem
     borderRadius: 15,
     alignItems: 'stretch',
@@ -125,8 +133,8 @@ const styles = StyleSheet.create({
   // (container imput usuario e email)
   containerInput: {
     borderWidth: 1,
-    borderColor: '#bdc55068',
-    borderRadius: 10,
+    borderColor: '#000000',
+    borderRadius: 1,
     alignItems: 'stretch',
     justifyContent: 'center',
     zIndex: 0,
@@ -169,6 +177,14 @@ const styles = StyleSheet.create({
     color: '#f0D906',
     fontFamily: 'Starjout',
     fontSize: 35,
+  },
+  buttonContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  viewRow: {
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
 });
 

@@ -21,7 +21,7 @@ export const ButtonWipeCart = () => {
           backgroundColor: '#000000',
           borderWidth: 2,
           borderColor: '#fff700',
-          borderRadius: 3,
+          borderRadius: 7,
           padding: 5,
         }}
         // onPress={() => {
