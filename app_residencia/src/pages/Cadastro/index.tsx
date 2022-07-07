@@ -1,5 +1,5 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useContext, useState} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,9 +10,9 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {Input, Text, Button, Icon} from 'react-native-elements';
+import { Input, Text, Button, Icon } from 'react-native-elements';
 import AxiosInstance from '../../api/AxiosInstance';
-import {AutenticacaoContext} from '../../context/AutenticacaoContext';
+import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 import {
   CameraOptions,
   ImageLibraryOptions,
@@ -22,11 +22,13 @@ import {
 import yoda from '../../assets/yoda.png';
 
 const Cadastro = () => {
-  const {usuario, setUsuario} = useContext(AutenticacaoContext);
+  const { usuario, setUsuario } = useContext(AutenticacaoContext);
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [url, setUrl] = useState('');
+
+  const navigation = useNavigation();
 
   const InsertUsuario = async (nome: string, email: string, senha: string) => {
     console.log(nome, email, senha);
@@ -96,7 +98,7 @@ const Cadastro = () => {
             <Text style={styles.texto_entrada}>{'Cadastro'}</Text>
             <View style={styles.container_foto}>
               <TouchableOpacity onPress={handleImageUser}>
-                <Image style={styles.imgUser} source={{uri: imageUser}} />
+                <Image style={styles.imgUser} source={{ uri: imageUser }} />
                 <Icon name={'edit'} size={30} />
               </TouchableOpacity>
             </View>
@@ -104,20 +106,20 @@ const Cadastro = () => {
               placeholder="Nome completo"
               onChangeText={setNome}
               value={nome}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
             />
 
             <Input
               placeholder="Email"
               onChangeText={setEmail}
               value={email}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
             />
             <Input
               placeholder="Defina uma senha"
               onChangeText={setSenha}
               value={senha}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
               secureTextEntry
             />
 
@@ -125,15 +127,34 @@ const Cadastro = () => {
               title="Cadastrar"
               titleStyle={{
                 color: '#fff700',
+                fontFamily: 'Starjout'
               }}
               buttonStyle={{
                 backgroundColor: '#000000',
-                borderWidth: 2,
+                borderWidth: 1,
                 borderColor: '#fff700',
                 borderRadius: 7,
                 margin: 5,
+                marginBottom: 10,
               }}
               onPress={() => InsertUsuario(nome, email, senha)}
+            />
+
+            <Button
+              title="Login"
+              titleStyle={styles.textButton}
+              buttonStyle={{
+                backgroundColor: '#000000',
+                borderWidth: 1,
+                borderColor: '#fff700',
+                borderRadius: 7,
+                margin: 5,
+                marginBottom: 10,
+              }}
+              onPress={() => {
+
+                navigation.navigate('LoginScreen');
+              }}
             />
           </View>
         </ScrollView>
@@ -161,11 +182,12 @@ const styles = StyleSheet.create({
   },
   texto_entrada: {
     textAlign: 'center',
-    fontWeight: 'bold',
+
     fontSize: 50,
     marginBottom: 10,
     color: '#fff700',
     borderStyle: 'solid',
+    fontFamily: 'Starjout'
   },
   imageBack: {
     flex: 1,
@@ -180,6 +202,10 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 100,
     marginLeft: 75,
+  },
+  textButton: {
+    color: '#f0D906',
+    fontFamily: 'Starjout',
   },
 });
 

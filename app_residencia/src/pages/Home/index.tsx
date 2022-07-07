@@ -33,16 +33,18 @@ const Home = ({ route, navigation }) => {
   const [busca, setBusca] = useState('');
   const [page, setPage] = useState('0');
   const [qtd, setQtd] = useState(8);
+  const [buscaProdutos, setBuscaProdutos] = useState([]);
 
-  console.log('Usuario : ' + JSON.stringify(usuario));
+  // console.log('Usuario : ' + JSON.stringify(usuario));
 
   useEffect(() => {
     getDadosCategoria();
-    getProdutos();
+    getProdutos()
+
   }, []);
 
   useEffect(() => {
-    pesquisarCategoria(busca);
+    // pesquisarCategoria(busca);
     pesquisarProdutos(busca);
   }, [busca]);
 
@@ -69,8 +71,23 @@ const Home = ({ route, navigation }) => {
       });
   };
 
+  // const getProdutos = async () => {
+  //   AxiosInstance.get(`/produto`, {
+  //     headers: { Authorization: `Bearer ${usuario.token}` },
+  //   })
+  //     .then(result => {
+  //       console.log('Dados dos produtos' + JSON.stringify(result.data));
+  //       setProdutos(result.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(error => {
+  //       console.log(
+  //         'Erro ao carregar a lista de produtos' + JSON.stringify(error),
+  //       );
+  //     });
+  // };
   const getProdutos = async () => {
-    // setLoading(true);
+
     AxiosInstance.get(`/produto?pagina=${page}&qtdRegistros=${qtd}`, {
       headers: { Authorization: `Bearer ${usuario.token}` },
     })
@@ -97,27 +114,54 @@ const Home = ({ route, navigation }) => {
       });
   };
 
-  const pesquisarCategoria = (busca: string) => {
-    if (busca !== '') {
-      setcategorias(
-        categorias.filter(res =>
-          res.nomeCategoria.toLowerCase().includes(busca.toLowerCase()),
-        ),
-      );
-    } else {
-      getDadosCategoria();
-    }
+  // const pesquisarCategoria = (busca: string) => {
+  //   if (busca !== '') {
+  //     setcategorias(
+  //       categorias.filter(res =>
+  //         res.nomeCategoria.toLowerCase().includes(busca.toLowerCase()),
+  //       ),
+  //     );
+  //   } else {
+  //     getDadosCategoria();
+  //   }
+  // };
+
+  // const pesquisarProdutos = (busca: string) => {
+  //   if (busca !== '') {
+  //     setProdutos(
+  //       produtos.filter(res =>
+  //         res.nomeProduto.toLowerCase().includes(busca.toLowerCase()),
+  //       ),
+  //     );
+  //   } else {
+  //     getProdutos();
+  //   }
+  // };
+
+  const getBuscaProdutos = async () => {
+    AxiosInstance.get(`/produto/busca?keyword=${busca}`, {
+      headers: { Authorization: `Bearer ${usuario.token}` },
+    })
+      .then(result => {
+        setProdutos(result.data);
+
+      })
+      .catch(error => {
+        console.log(
+          'Erro ao carregar a lista de produtos - ' + JSON.stringify(error),
+        );
+
+      });
   };
+
+
 
   const pesquisarProdutos = (busca: string) => {
     if (busca !== '') {
-      setProdutos(
-        produtos.filter(res =>
-          res.nomeProduto.toLowerCase().includes(busca.toLowerCase()),
-        ),
-      );
+      getBuscaProdutos()
+
     } else {
-      getProdutos();
+      setBuscaProdutos([]);
     }
   };
 
@@ -291,7 +335,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
 
-  tituloText:{
+  tituloText: {
     color: '#f0D906',
 
     fontFamily: 'Starjout',

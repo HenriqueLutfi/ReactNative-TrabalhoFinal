@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {Text, Card, Icon, SearchBar} from 'react-native-elements';
+import React, { useState, useEffect, useContext } from 'react';
+import { Text, Card, Icon, SearchBar } from 'react-native-elements';
 import {
   ScrollView,
   StyleSheet,
@@ -10,24 +10,24 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import AxiosInstance from '../../api/AxiosInstance';
-import {AutenticacaoContext} from '../../context/AutenticacaoContext';
+import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 import CategoriasCard from '../../components/CategoriaCards/categoriaCard';
 import CategoriaService from '../../services/CategoriaService';
-import {CategoriaType} from '../../models/CategoriaType';
+import { CategoriaType } from '../../models/CategoriaType';
 import { ChosenCategoryContext } from '../../context/ChosenCategory';
 
-const Categoria = ({navigation}) => {
+const Categoria = ({ navigation }) => {
   const [categoria, setCategoria] = useState<CategoriaType[]>([]);
-  const {setChosenCategory} = useContext(ChosenCategoryContext);
+  const { setChosenCategory } = useContext(ChosenCategoryContext);
 
   useEffect(() => {
     getDadosCategoria();
   }, []);
 
-  const {usuario} = useContext(AutenticacaoContext);
+  const { usuario } = useContext(AutenticacaoContext);
   const getDadosCategoria = async () => {
     AxiosInstance.get(`/categoria`, {
-      headers: {Authorization: `Bearer ${usuario.token}`},
+      headers: { Authorization: `Bearer ${usuario.token}` },
     })
       .then(result => {
         console.log('dados das categorias: ' + JSON.stringify(result.data));
@@ -40,7 +40,7 @@ const Categoria = ({navigation}) => {
       });
     // setCategoria(CategoriaService())
   };
-  
+
   return (
     <ImageBackground
       source={{
@@ -48,12 +48,28 @@ const Categoria = ({navigation}) => {
       }}
       resizeMode="cover"
       style={styles.imageBack}>
+      <View style={styles.headerBackContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.headerBackButton}>
+          <View style={styles.headerBackIcon}>
+            <Icon
+              name="arrow-left"
+              color="#fff700"
+              type="font-awesome"
+              size={24}
+            />
+          </View>
+          <Text style={styles.colorText_back}>Voltar</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.titulos}>
         <Text style={styles.colorText}>Categorias</Text>
       </View>
+
       <FlatList
         data={categoria}
-        contentContainerStyle={{alignItems: 'center'}}
+        contentContainerStyle={{ alignItems: 'center' }}
         keyExtractor={(item, index) => index.toString()}
         renderItem={categoria => {
           return (
@@ -99,10 +115,34 @@ const styles = StyleSheet.create({
   colorText: {
     color: '#f0D906',
     fontFamily: 'Starjout',
-    fontSize:35,
+    fontSize: 35,
   },
-  titulos:{
-    alignItems:'center'
-  }
+  titulos: {
+    alignItems: 'center'
+  },
+  headerBackContainer: {
+    width: '100%',
+  },
+  headerBackIcon: {
+    width: '20%',
+    justifyContent: 'center',
+
+  },
+  headerBackButton: {
+
+    width: '60%',
+    flexDirection: 'row',
+    // alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  colorText_back: {
+    color: '#fff700',
+    fontSize: 20,
+    textAlign: 'center',
+    fontFamily: 'Starjout',
+    marginRight: 90
+
+  },
+
 });
 export default Categoria;
