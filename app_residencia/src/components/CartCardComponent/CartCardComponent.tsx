@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {TouchableOpacity, Image, Text, View} from 'react-native';
+import {TouchableOpacity, Image, Text, View, Alert} from 'react-native';
 import {Card, Icon} from 'react-native-elements';
 import {styles} from './styles';
 import {ButtonAddCart} from '../ButtonAddCart/ButtonAddCart';
@@ -10,19 +10,11 @@ function CartCard({produto}) {
   const [valor, setValor] = useState();
   const {removerItemProduto} = useContext(CarrinhoContext);
 
-  // useEffect(() => {
-  //   FormatValor();
-  // }, []);
-
-  
-
-  // function FormatValor() {
-  //   var formatter = new Intl.NumberFormat('en-US', {
-  //     style: 'currency',
-  //     currency: 'USD',
-  //   });
-  //   setValor(formatter.format(produto.preco_produto));
-  // }
+  function showAlert() {
+    Alert.alert('Carrinho', 'produto foi excluido do carrinho', [
+      {text: 'OK', onPress: () => console.log('')},
+    ]);
+  }
 
   return (
     <View style={styles.container}>
@@ -42,7 +34,10 @@ function CartCard({produto}) {
         <View style={styles.remover}>
           <Text style={styles.text}>R${produto.preco_produto},00</Text>
           <TouchableOpacity
-            onPress={() => removerItemProduto(produto.id_produto)}>
+            onPress={() => {
+              removerItemProduto(produto.id_produto);
+              showAlert();
+            }}>
             <Icon name="trash" color="#f0D906" type="font-awesome" size={24} />
           </TouchableOpacity>
         </View>

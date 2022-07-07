@@ -173,18 +173,8 @@ export function CarrinhoProvider({children}) {
     setIsFetching(true);
   };
   const ValorTotalCarrinho = () => {
-    var i = 1;
-    var soma = 0;
-    var produto;
-    // while (realm_carrinho.objects('Produto').length <= i) {
-    produto = realm_carrinho
-      .objects('Produto')
-      .filter(produto => produto.id_produto === 1);
-    console.log('tentativa soma' + produto.preco_produto);
-    // produto.preco_produto
-    i++;
-    // }
-    // setIsFetching(true);
+    return realm_carrinho.objects('Produto').sum('preco_produto');
+    // console.log('tentativa soma' + JSON.stringify(produto));
   };
 
   return (

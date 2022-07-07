@@ -9,16 +9,21 @@ import {TouchableHighlight} from 'react-native-gesture-handler';
 
 export const FinishPurchase = () => {
   // const {cart} = useContext(CartContext);
-  const {contarQtdProdutos, listarProdutos, ValorTotalCarrinho, LimparCarrinho} =
-    useContext(CarrinhoContext);
+  const {
+    contarQtdProdutos,
+    listarProdutos,
+    ValorTotalCarrinho,
+    LimparCarrinho,
+  } = useContext(CarrinhoContext);
 
   const [somaTotal, setSomaTotal] = useState(0);
   const [carrinho, setCarrinho] = useState();
   const [qtd, setQtd] = useState();
+
   // console.log(cart);
-  useEffect(() => {
-    SomaProdutos();
-  }, []);
+  // useEffect(() => {
+  //   SomaProdutos();
+  // }, []);
 
   useEffect(() => {
     getDadosCarrinho();
@@ -28,6 +33,8 @@ export const FinishPurchase = () => {
     setCarrinho(listarProdutos());
     setQtd(contarQtdProdutos());
     setSomaTotal(ValorTotalCarrinho());
+    // console.log('soma total: '+ somaTotal)
+    // SomaProdutos()
   };
 
   function SomaProdutos() {
@@ -38,9 +45,11 @@ export const FinishPurchase = () => {
     // setSomaTotal(soma);
     // console.log(soma);
     //BANCO EMBARCADO
-    // for (let i = 0; i < contarQtdProdutos(); i++){
-    //   soma += parseFloat(cart[i].precoProduto);
-    // }
+    // carrinho.forEach(element => {
+    //   soma += element.preco_produto;
+    // });
+    // setSomaTotal(soma);
+    // console.log(soma)
   }
   function showAlert() {
     Alert.alert('Compra', 'Compra Finalizada com sucesso', [
