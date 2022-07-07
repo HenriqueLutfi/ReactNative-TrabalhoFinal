@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
     zIndex: 1,
-    backgroundColor: '#000000e4',
+    backgroundColor: '#000000',
   },
   colorText: {
     color: '#f0D906',

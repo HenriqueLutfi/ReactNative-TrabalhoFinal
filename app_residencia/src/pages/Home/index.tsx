@@ -340,13 +340,11 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: '50%',
-    height: '50%',
+    height: 150,
   },
   containerLogo: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 'auto',
-    height: 150,
   },
   loading: {
     padding: 10
