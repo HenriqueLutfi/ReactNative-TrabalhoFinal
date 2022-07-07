@@ -22,6 +22,7 @@ import LoadingComponent from '../../components/LoadingComponent/LoadingComponent
 import { CategoriasContext } from '../../context/CategoriasContext';
 import { ProdutosContext } from '../../context/ProdutosContext';
 import { ChosenCategoryContext } from '../../context/ChosenCategory';
+import CategoriasCardHome from '../../components/CategoriaCardsHome/categoriaCardHome';
 
 const Home = ({ route, navigation }) => {
   const { usuario } = useContext(AutenticacaoContext);
@@ -241,7 +242,7 @@ const Home = ({ route, navigation }) => {
                     navigation.navigate('CategoriaProdutoScreen');
                   }}
                   style={styles.botao_categoria}>
-                  <CategoriasCard categoria={categoria.item} />
+                  <CategoriasCardHome categoria={categoria.item} />
                 </TouchableHighlight>
               );
             }}
