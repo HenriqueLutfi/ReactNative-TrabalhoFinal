@@ -48,7 +48,7 @@ const Categoria = ({ navigation }) => {
       }}
       resizeMode="cover"
       style={styles.imageBack}>
-      <View style={styles.headerBackContainer}>
+      {/* <View style={styles.headerBackContainer}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={styles.headerBackButton}>
@@ -62,7 +62,7 @@ const Categoria = ({ navigation }) => {
           </View>
           <Text style={styles.colorText_back}>Voltar</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
       <View style={styles.titulos}>
         <Text style={styles.colorText}>Categorias</Text>
       </View>

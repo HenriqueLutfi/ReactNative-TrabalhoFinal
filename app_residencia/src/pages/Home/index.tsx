@@ -222,7 +222,7 @@ const Home = ({ route, navigation }) => {
           <FlatList
             data={categorias}
             horizontal={true}
-            contentContainerStyle={{ alignItems: 'center' }}
+            contentContainerStyle={{ alignItems: 'center', marginBottom: 15 }}
             keyExtractor={(item, index) => index.toString()}
             renderItem={categoria => {
               return (
@@ -346,8 +346,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: 'auto',
-
-    height: '22%',
+    height: 150,
   },
   loading: {
     padding: 10
