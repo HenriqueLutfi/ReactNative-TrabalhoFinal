@@ -114,7 +114,7 @@ const AlterarSenha = ({navigation}) => {
                 borderWidth: 2,
                 borderHeight: 5,
                 borderColor: '#bdc55068',
-                borderRadius: 3,
+                borderRadius: 7,
                 margin: 50,
               }}
               onPress= { () => alterSenha(senha)}

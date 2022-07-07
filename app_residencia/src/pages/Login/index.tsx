@@ -91,8 +91,9 @@ const Login = ({navigation}) => {
               backgroundColor: '#070707b0',
               borderWidth: 1,
               borderColor: '#ffdf4e68',
-              borderRadius: 3,
-              }}
+              borderRadius: 7,
+              // height: 
+            }}
             onPress={() => handleLogin(email, senha)}
           />
           <Button
@@ -104,7 +105,7 @@ const Login = ({navigation}) => {
               backgroundColor: '#070707b0',
               borderWidth: 1,
               borderColor: '#ffdf4e68',
-              borderRadius: 3,
+              borderRadius: 7,
               marginTop: 8,
             }}
             onPress={() => navigation.navigate('CadastroScreen')}
