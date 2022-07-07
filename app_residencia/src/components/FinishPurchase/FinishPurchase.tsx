@@ -51,6 +51,7 @@ export const FinishPurchase = () => {
     // setSomaTotal(soma);
     // console.log(soma)
   }
+
   function showAlert() {
     Alert.alert('Compra', 'Compra Finalizada com sucesso', [
       {text: 'OK', onPress: () => console.log(LimparCarrinho())},

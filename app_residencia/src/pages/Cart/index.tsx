@@ -15,7 +15,7 @@ import {CarrinhoContext} from '../../context/CarrinhoContext';
 
 const Cart = ({navigation}) => {
   const {cart} = useContext(CartContext);
-  const {listarProdutos, isFetching, setIsFetching} =
+  const {listarProdutos, isFetching, setIsFetching, contarQtdProdutos} =
     useContext(CarrinhoContext);
 
   const {usuario} = useContext(AutenticacaoContext);
@@ -33,7 +33,6 @@ const Cart = ({navigation}) => {
   // }
 
   const onRefresh = () => {
-    
     getDadosCarrinho();
     // wait(2000).then(() => setIsFetching(false));
     setIsFetching(false);
@@ -77,10 +76,10 @@ const styles = StyleSheet.create({
   colorText: {
     color: '#fff700',
     fontFamily: 'Starjout',
-    fontSize:35,
+    fontSize: 35,
   },
-  titulos:{
-    alignItems:'center'
-  }
+  titulos: {
+    alignItems: 'center',
+  },
 });
 export default Cart;
