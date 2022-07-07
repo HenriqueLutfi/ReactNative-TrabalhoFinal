@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -6,36 +6,36 @@ import {
   ActivityIndicator,
   ImageBackground,
 } from 'react-native';
-import {Input, Text, Button, Icon} from 'react-native-elements';
-import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import { Input, Text, Button, Icon } from 'react-native-elements';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import AxiosInstance from '../../api/AxiosInstance';
 import { AutenticacaoContext } from '../../context/AutenticacaoContext';
 
-const AlterarSenha = ({navigation}) => {
+const AlterarSenha = ({ navigation }) => {
   const [senha, setSenha] = useState('');
   const [novaSenha, setNovaSenha] = useState('');
-  const {usuario} = useContext(AutenticacaoContext);
+  const { usuario } = useContext(AutenticacaoContext);
 
-  
-    const alterSenha = async (senha: String) => {
+
+  const alterSenha = async (senha: String) => {
     console.log(senha)
     const data = {
       idUsuario: usuario.id,
       nomeUsuario: usuario.nomeUsuario,
       email: usuario.email,
-      senha: senha, 
-     };
-     try{
+      senha: senha,
+    };
+    try {
       await AxiosInstance.post("/autenticacao/recuperar-senha", data)
       setSenha("");
       setNovaSenha("");
       navigation.goBack();
       Alert.alert("Registro feito sucesso");
-     }catch{
+    } catch {
       Alert.alert("Ops, acho que sua senha está errada");
-     };
     };
-  
+  };
+
 
   const ValidarSenha = () => {
     if (novaSenha === senha) {
@@ -86,12 +86,12 @@ const AlterarSenha = ({navigation}) => {
         <ScrollView style={styles.containerScroll}>
           <View style={styles.containerItems}>
             <Text style={styles.texto_entrada}>{'Alterar Senha'}</Text>
-            
+
             <Input
               placeholder="Digite sua Nova Atual"
               onChangeText={setSenha}
               value={senha}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
               secureTextEntry
             />
 
@@ -99,10 +99,10 @@ const AlterarSenha = ({navigation}) => {
               placeholder="Confirme sua nova Senha"
               onChangeText={setNovaSenha}
               value={novaSenha}
-              style={{color: '#fff700'}}
+              style={{ color: '#fff700' }}
               secureTextEntry
             />
-           
+
 
             <Button
               title="Salvar"
@@ -117,7 +117,23 @@ const AlterarSenha = ({navigation}) => {
                 borderRadius: 7,
                 margin: 50,
               }}
-              onPress= { () => alterSenha(senha)}
+              onPress={() => alterSenha(senha)}
+            />
+            <Button
+              title="Login"
+              titleStyle={styles.textButton}
+              buttonStyle={{
+                backgroundColor: '#bdc55068',
+                borderWidth: 2,
+                borderHeight: 5,
+                borderColor: '#bdc55068',
+                borderRadius: 7,
+                margin: 50,
+              }}
+              onPress={() => {
+
+                navigation.navigate('LoginScreen');
+              }}
             />
           </View>
         </ScrollView>
@@ -144,7 +160,7 @@ const styles = StyleSheet.create({
     zIndex: 0,
     marginBottom: 20,
   },
-  texto_entrada: { 
+  texto_entrada: {
     textAlign: 'center',
     fontFamily: 'Starjout',
     marginBottom: 60,
@@ -154,6 +170,10 @@ const styles = StyleSheet.create({
   imageBack: {
     flex: 1,
     justifyContent: 'center',
+  },
+  textButton: {
+    color: '#f0D906',
+    fontFamily: 'Starjout',
   },
 });
 
