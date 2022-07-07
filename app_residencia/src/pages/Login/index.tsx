@@ -91,7 +91,6 @@ const Login = ({navigation}) => {
               backgroundColor: '#070707b0',
               borderWidth: 1,
               borderColor: '#ffdf4e68',
-
               borderRadius: 7,
               // height: 
             }}
