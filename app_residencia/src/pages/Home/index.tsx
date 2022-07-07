@@ -156,6 +156,27 @@ const Home = ({ route, navigation }) => {
               }
             />
           </View>
+          <Text style={styles.colorText}> {'Destaque'}</Text>
+          <ScrollView style={styles.bottomCardScrollView}>
+            <TouchableOpacity>
+              <Card containerStyle={styles.BottomCardStyle}>
+                <Card.Image
+                  source={{
+                    uri: 'https://cinesiageek.com.br/wp-content/uploads/2019/10/star_wars__a_ascensao_skywalker.jpg',
+                  }}
+                />
+                <Card.Divider />
+                <View style={styles.bottomCard}>
+                  <View style={styles.bottomCardText}>
+                    <Text style={styles.colorText}>teste</Text>
+                  </View>
+                  <View>
+                    <AirbnbRating showRating={false} size={10} />
+                  </View>
+                </View>
+              </Card>
+            </TouchableOpacity>
+          </ScrollView>
           <Text style={styles.colorText}>{'Categorias'}</Text>
           <FlatList
             data={categorias}
@@ -217,28 +238,6 @@ const Home = ({ route, navigation }) => {
               }}
             />
           }
-
-          <Text style={styles.colorText}> {'Destaque'}</Text>
-          <ScrollView style={styles.bottomCardScrollView}>
-            <TouchableOpacity>
-              <Card containerStyle={styles.BottomCardStyle}>
-                <Card.Image
-                  source={{
-                    uri: 'https://cinesiageek.com.br/wp-content/uploads/2019/10/star_wars__a_ascensao_skywalker.jpg',
-                  }}
-                />
-                <Card.Divider />
-                <View style={styles.bottomCard}>
-                  <View style={styles.bottomCardText}>
-                    <Text style={styles.colorText}>teste</Text>
-                  </View>
-                  <View>
-                    <AirbnbRating showRating={false} size={10} />
-                  </View>
-                </View>
-              </Card>
-            </TouchableOpacity>
-          </ScrollView>
         </ScrollView>
       </ImageBackground>
     </View>
