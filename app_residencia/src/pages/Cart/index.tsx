@@ -13,7 +13,7 @@ import CartCard from '../../components/CartCardComponent/CartCardComponent';
 import {FinishPurchase} from '../../components/FinishPurchase/FinishPurchase';
 import {CarrinhoContext} from '../../context/CarrinhoContext';
 
-const Cart = () => {
+const Cart = ({navigation}) => {
   const {cart} = useContext(CartContext);
   const {listarProdutos, isFetching, setIsFetching} =
     useContext(CarrinhoContext);

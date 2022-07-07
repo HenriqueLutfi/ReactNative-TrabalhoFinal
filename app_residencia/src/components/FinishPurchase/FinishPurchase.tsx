@@ -27,7 +27,7 @@ export const FinishPurchase = () => {
 
   useEffect(() => {
     getDadosCarrinho();
-  }, []);
+  }, [contarQtdProdutos()]);
 
   const getDadosCarrinho = () => {
     setCarrinho(listarProdutos());
