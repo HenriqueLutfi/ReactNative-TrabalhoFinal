@@ -38,6 +38,7 @@ function LoadingComponent() {
 const styles = StyleSheet.create({
   centralizar: {
     flex: 1,
+    width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
     
