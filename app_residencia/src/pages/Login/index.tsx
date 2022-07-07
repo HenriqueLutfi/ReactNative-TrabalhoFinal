@@ -153,7 +153,6 @@ const styles = StyleSheet.create({
   image_store: {
     width: 300,
     height: 300,
-    marginLeft: '10%',
   },
   buttonStyle: {
     fontFamily:'Starjout',
