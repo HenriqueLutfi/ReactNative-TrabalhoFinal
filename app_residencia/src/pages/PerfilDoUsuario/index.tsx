@@ -164,6 +164,8 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 70,
+    borderColor:'#f0D906',
+    borderWidth:1,
   },
   imageBack: {
     flex: 1,
