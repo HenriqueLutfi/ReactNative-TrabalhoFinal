@@ -30,7 +30,7 @@ const AlterarSenha = ({ navigation }) => {
       setSenha("");
       setNovaSenha("");
       navigation.goBack();
-      Alert.alert("Registro feito sucesso");
+      Alert.alert("Registro feito sucesso!");
     } catch {
       Alert.alert("Ops, acho que sua senha está errada");
     };
